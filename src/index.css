@@ -23,6 +23,10 @@ body {
   padding-right: 0px !important;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .sidebar {
   background-color: rgb(212, 212, 212);
   overflow-wrap: break-word;
@@ -30,17 +34,12 @@ body {
   height: 100vh;
 }
 
-.clickable {
-  cursor: pointer;
-}
-
-
 .sidebar-item.selected {
   background-color: rgba(0, 0, 0, 0.185);
 }
 
 .sidebar-item {
-  padding: 10px;
+  padding: 4px 0px 4px 20px;
 }
 
 .sidebar-title {
