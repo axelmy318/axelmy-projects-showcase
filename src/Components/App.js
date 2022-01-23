@@ -17,6 +17,11 @@ import ExampleSidebar from './ExampleSidebar';
 
 import ReadmePrinter from './ReadmePrinter';
 import OffsetsAndSizesExample from './examples_NewWindow/OffsetsAndSizesExample';
+import Footer from './Footer';
+
+import {BiHomeAlt as LogoHome} from 'react-icons/bi'
+import { IconContext } from 'react-icons/lib';
+import Homepage from './Homepage';
 
 const App = () => {
   const [selectedProject, setSelectedProject] = useState(null)
@@ -146,6 +151,12 @@ const App = () => {
         setSelectedTab({type: 'example', item: item.examples[0]})
   }
 
+  const sendToHomepage = () => {
+    history.push('/')
+    setSelectedProject(null)
+    setSelectedTab({type: '', item: null})
+  }
+
   const loadCodes = () => {
     setProject(projects.map(project => {
       project.examples.map(example => {
@@ -160,9 +171,9 @@ const App = () => {
 
   if(!areCodesLoaded) loadCodes()
 
-  if(window.location.pathname === '/')
-    sendToProject(projects[0])
-  else if(window.location.pathname !== '/' && selectedProject === null) 
+  /*if(window.location.pathname === '/')
+    sendToProject(projects[0])*/
+  if(window.location.pathname !== '/' && selectedProject === null) 
     sendToProject(projects.find(project => project.path === window.location.pathname))
   
   return (
@@ -172,17 +183,22 @@ const App = () => {
             <Col xs={4}>
               <Row className='header-row'>
                 <Col className='header-col' xs={12}>
-                  <h1>👏 ReactJS packages showcase 👏</h1>
+                  <span style={{position: 'absolute', top: '10px'}} className='clickable' onClick={sendToHomepage}><IconContext.Provider value={{size: '30px'}}><LogoHome /></IconContext.Provider></span>
+                  <h1>👏 ReactJS packages demo 👏</h1>
                 </Col>
               </Row>
               <Row>
                 <Col xs={6} className='no-padding'>
                   <Sidebar label={'Projects'} selected={selectedProject}  onSelect={sendToProject} items={projects} />
                 </Col>
-                { selectedProject !== null && <Col xs={6} className='no-padding'>
-                    <ExampleSidebar project={selectedProject} selected={selectedTab} onSelect={setSelectedTab} items={selectedProject.examples} />
-                  </Col>
-                }
+                <Col xs={6} className='no-padding'>
+                  <ExampleSidebar project={selectedProject} selected={selectedTab} onSelect={setSelectedTab} />
+                </Col>
+              </Row>
+              <Row className='header-row'>
+                <Col className='header-col' xs={12}>
+                  <Footer />
+                </Col>
               </Row>
             </Col>
             <Col>
@@ -197,7 +213,7 @@ const App = () => {
                   })
                 }
                 <Route path="/" exact>
-                  <Header label={`Axelmy's projects showcase`} variant='large' />
+                  <Homepage />
                 </Route>
             </Col>
           </Row>
