@@ -3,22 +3,26 @@ import { NewWindow } from 'react-window-open'
 
 const TitleExample = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const [counter, setCounter] = useState(0)
+    const emojies = ['👋', '👀', '🙌', '😎', '😜'];
+    const [emoji, setEmoji] = useState(Math.floor(Math.random() * emojies.length))
+
+    const changeEmoji = () => setEmoji(Math.floor(Math.random() * emojies.length))
 
     return (
         <>
             {isOpen && <>
                 <NewWindow 
-                title={'Test custom title !'}
-                onClose={() => setIsOpen(false)}>
+                    title={'Test custom title !'}
+                    onClose={() => setIsOpen(false)}
+                >
                     <p>This text is displayed in a new window. 👀</p>
                     <p>And all the states are shared ! 👌</p>
-                    <p>Counter in the new window : <strong>{counter}</strong></p>
+                    <p>Selected emoji {emojies[emoji]}</p>
                     <button 
                         style={{...styles.button, backgroundColor: 'green'}} 
-                        onClick={() => setCounter(counter+1)}
+                        onClick={changeEmoji}
                     >
-                        Increment from the new window
+                        Change emoji
                     </button>&nbsp;
                     <button 
                         style={{...styles.button, backgroundColor: 'red'}} 
@@ -29,7 +33,7 @@ const TitleExample = () => {
                 </NewWindow>
             </>}
 
-            <p>Counter on the original page : <strong>{counter}</strong></p>
+            <p>Selected emoji {emojies[emoji]}</p>
             <button 
                 style={styles.button} 
                 onClick={() => setIsOpen(!isOpen)}
@@ -38,9 +42,9 @@ const TitleExample = () => {
             </button> &nbsp;
             <button 
                 style={{...styles.button, backgroundColor: 'green'}}
-                onClick={() => setCounter(counter+1)}
+                onClick={changeEmoji}
             >
-                Increment
+                Change emoji
             </button>
         </>
     )

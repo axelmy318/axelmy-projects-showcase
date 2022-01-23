@@ -3,16 +3,22 @@ import { NewWindow } from 'react-window-open'
 
 const BasicExample = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const [counter, setCounter] = useState(0)
+    const emojies = ['👋', '👀', '🙌', '😎', '😜'];
+    const [emoji, setEmoji] = useState(Math.floor(Math.random() * emojies.length))
+
+    const changeEmoji = () => setEmoji(Math.floor(Math.random() * emojies.length))
 
     return (
         <>
             {isOpen && <NewWindow onClose={() => setIsOpen(false)}>
                 <p>This text is displayed in a new window. 👀</p>
                 <p>And all the states are shared ! 👌</p>
-                <p>Counter in the new window : <strong>{counter}</strong></p>
-                <button style={{...styles.button, backgroundColor: 'green'}} onClick={() => setCounter(counter+1)}>
-                    Increment from the new window
+                <p>Selected emoji {emojies[emoji]}</p>
+                <button 
+                    style={{...styles.button, backgroundColor: 'green'}} 
+                    onClick={changeEmoji}
+                >
+                    Change emoji
                 </button>&nbsp;
                 <button 
                     style={{...styles.button, backgroundColor: 'red'}} 
@@ -22,7 +28,7 @@ const BasicExample = () => {
                 </button>
             </NewWindow>}
 
-            <p>Counter on the original page : <strong>{counter}</strong></p>
+            <p>Selected emoji {emojies[emoji]}</p>
             <button 
                 style={styles.button} 
                 onClick={() => setIsOpen(!isOpen)}
@@ -31,9 +37,9 @@ const BasicExample = () => {
             </button> &nbsp;
             <button 
                 style={{...styles.button, backgroundColor: 'green'}}
-                onClick={() => setCounter(counter+1)}
+                onClick={changeEmoji}
             >
-                Increment
+                Change emoji
             </button>
         </>
     )

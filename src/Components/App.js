@@ -160,20 +160,31 @@ const App = () => {
 
   if(!areCodesLoaded) loadCodes()
 
-  if(window.location.pathname !== '/' && selectedProject === null) 
+  if(window.location.pathname === '/')
+    sendToProject(projects[0])
+  else if(window.location.pathname !== '/' && selectedProject === null) 
     sendToProject(projects.find(project => project.path === window.location.pathname))
   
   return (
     <>
       <Container fluid>
           <Row>
-            <Col xs={2} className='no-padding'>
-              <Sidebar label={'Projects'} selected={selectedProject}  onSelect={sendToProject} items={projects} />
+            <Col xs={4}>
+              <Row className='header-row'>
+                <Col className='header-col' xs={12}>
+                  <h1>👏 ReactJS packages showcase 👏</h1>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={6} className='no-padding'>
+                  <Sidebar label={'Projects'} selected={selectedProject}  onSelect={sendToProject} items={projects} />
+                </Col>
+                { selectedProject !== null && <Col xs={6} className='no-padding'>
+                    <ExampleSidebar project={selectedProject} selected={selectedTab} onSelect={setSelectedTab} items={selectedProject.examples} />
+                  </Col>
+                }
+              </Row>
             </Col>
-            { selectedProject !== null && <Col xs={2} className='no-padding'>
-              <ExampleSidebar project={selectedProject} selected={selectedTab} onSelect={setSelectedTab} items={selectedProject.examples} />
-            </Col>
-            }
             <Col>
                 {
                   projects.map((project, index) => {

@@ -1,7 +1,8 @@
 import React from 'react';
-import { MdOpenInNew as LogoUrl } from 'react-icons/md'
+import { HiOutlineExternalLink as LogoUrl } from 'react-icons/hi'
 import { IoCopyOutline as LogoCopy } from 'react-icons/io5'
-import { CgReadme as LogoReadme } from 'react-icons/cg'
+import { BsLink45Deg as LogoLink } from 'react-icons/bs'
+import { BiCodeCurly as LogoCurly } from 'react-icons/bi'
 
 const ExampleSidebar = ({ project, items, selected, onSelect }) => {
     const openLink = (url) => {
@@ -18,24 +19,25 @@ const ExampleSidebar = ({ project, items, selected, onSelect }) => {
             </div>
             </>}
             <div className='sidebar-title small'>
-                <p>Links</p>
+                <p><LogoLink /> Links</p>
             </div>
-            {project.github && <div className={selected.type === 'readme' ? 'sidebar-item selected' : 'sidebar-item clickable'} onClick={() => onSelect({type: 'readme', item: project})}>
-                <span><LogoReadme /> README.md</span>
+            {project.github && <div className={selected.type === 'readme' ? 'sidebar-item small-spacing selected' : 'sidebar-item small-spacing clickable'} onClick={() => onSelect({type: 'readme', item: project})}>
+                <span>README.md</span>
             </div>}
-            {project.github && <div className={'sidebar-item clickable'} onClick={() => openLink(`https://github.com/${project.github.username}/${project.github.repository}.git`)}>
+            {project.github && <div className={'sidebar-item small-spacing clickable'} onClick={() => openLink(`https://github.com/${project.github.username}/${project.github.repository}.git`)}>
                 <span>GitHub <LogoUrl /></span>
             </div>}
-            {project.npmjs && <div className={'sidebar-item clickable'} onClick={() => openLink(project.npmjs)}>
+            {project.npmjs && <div className={'sidebar-item small-spacing clickable'} onClick={() => openLink(project.npmjs)}>
                 <span>npmjs <LogoUrl /></span>
             </div>}
             <br />
+            <div className='separator'></div>
             <div className='sidebar-title small'>
-                <p>Examples</p>
+                <p><LogoCurly /> Examples</p>
             </div>
             {items.map((item, index) => {
                 return (
-                        <div key={index} className={selected.type === 'example' && selected.item !== null && selected.item.name === item.name ? 'sidebar-item selected' : 'sidebar-item clickable'} onClick={() => onSelect({type:'example', item})}>
+                        <div key={index} className={selected.type === 'example' && selected.item !== null && selected.item.name === item.name ? 'sidebar-item small-spacing selected' : 'sidebar-item small-spacing clickable'} onClick={() => onSelect({type:'example', item})}>
                             {item.name}
                         </div>
                     )
