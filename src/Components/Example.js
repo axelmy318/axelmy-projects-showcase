@@ -6,8 +6,8 @@ import Header from './Header';
 
 const Example = ({ example }) => {
     return (<>
-        <Row>
-            <Col>
+        <Row className='component-examples'>
+            <Col md="auto" className='example-result'>
                 <Header label={example.name} variant='normal' customStyle={{textAlign: 'left'}} />
                 <p>{example.description}</p>
                 <br />
@@ -30,21 +30,24 @@ const Example = ({ example }) => {
                         </tbody>
                     </Table>
                 </>}
+                <br />
             </Col>
-            <Col className='no-right-padding'>
-                <SyntaxHighlighter 
-                    style={ dark }
-                    showLineNumbers={true}
-                    wrapLongLines={true}
-                    language={'javascript'}
-                    customStyle={{
-                        minHeight: window.innerHeight,
-                        margin: '0px',
-                        borderRadius: '0px'
-                    }}
-                >
-                    {example.code}
-                </SyntaxHighlighter>        
+            <Col className='no-right-padding example-code'>
+                <div className='highlighter'>
+                    <SyntaxHighlighter 
+                        style={ dark }
+                        showLineNumbers={true}
+                        wrapLongLines={true}
+                        language={'jsx'}
+                        customStyle={{
+                            minHeight: window.innerHeight,
+                            margin: '0px',
+                            borderRadius: '0px'
+                        }}
+                    >
+                        {example.code}
+                    </SyntaxHighlighter>  
+                </div>      
             </Col>
         </Row>
     </>);

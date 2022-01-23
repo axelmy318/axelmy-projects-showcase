@@ -19,7 +19,8 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "5.0.0",
     "react-syntax-highlighter": "^15.4.5",
-    "react-weekdays-input": "^1.2.16",
+    "react-weekdays-input": "^1.2.18",
+    "react-window-open": "^1.0.4",
     "rehype-highlight": "^5.0.2",
     "remark-gfm": "^3.0.1",
     "web-vitals": "^2.1.4"

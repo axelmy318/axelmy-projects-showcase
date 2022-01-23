@@ -1,6 +1,7 @@
 import React from 'react';
 import { MdOpenInNew as LogoUrl } from 'react-icons/md'
 import { IoCopyOutline as LogoCopy } from 'react-icons/io5'
+import { CgReadme as LogoReadme } from 'react-icons/cg'
 
 const ExampleSidebar = ({ project, items, selected, onSelect }) => {
     const openLink = (url) => {
@@ -19,14 +20,14 @@ const ExampleSidebar = ({ project, items, selected, onSelect }) => {
             <div className='sidebar-title small'>
                 <p>Links</p>
             </div>
+            {project.github && <div className={selected.type === 'readme' ? 'sidebar-item selected' : 'sidebar-item clickable'} onClick={() => onSelect({type: 'readme', item: project})}>
+                <span><LogoReadme /> README</span>
+            </div>}
             {project.github && <div className={'sidebar-item clickable'} onClick={() => openLink(`https://github.com/${project.github.username}/${project.github.repository}.git`)}>
                 <span>GitHub <LogoUrl /></span>
             </div>}
             {project.npmjs && <div className={'sidebar-item clickable'} onClick={() => openLink(project.npmjs)}>
                 <span>npmjs <LogoUrl /></span>
-            </div>}
-            {project.github && <div className={selected.type === 'readme' ? 'sidebar-item selected' : 'sidebar-item clickable'} onClick={() => onSelect({type: 'readme', item: project})}>
-                <span>README</span>
             </div>}
             <br />
             <div className='sidebar-title small'>

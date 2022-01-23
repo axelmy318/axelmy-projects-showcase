@@ -3,19 +3,19 @@ import {Route, useHistory } from "react-router-dom";
 import Header from './Header'
 import Sidebar from './Sidebar';
 import { Container, Row, Col } from 'react-bootstrap';
-import BasicExample from './examples_WeekdaysInput/BasicExample';
+import WeekdaysBasicExample from './examples_WeekdaysInput/BasicExample';
 import CustomStyleExample from './examples_WeekdaysInput/CustomStyleExample';
 import ForcedStateExample from './examples_WeekdaysInput/ForcedStateExample';
+import CustomDaysExample from './examples_WeekdaysInput/CustomDaysExample';
+import NewWindowBasicExample from './examples_NewWindow/BasicExample';
 import Example from './Example';
-import ReactMarkdown from 'react-markdown'
 
 import { getCodeFor } from '../config/examplesCode';
 import ShowCharsExample from './examples_WeekdaysInput/ShowCharsExample';
 import ExampleSidebar from './ExampleSidebar';
 
-//MARKDOWNS
-import weekdaysInputReadme from './examples_WeekdaysInput/readme.md' 
 import ReadmePrinter from './ReadmePrinter';
+import OffsetsAndSizesExample from './examples_NewWindow/OffsetsAndSizesExample';
 
 const App = () => {
   const [selectedProject, setSelectedProject] = useState(null)
@@ -25,15 +25,29 @@ const App = () => {
   
   const [projects, setProject] = useState([
     {
-      path: '/react-new-window', 
-      systemName: 'reactnewwindow',
-      name: 'React New Window',
+      path: '/react-window-open', 
+      systemName: 'reactwindowopen',
+      name: 'React Window Open',
+      github: {
+        username: 'axelmy318',
+        repository: 'react-window-open',
+        mainBranch: 'master'
+      },
+      npmjs: 'https://www.npmjs.com/package/react-window-open',
+      installation: 'npm i react-window-open',
       examples: [
         {
-          systemName: 'textexample1',
-          name: 'Test example 1',
-          description: 'Test',
-          component: <div>test 1</div>,
+          systemName: 'basicexample',
+          name: 'Basic example',
+          description: 'A basic example of react-new-window',
+          component: <NewWindowBasicExample />,
+          defaults: []
+        },
+        {
+          systemName: 'offestsandsizes',
+          name: 'Offsets and sizes',
+          description: 'A basic example of react-new-window',
+          component: <OffsetsAndSizesExample />,
           defaults: []
         }
       ]
@@ -45,7 +59,7 @@ const App = () => {
       github: {
         username: 'axelmy318',
         repository: 'react-weekdays-input',
-        mainBranch: 'Dev'
+        mainBranch: 'master'
       },
       npmjs: 'https://www.npmjs.com/package/react-weekdays-input',
       installation: 'npm i react-weekdays-input',
@@ -54,7 +68,7 @@ const App = () => {
           systemName: 'basicexample',
           name: 'Basic example',
           description: 'A simple example using the default configuration',
-          component: <BasicExample />,
+          component: <WeekdaysBasicExample />,
           defaults: [
             {property: 'value', type: 'string/array', value: `"0000000"`},
             {property: 'onChange', type: 'function', value: ``},
@@ -85,6 +99,16 @@ const App = () => {
             {property: 'showChars', type: 'number', value: 'null'}
           ]
         },
+        {
+          systemName: 'customdays',
+          name: 'Custom days',
+          description: 'This example covers how to set custom days',
+          component: <CustomDaysExample />,
+          defaults: [
+            {property: 'days', type: 'arary', value: `['monday', 'tuesday', 'wednesday', ...]`},
+            {property: 'textCase', type: 'string', value: `null, Available: 'firstToUpper', 'toUpper', 'toLowerwdwadawdwadwadwadwadwadwadadawd'`},
+          ]
+        },
       ]
     }
   ])
@@ -94,7 +118,10 @@ const App = () => {
   const sendToProject = item => {
       history.push(item.path)
       setSelectedProject(item)
-      setSelectedTab({type: 'example', item: item.examples[0]})
+      if(item.github !== undefined)
+        setSelectedTab({type: 'readme', item})
+      else
+        setSelectedTab({type: 'example', item: item.examples[0]})
   }
 
   const loadCodes = () => {
