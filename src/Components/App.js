@@ -10,6 +10,7 @@ import Example from './Example';
 
 import { getCodeFor } from '../config/examplesCode';
 import ShowCharsExample from './examples_WeekdaysInput/ShowCharsExample';
+import ExampleSidebar from './ExampleSidebar';
 
 const App = () => {
   const [selectedProject, setSelectedProject] = useState(null)
@@ -37,6 +38,9 @@ const App = () => {
       path: '/react-weekdays-input', 
       systemName: 'reactweekdaysinput',
       name: 'React Weekdays Input', 
+      repository: 'https://github.com/axelmy318/react-weekdays-input.git',
+      npmjs: 'https://www.npmjs.com/package/react-weekdays-input',
+      installation: 'npm i react-weekdays-input',
       link: '', 
       examples: [
         {
@@ -44,7 +48,10 @@ const App = () => {
           name: 'Basic example',
           description: 'A simple example using the default configuration',
           component: <BasicExample />,
-          defaults: []
+          defaults: [
+            {property: 'value', type: 'string/array', value: `"0000000"`},
+            {property: 'onChange', type: 'function', value: ``},
+          ]
         },
         {
           systemName: 'customstyles',
@@ -92,8 +99,6 @@ const App = () => {
       return project
     }))
 
-    console.log(projects)
-
     setAreCodesLoaded(true)
   }
 
@@ -110,7 +115,7 @@ const App = () => {
               <Sidebar label={'Projects'} selected={selectedProject}  onSelect={sendToProject} items={projects} />
             </Col>
             { selectedProject !== null && <Col xs={2} className='no-padding'>
-              <Sidebar label={'Examples'} selected={selectedExample} onSelect={setSelectedExample} items={selectedProject.examples} />
+              <ExampleSidebar project={selectedProject} selected={selectedExample} onSelect={setSelectedExample} items={selectedProject.examples} />
             </Col>
             }
             <Col>
@@ -118,7 +123,6 @@ const App = () => {
                   projects.map((project, index) => {
                     return (
                       <Route key={index} path={project.path} exact>
-                        {console.log(selectedExample)}
                         {selectedExample && <Example example={selectedExample} />}
                       </Route>
                     )

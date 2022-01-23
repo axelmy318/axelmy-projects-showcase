@@ -1,5 +1,4 @@
 export const getCodeFor = (project, example) => {
-    console.log(project, example)
     if(codebook[project] && codebook[project][example])
         return codebook[project][example]
     else
@@ -26,7 +25,7 @@ export default BasicExample;`,
         customstyles: `import React, { useState } from 'react';
 import { WeekdaysInput } from 'react-weekdays-input';
 
-const BasicExample = () => {
+const CustomStyleExample = () => {
     const [value, setValue] = useState([0, 0, 1, 0, 0, 1, 0])
 
     return (
@@ -54,11 +53,11 @@ const BasicExample = () => {
     );
 };
 
-export default BasicExample;`,
+export default CustomStyleExample;`,
         forcedstate: `import React, { useState } from 'react';
 import { WeekdaysInput } from 'react-weekdays-input';
 
-const BasicExample = () => {
+const ForcedStateExample = () => {
     const [value, setValue] = useState([0, 0, 1, 0, 0, 1, 0])
 
     return (
@@ -78,7 +77,7 @@ const BasicExample = () => {
     );
 };
 
-export default BasicExample;`,
+export default ForcedStateExample;`,
         showchars: `import React, { useState } from 'react';
 import { WeekdaysInput } from 'react-weekdays-input';
 

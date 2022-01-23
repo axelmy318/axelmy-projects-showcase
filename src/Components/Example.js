@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row, Table } from 'react-bootstrap';
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight';
-import { a11yDark as hlStyleHLJS } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
+import { vscDarkPlus as dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Header from './Header';
 
 const Example = ({ example }) => {
@@ -10,8 +10,11 @@ const Example = ({ example }) => {
             <Col>
                 <Header label={example.name} variant='normal' customStyle={{textAlign: 'left'}} />
                 <p>{example.description}</p>
+                <br />
+                <h5>Result</h5>
                 {example.component}
                 {example.defaults && example.defaults.length > 0 && <>
+                    <br />
                     <br />
                     <h5>Defaults</h5>
                     <Table striped bordered>
@@ -30,9 +33,10 @@ const Example = ({ example }) => {
             </Col>
             <Col className='no-right-padding'>
                 <SyntaxHighlighter 
+                    style={ dark }
                     showLineNumbers={true}
-                    language="javascript"
-                    style={hlStyleHLJS}
+                    wrapLongLines={true}
+                    language={'javascript'}
                     customStyle={{
                         minHeight: window.innerHeight,
                         margin: '0px',

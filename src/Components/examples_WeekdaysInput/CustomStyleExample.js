@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { WeekdaysInput } from 'react-weekdays-input';
 
-const BasicExample = () => {
+const CustomStyleExample = () => {
     const [value, setValue] = useState([0, 0, 1, 0, 0, 1, 0])
 
     return (
@@ -29,4 +29,4 @@ const BasicExample = () => {
     );
 };
 
-export default BasicExample;
+export default CustomStyleExample;
