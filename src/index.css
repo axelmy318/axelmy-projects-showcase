@@ -60,8 +60,23 @@ h5 {
   overflow-y: scroll;
 }
 
-.markdown {
+.markdown-content {
   padding: 20px 50px;
+}
+
+.markdown {
+  margin-top: 20px;
+  padding: 0px;
+}
+
+.readme-file {
+  font-size: 75%;
+}
+
+.readme-file .repo {
+  background-color: rgb(177, 177, 177);
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .sidebar {
@@ -200,13 +215,4 @@ h5 {
   text-align: center;
   color: rgb(226, 226, 226);
   font-size: 90%;
-}
-
-.homepage {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.homepage .tech-list svg {
-  margin: 0px 10px;
 }

@@ -207,7 +207,7 @@ const App = () => {
                     return (
                       <Route key={index} path={project.path} exact>
                         {selectedTab.type === 'example' && <Example example={selectedTab.item} />}
-                        {selectedTab.type === 'readme' && <ReadmePrinter url={`https://raw.githubusercontent.com/${selectedTab.item.github.username}/${selectedTab.item.github.repository}/${selectedTab.item.github.mainBranch}/README.md`} />}
+                        {selectedTab.type === 'readme' && <ReadmePrinter username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} />}
                       </Route>
                     )
                   })
