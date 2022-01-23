@@ -2,7 +2,7 @@ import React from 'react';
 import { MdOpenInNew as LogoUrl } from 'react-icons/md'
 import { IoCopyOutline as LogoCopy } from 'react-icons/io5'
 
-const ExampleSidebar = ({ label, project, items, selected, onSelect }) => {
+const ExampleSidebar = ({ project, items, selected, onSelect }) => {
     const openLink = (url) => {
         window.open(url, '_blank').focus();
     }
@@ -19,11 +19,14 @@ const ExampleSidebar = ({ label, project, items, selected, onSelect }) => {
             <div className='sidebar-title small'>
                 <p>Links</p>
             </div>
-            {project.repository && <div className={'sidebar-item clickable'} onClick={() => openLink(project.repository)}>
+            {project.github && <div className={'sidebar-item clickable'} onClick={() => openLink(`https://github.com/${project.github.username}/${project.github.repository}.git`)}>
                 <span>GitHub <LogoUrl /></span>
             </div>}
             {project.npmjs && <div className={'sidebar-item clickable'} onClick={() => openLink(project.npmjs)}>
                 <span>npmjs <LogoUrl /></span>
+            </div>}
+            {project.github && <div className={selected.type === 'readme' ? 'sidebar-item selected' : 'sidebar-item clickable'} onClick={() => onSelect({type: 'readme', item: project})}>
+                <span>README</span>
             </div>}
             <br />
             <div className='sidebar-title small'>
@@ -31,7 +34,7 @@ const ExampleSidebar = ({ label, project, items, selected, onSelect }) => {
             </div>
             {items.map((item, index) => {
                 return (
-                        <div key={index} className={selected !== null && selected.name === item.name ? 'sidebar-item selected' : 'sidebar-item clickable'} onClick={() => onSelect(item)}>
+                        <div key={index} className={selected.type === 'example' && selected.item !== null && selected.item.name === item.name ? 'sidebar-item selected' : 'sidebar-item clickable'} onClick={() => onSelect({type:'example', item})}>
                             {item.name}
                         </div>
                     )

@@ -7,14 +7,19 @@ import BasicExample from './examples_WeekdaysInput/BasicExample';
 import CustomStyleExample from './examples_WeekdaysInput/CustomStyleExample';
 import ForcedStateExample from './examples_WeekdaysInput/ForcedStateExample';
 import Example from './Example';
+import ReactMarkdown from 'react-markdown'
 
 import { getCodeFor } from '../config/examplesCode';
 import ShowCharsExample from './examples_WeekdaysInput/ShowCharsExample';
 import ExampleSidebar from './ExampleSidebar';
 
+//MARKDOWNS
+import weekdaysInputReadme from './examples_WeekdaysInput/readme.md' 
+import ReadmePrinter from './ReadmePrinter';
+
 const App = () => {
   const [selectedProject, setSelectedProject] = useState(null)
-  const [selectedExample, setSelectedExample] = useState(null)
+  const [selectedTab, setSelectedTab] = useState({type: '', item: null})
   const [areCodesLoaded, setAreCodesLoaded] = useState(false)
 
   
@@ -22,8 +27,7 @@ const App = () => {
     {
       path: '/react-new-window', 
       systemName: 'reactnewwindow',
-      name: 'React New Window', 
-      link: '', 
+      name: 'React New Window',
       examples: [
         {
           systemName: 'textexample1',
@@ -38,10 +42,13 @@ const App = () => {
       path: '/react-weekdays-input', 
       systemName: 'reactweekdaysinput',
       name: 'React Weekdays Input', 
-      repository: 'https://github.com/axelmy318/react-weekdays-input.git',
+      github: {
+        username: 'axelmy318',
+        repository: 'react-weekdays-input',
+        mainBranch: 'Dev'
+      },
       npmjs: 'https://www.npmjs.com/package/react-weekdays-input',
       installation: 'npm i react-weekdays-input',
-      link: '', 
       examples: [
         {
           systemName: 'basicexample',
@@ -87,7 +94,7 @@ const App = () => {
   const sendToProject = item => {
       history.push(item.path)
       setSelectedProject(item)
-      setSelectedExample(item.examples[0])
+      setSelectedTab({type: 'example', item: item.examples[0]})
   }
 
   const loadCodes = () => {
@@ -115,7 +122,7 @@ const App = () => {
               <Sidebar label={'Projects'} selected={selectedProject}  onSelect={sendToProject} items={projects} />
             </Col>
             { selectedProject !== null && <Col xs={2} className='no-padding'>
-              <ExampleSidebar project={selectedProject} selected={selectedExample} onSelect={setSelectedExample} items={selectedProject.examples} />
+              <ExampleSidebar project={selectedProject} selected={selectedTab} onSelect={setSelectedTab} items={selectedProject.examples} />
             </Col>
             }
             <Col>
@@ -123,7 +130,8 @@ const App = () => {
                   projects.map((project, index) => {
                     return (
                       <Route key={index} path={project.path} exact>
-                        {selectedExample && <Example example={selectedExample} />}
+                        {selectedTab.type === 'example' && <Example example={selectedTab.item} />}
+                        {selectedTab.type === 'readme' && <ReadmePrinter url={`https://raw.githubusercontent.com/${selectedTab.item.github.username}/${selectedTab.item.github.repository}/${selectedTab.item.github.mainBranch}/README.md`} />}
                       </Route>
                     )
                   })
@@ -139,7 +147,3 @@ const App = () => {
 }
 
 export default App;
-
-function Home() {
-  return <h2>Home</h2>;
-}

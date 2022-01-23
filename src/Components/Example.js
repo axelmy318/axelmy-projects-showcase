@@ -26,7 +26,7 @@ const Example = ({ example }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {example.defaults.map((item, index) => <tr><td>{item.property}</td><td>{item.type}</td><td>{item.value}</td></tr>)}
+                            {example.defaults.map((item, index) => <tr key={index}><td>{item.property}</td><td>{item.type}</td><td>{item.value}</td></tr>)}
                         </tbody>
                     </Table>
                 </>}
