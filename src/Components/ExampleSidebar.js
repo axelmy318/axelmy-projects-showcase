@@ -21,7 +21,7 @@ const ExampleSidebar = ({ project, items, selected, onSelect }) => {
                 <p>Links</p>
             </div>
             {project.github && <div className={selected.type === 'readme' ? 'sidebar-item selected' : 'sidebar-item clickable'} onClick={() => onSelect({type: 'readme', item: project})}>
-                <span><LogoReadme /> README</span>
+                <span><LogoReadme /> README.md</span>
             </div>}
             {project.github && <div className={'sidebar-item clickable'} onClick={() => openLink(`https://github.com/${project.github.username}/${project.github.repository}.git`)}>
                 <span>GitHub <LogoUrl /></span>

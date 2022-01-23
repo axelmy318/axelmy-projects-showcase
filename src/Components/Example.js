@@ -2,21 +2,20 @@ import React from 'react';
 import { Col, Row, Table } from 'react-bootstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import { vscDarkPlus as dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import Header from './Header';
 
 const Example = ({ example }) => {
     return (<>
         <Row className='component-examples'>
             <Col md="auto" className='example-result'>
-                <Header label={example.name} variant='normal' customStyle={{textAlign: 'left'}} />
+                <h1 className='underline'>{example.name}</h1>
                 <p>{example.description}</p>
                 <br />
-                <h5>Result</h5>
+                <h5 className='underline'>Result</h5>
                 {example.component}
                 {example.defaults && example.defaults.length > 0 && <>
                     <br />
                     <br />
-                    <h5>Defaults</h5>
+                    <h5 className='underline'>Defaults</h5>
                     <Table striped bordered>
                         <thead>
                             <tr>

@@ -24,6 +24,8 @@ const CustomStyleExample = () => {
             inputStyle={{
                 padding: '10px',
                 border: '1px solid black',
+                fontFamily: 'sans-serif',
+                fontSize: '15px'
             }}
         />
     );

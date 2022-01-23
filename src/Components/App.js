@@ -8,6 +8,7 @@ import CustomStyleExample from './examples_WeekdaysInput/CustomStyleExample';
 import ForcedStateExample from './examples_WeekdaysInput/ForcedStateExample';
 import CustomDaysExample from './examples_WeekdaysInput/CustomDaysExample';
 import NewWindowBasicExample from './examples_NewWindow/BasicExample';
+import TitleExample from './examples_NewWindow/TitleExample';
 import Example from './Example';
 
 import { getCodeFor } from '../config/examplesCode';
@@ -46,10 +47,26 @@ const App = () => {
         {
           systemName: 'offestsandsizes',
           name: 'Offsets and sizes',
-          description: 'A basic example of react-new-window',
+          description: 'This example covers offsets ans sizes',
           component: <OffsetsAndSizesExample />,
-          defaults: []
-        }
+          defaults: [
+            {property: 'width', type: 'number', value: 1920},
+            {property: 'height', type: 'number', value: 1080},
+            {property: 'top', type: 'number', value: 0},
+            {property: 'left', type: 'number', value: 0},
+            {property: 'right', type: 'number', value: 0},
+            {property: 'bottom', type: 'number', value: 0},
+          ]
+        },
+        {
+          systemName: 'title',
+          name: 'Title',
+          description: 'This example covers how to set a custom title for the window',
+          component: <TitleExample />,
+          defaults: [
+            {property: 'title', type: "string", value: 'New window'},
+          ]
+        },
       ]
     },
     {
@@ -79,7 +96,12 @@ const App = () => {
           name: 'Custom styles',
           description: 'This example covers how to apply custom styling on the component',
           component: <CustomStyleExample />,
-          defaults: []
+          defaults: [
+            {property: 'activeDayStyle', type: 'object', value: ``},
+            {property: 'inactiveDayStyle', type: 'object', value: ``},
+            {property: 'dayStyle', type: 'object', value: ``},
+            {property: 'inputStyle', type: 'object', value: ``},
+          ]
         },
         {
           systemName: 'forcedstate',
@@ -106,7 +128,7 @@ const App = () => {
           component: <CustomDaysExample />,
           defaults: [
             {property: 'days', type: 'arary', value: `['monday', 'tuesday', 'wednesday', ...]`},
-            {property: 'textCase', type: 'string', value: `null, Available: 'firstToUpper', 'toUpper', 'toLowerwdwadawdwadwadwadwadwadwadadawd'`},
+            {property: 'textCase', type: 'string', value: `null, Available: 'firstToUpper', 'toUpper', 'toLower'`},
           ]
         },
       ]
