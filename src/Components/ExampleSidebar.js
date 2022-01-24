@@ -25,18 +25,21 @@ const ExampleSidebar = ({ project, selected, onSelect }) => {
 
     return (
         <div className='sidebar clearer'>
-            {project.installation && <>
+            {project.installation ? <>
             <div style={{paddingTop: '10px'}}></div>
             <div className={'sidebar-installation clickable'} onClick={() => navigator.clipboard.writeText(project.installation)}>
                 <span>{project.installation}</span>
                 <span className='copy'><LogoCopy /></span>
             </div>
-            </>}
+            </> : <br />}
             <div className='sidebar-title small'>
                 <p><LogoLink /> Links</p>
             </div>
             {project.github && <div className={selected.type === 'readme' ? 'sidebar-item small-spacing selected' : 'sidebar-item small-spacing clickable'} onClick={() => onSelect({type: 'readme', item: project})}>
                 <span>README</span>
+            </div>}
+            {project.website && <div className={'sidebar-item small-spacing clickable'} onClick={() => openLink(project.website)}>
+                <span>Website <LogoUrl /></span>
             </div>}
             {project.github && <div className={'sidebar-item small-spacing clickable'} onClick={() => openLink(`https://github.com/${project.github.username}/${project.github.repository}.git`)}>
                 <span>GitHub <LogoUrl /></span>
@@ -45,7 +48,7 @@ const ExampleSidebar = ({ project, selected, onSelect }) => {
                 <span>npmjs <LogoUrl /></span>
             </div>}
             <br />
-            {project.examples !== null && project.examples.length > 0 && <><div className='sidebar-title small'>
+            {project.examples !== undefined && project.examples !== null && project.examples.length > 0 && <><div className='sidebar-title small'>
                 <p><LogoCurly /> Examples</p>
                 </div>
                 {project.examples.map((item, index) => {

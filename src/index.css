@@ -65,6 +65,33 @@ h5 {
   margin-bottom: 30px;
 }
 
+.left-col {
+  padding: 0;
+  background-color: var(--main-bg-color);
+  height: 100vh;
+  color: white;
+  overflow: hidden;
+}
+
+.family-selection {
+  margin-top: 50px;
+  text-align: center;
+  height: 100%;
+}
+
+.family-selection-item {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px 20px;
+  border-radius: 10px;
+}
+
+.family-selection-item:hover {
+  background-color: var(--main-color-transparent);
+}
+
 .sidebar {
   background-color: var(--main-bg-color);
   color: white;
@@ -96,22 +123,39 @@ h5 {
   font-weight: 500;
 }
 
-.sidebar .separator {
+.sidebar .separator, .left-col .separator {
   margin: 0px 30px;
   border-bottom: 1px solid var(--border-color);
 }
 
+.left-col .separator {
+  margin: 0px 50px;
+}
+
 .sidebar-item {
-  background-color: transparent;
+  background-image: linear-gradient(var(--main-color), var(--main-color));
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  margin-left:10px;
+  transition:all .25s ease;
 }
 
 .sidebar-item.selected {
-  background-color: var(--main-color)
+  background-size: 100% 100%;
 }
 
-.sidebar-item:hover:not(.selected) {
-  background-color: var(--main-color-transparent);
+.sidebar-item:hover {
+  background-color: var(--main-color-transparent);    
 }
+
+/*.sidebar-item:hover:not(.selected) {
+  background-color: var(--main-color-transparent);    
+  background: linear-gradient(to left, transparent 50%, var(--main-color) 50%);
+  background-size: 200% 100%;
+  background-position:left bottom;
+  transition:all .6s linear;
+}*/
 
 .sidebar-title {
   text-align: left;
