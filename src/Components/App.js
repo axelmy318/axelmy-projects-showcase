@@ -23,6 +23,7 @@ import { CgCornerLeftUp as LogoHome } from 'react-icons/cg'
 import { IconContext } from 'react-icons/lib';
 import Homepage from './Homepage';
 import ShowRepositoryExample from './examples_ReadmePrinter/ShowRepositoryExample';
+import FunctionExample from './examples_ReadmePrinter/FunctionExample';
 
 const App = () => {
   const [selectedFamily, setSelectedFamily] = useState(null)
@@ -61,6 +62,17 @@ const App = () => {
               component: <ShowRepositoryExample />,
               defaults: [
                 {property: 'showRepository', type: 'bool', value: 'true'}
+              ]
+            },
+            {
+              systemName: 'function',
+              name: 'How to use the function',
+              description: 'This example covers how to load a github repo readme using the function to store it somewhere. This function is used in the "MarkdownPrinter" component',
+              component: <FunctionExample />,
+              defaults: [
+                {property: 'username', type: 'string', value: ''},
+                {property: 'repository', type: 'string', value: ''},
+                {property: 'branch', type: 'string', value: '"main"'},
               ]
             },
           ]
@@ -260,6 +272,13 @@ const App = () => {
         setSelectedTab({type: 'example', item: item.examples[0]})
   }
 
+  const sendToFamily = family => {
+    if(family.projects.length > 0)
+      sendToProject(family.projects[0])
+    else
+    setSelectedFamily(family)
+  }
+
   const sendToHomepage = () => {
     history.push('/')
     setSelectedFamily(null)
@@ -305,7 +324,7 @@ const App = () => {
               <div className='family-selection'>
                 {Object.keys(families).map((family, index) => {
                   return <React.Fragment key={family}>
-                    <h2 onClick={() => setSelectedFamily(families[family])} className='clickable family-selection-item'>
+                    <h2 onClick={() => sendToFamily(families[family])} className='clickable family-selection-item'>
                       {families[family].label}
                     </h2>
                     {index+1 !== Object.keys(families).length && <div className='separator'></div>}
