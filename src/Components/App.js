@@ -8,6 +8,7 @@ import ForcedStateExample from './examples_WeekdaysInput/ForcedStateExample';
 import CustomDaysExample from './examples_WeekdaysInput/CustomDaysExample';
 import NewWindowBasicExample from './examples_NewWindow/BasicExample';
 import TitleExample from './examples_NewWindow/TitleExample';
+import ReadmeComponentExample from './examples_ReadmePrinter/ComponentExample'
 import Example from './Example';
 import { MarkdownPrinter } from 'react-readme-printer';
 
@@ -136,7 +137,30 @@ const App = () => {
           ]
         },
       ]
-    }
+    },
+    {
+      path: '/react-readme-printer', 
+      systemName: 'reactreadmeprinter',
+      name: 'React Readme Printer', 
+      github: {
+        username: 'axelmy318',
+        repository: 'react-readme-printer',
+        mainBranch: 'master'
+      },
+      npmjs: 'https://www.npmjs.com/package/react-readme-printer',
+      installation: 'npm i react-readme-printer',
+      examples: [
+        {
+          systemName: 'componentexample',
+          name: 'Basic example',
+          description: 'This example covers how print a readme file from GitHub',
+          component: <ReadmeComponentExample />,
+          defaults: [
+            {property: 'showChars', type: 'number', value: 'null'}
+          ]
+        },
+      ]
+    },
   ])
   
   const history = useHistory()
@@ -200,7 +224,7 @@ const App = () => {
                 </Col>
               </Row>
             </Col>
-            <Col>
+            <Col className='right-col'>
                 {
                   projects.map((project, index) => {
                     return (

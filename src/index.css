@@ -57,7 +57,6 @@ h5 {
 
 .markdown-container {
   max-height: 100vh;
-  overflow-y: scroll;
 }
 
 .markdown-content {
@@ -67,16 +66,7 @@ h5 {
 .markdown {
   margin-top: 20px;
   padding: 0px;
-}
-
-.readme-file {
-  font-size: 75%;
-}
-
-.readme-file .repo {
-  background-color: rgb(202, 202, 202);
-  padding: 5px 10px;
-  border-radius: 10px;
+  margin-bottom: 30px;
 }
 
 .sidebar {
@@ -183,21 +173,23 @@ h5 {
   font-size: 100%;
 }
 
+.right-col {
+}
+
 .component-examples {
+  /*max-height: 100vh;*/
   max-height: 100vh;
   overflow-y: scroll;
+}
+
+.highlighter, .highlighter pre {
+  height: 100%;
 }
 
 .component-examples .example-result {
   padding: 20px 30px;
   min-width: 40%;
   max-width: 50%;
-}
-
-.component-showcase {
-  display: inline-flex;
-  width: 100%;
-  height: 100vh;
 }
 
 .underline {
