@@ -47,6 +47,11 @@ const ExampleSidebar = ({ project, selected, onSelect }) => {
             {project.npmjs && <div className={'sidebar-item small-spacing clickable'} onClick={() => openLink(project.npmjs)}>
                 <span>npmjs <LogoUrl /></span>
             </div>}
+            {project.customLinks !== undefined && project.customLinks !== null && 
+                project.customLinks.map(link => {return <div className={'sidebar-item small-spacing clickable'} onClick={() => openLink(link.url)}>
+                    <span>{link.label} <LogoUrl /></span>
+                </div>})
+            }
             <br />
             {project.examples !== undefined && project.examples !== null && project.examples.length > 0 && <><div className='sidebar-title small'>
                 <p><LogoCurly /> Examples</p>

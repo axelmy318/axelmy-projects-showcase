@@ -19,7 +19,7 @@ import ExampleSidebar from './ExampleSidebar';
 import OffsetsAndSizesExample from './examples_NewWindow/OffsetsAndSizesExample';
 import Footer from './Footer';
 
-import {BiHomeAlt as LogoHome} from 'react-icons/bi'
+import { CgCornerLeftUp as LogoHome } from 'react-icons/cg'
 import { IconContext } from 'react-icons/lib';
 import Homepage from './Homepage';
 import ShowRepositoryExample from './examples_ReadmePrinter/ShowRepositoryExample';
@@ -182,6 +182,17 @@ const App = () => {
       projects: [
         {
           type: 'website',
+          path: '/axelmy-project-showcase',
+          name: 'Axelmy\'s Projects Showcase',
+          website: 'https://axelmy-projects-showcase.firebaseapp.com/',
+          github: {
+            username: 'axelmy318',
+            repository: 'axelmy-projects-showcase',
+            mainBranch: 'master'
+          },
+        },
+        {
+          type: 'website',
           path: '/spotify-companion',
           name: 'Spotify Companion',
           website: 'https://spotify-companion-ff520.web.app/',
@@ -199,6 +210,18 @@ const App = () => {
         {
           type: 'miscellaneous',
           path: '/discord-weather-bot',
+          name: 'Discord Weather Bot',
+          customLinks: [
+            {
+              label: 'Invite the bot',
+              url: "https://discord.com/oauth2/authorize?client_id=832684912356098058&scope=bot&permissions=52288",
+            },
+          ],
+          github: {
+            username: 'axelmy318',
+            repository: 'discord-weather-bot',
+            mainBranch: 'master'
+          },
         }
       ],
     }
@@ -293,6 +316,7 @@ const App = () => {
             {selectedFamily && <Col xs={4}>
               <Row className='header-row'>
                 <Col className='header-col clickable' onClick={sendToHomepage} xs={12}>
+                  <span style={{position: 'absolute', top: '10px'}} className='clickable' onClick={sendToHomepage}><IconContext.Provider value={{size: '30px'}}><LogoHome /></IconContext.Provider></span>
                   <h1>{selectedFamily.label}</h1>
                 </Col>
               </Row>
