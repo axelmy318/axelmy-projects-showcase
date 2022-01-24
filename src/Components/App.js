@@ -224,19 +224,19 @@ const App = () => {
                 </Col>
               </Row>
             </Col>
-            <Col className='right-col'>
+            <Col className={selectedTab.type === 'readme' || selectedTab.type === '' ? 'right-col no-padding' : 'right-col'}>
                 {
                   projects.map((project, index) => {
                     return (
                       <Route key={index} path={project.path} exact>
                         {selectedTab.type === 'example' && <Example example={selectedTab.item} />}
-                        {selectedTab.type === 'readme' && <MarkdownPrinter username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} />}
+                        {selectedTab.type === 'readme' && <div className='readme-page'><MarkdownPrinter username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} /></div>}
                       </Route>
                     )
                   })
                 }
                 <Route path="/" exact>
-                  <Homepage />
+                  <div className='readme-page'><Homepage /></div>
                 </Route>
             </Col>
           </Row>

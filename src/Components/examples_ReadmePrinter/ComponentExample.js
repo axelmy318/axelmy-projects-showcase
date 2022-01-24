@@ -5,8 +5,8 @@ const ComponentExample = () => {
     return (
         <MarkdownPrinter
             username='axelmy318'
-            repository='axelmy318'
-            branch='main'
+            repository='react-readme-printer'
+            branch='master'
         />
     )
     

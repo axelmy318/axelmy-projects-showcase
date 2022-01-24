@@ -173,7 +173,9 @@ h5 {
   font-size: 100%;
 }
 
-.right-col {
+.readme-page {
+  max-height: 100vh;
+  overflow-y: scroll;
 }
 
 .component-examples {
