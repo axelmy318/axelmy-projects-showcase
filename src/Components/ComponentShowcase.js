@@ -3,7 +3,6 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { a11yDark as hlStyleHLJS } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const ComponentShowcase = ({children, code}) => {
-    console.log(children)
   return (
     <div className='component-showcase'>
         <div className='component-showcase-code'>

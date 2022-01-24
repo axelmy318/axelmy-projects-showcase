@@ -12,7 +12,6 @@ import ReadmeComponentExample from './examples_ReadmePrinter/ComponentExample'
 import Example from './Example';
 import { MarkdownPrinter } from 'react-readme-printer';
 
-import { getCodeFor } from '../config/examplesCode';
 import ShowCharsExample from './examples_WeekdaysInput/ShowCharsExample';
 import ExampleSidebar from './ExampleSidebar';
 
@@ -38,7 +37,6 @@ const App = () => {
         {
           type: 'package',
           path: '/react-readme-printer', 
-          systemName: 'reactreadmeprinter',
           name: 'React Readme Printer', 
           github: {
             username: 'axelmy318',
@@ -49,15 +47,15 @@ const App = () => {
           installation: 'npm i react-readme-printer',
           examples: [
             {
-              systemName: 'componentexample',
               name: 'Basic example',
+              file: 'src/Components/examples_ReadmePrinter/ComponentExample.js',
               description: 'This example covers how print a readme file from GitHub',
               component: <ReadmeComponentExample />,
               defaults: []
             },
             {
-              systemName: 'showrepository',
               name: 'Show repository',
+              file: 'src/Components/examples_ReadmePrinter/ShowRepositoryExample.js',
               description: 'This example covers how remove the repository tag on top of the readme',
               component: <ShowRepositoryExample />,
               defaults: [
@@ -65,8 +63,8 @@ const App = () => {
               ]
             },
             {
-              systemName: 'function',
               name: 'How to use the function',
+              file: 'src/Components/examples_ReadmePrinter/FunctionExample.js',
               description: 'This example covers how to load a github repo readme using the function to store it somewhere. This function is used in the "MarkdownPrinter" component',
               component: <FunctionExample />,
               defaults: [
@@ -80,7 +78,6 @@ const App = () => {
         {
           type: 'package',
           path: '/react-weekdays-input', 
-          systemName: 'reactweekdaysinput',
           name: 'React Weekdays Input', 
           github: {
             username: 'axelmy318',
@@ -91,8 +88,8 @@ const App = () => {
           installation: 'npm i react-weekdays-input',
           examples: [
             {
-              systemName: 'basicexample',
               name: 'Basic example',
+              file: 'src/Components/examples_WeekdaysInput/BasicExample.js',
               description: 'A simple example using the default configuration',
               component: <WeekdaysBasicExample />,
               defaults: [
@@ -101,9 +98,8 @@ const App = () => {
               ]
             },
             {
-              type: 'package',
-              systemName: 'customstyles',
               name: 'Custom styles',
+              file: 'src/Components/examples_WeekdaysInput/CustomStyleExample.js',
               description: 'This example covers how to apply custom styling on the component',
               component: <CustomStyleExample />,
               defaults: [
@@ -114,8 +110,8 @@ const App = () => {
               ]
             },
             {
-              systemName: 'forcedstate',
               name: 'Forcing state',
+              file: 'src/Components/examples_WeekdaysInput/ForcedStateExample.js',
               description: 'This example covers how to force the state of certain days',
               component: <ForcedStateExample />,
               defaults: [
@@ -123,8 +119,8 @@ const App = () => {
               ]
             },
             {
-              systemName: 'showchars',
               name: 'Slicing day names',
+              file: 'src/Components/examples_WeekdaysInput/ShowCharsExample.js',
               description: 'This example covers how to slice the day names',
               component: <ShowCharsExample />,
               defaults: [
@@ -132,8 +128,8 @@ const App = () => {
               ]
             },
             {
-              systemName: 'customdays',
               name: 'Custom days',
+              file: 'src/Components/examples_WeekdaysInput/CustomDaysExample.js',
               description: 'This example covers how to set custom days',
               component: <CustomDaysExample />,
               defaults: [
@@ -145,7 +141,6 @@ const App = () => {
         },
         {
           path: '/react-window-open', 
-          systemName: 'reactwindowopen',
           name: 'React Window Open',
           github: {
             username: 'axelmy318',
@@ -156,15 +151,15 @@ const App = () => {
           installation: 'npm i react-window-open',
           examples: [
             {
-              systemName: 'basicexample',
               name: 'Basic example',
+              file: 'src/Components/examples_NewWindow/BasicExample.js',
               description: 'A basic example of react-new-window',
               component: <NewWindowBasicExample />,
               defaults: []
             },
             {
-              systemName: 'offestsandsizes',
               name: 'Offsets and sizes',
+              file: 'src/Components/examples_NewWindow/OffsetsAndSizesExample.js',
               description: 'This example covers offsets ans sizes',
               component: <OffsetsAndSizesExample />,
               defaults: [
@@ -177,8 +172,8 @@ const App = () => {
               ]
             },
             {
-              systemName: 'title',
               name: 'Title',
+              file: 'src/Components/examples_NewWindow/TitleExample.js',
               description: 'This example covers how to set a custom title for the window',
               component: <TitleExample />,
               defaults: [
@@ -194,7 +189,7 @@ const App = () => {
       projects: [
         {
           type: 'website',
-          path: '/axelmy-project-showcase',
+          path: '/axelmy-projects-showcase',
           name: 'Axelmy\'s Projects Showcase',
           website: 'https://axelmy-projects-showcase.firebaseapp.com/',
           github: {
@@ -247,12 +242,10 @@ const App = () => {
 
     Object.keys(families).forEach(family => {
       let found = families[family].projects.find(project => project.path === window.location.pathname)
-      console.log(found)
-      if(found){
+      if(found)
         project = found
-      }
+      
     })
-    console.log(project)
     return project
   }
 
@@ -286,32 +279,6 @@ const App = () => {
     setSelectedTab({type: '', item: null})
   }
 
-  const loadCodes = () => {
-    let newFamilies = {}
-    Object.keys(families).map((family) => {
-      newFamilies[family] = {
-        ...families[family], 
-        projects: families[family].projects.map(project => {
-          if(project.examples !== undefined){ 
-            project.examples.map(example => {
-              example.code = getCodeFor(project.systemName, example.systemName)
-              return example
-            })
-          }
-          return project
-        })
-      }
-      return family
-    })
-    setFamilies(newFamilies)
-
-    setAreCodesLoaded(true)
-  }
-
-  if(!areCodesLoaded) loadCodes()
-  console.log(selectedTab)
-  /*if(window.location.pathname === '/')
-    sendToProject(projects[0])*/
   if(window.location.pathname !== '/' && selectedFamily === null && selectedProject === null){
     sendToProject(findProjectByPath(window.location.pathname))
   }

@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Row, Table } from 'react-bootstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import { vscDarkPlus as dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { LoadGithubFile } from '../loadGithubFile';
 
-const Example = ({ example }) => {
+const Example = ({ example, file }) => {
+    const [currentCode, setCurrentCode] = useState(null);
+
+    useEffect(() => {
+        LoadGithubFile('axelmy318', 'axelmy-projects-showcase', example.file)
+            .then(response => {
+                if(response.success){
+                    setCurrentCode(response.data)
+                }
+                else
+                    setCurrentCode(`\`error loading file\``)
+            })
+    }, [example]);
+
     return (<>
         <Row className='component-examples'>
             <Col md="auto" className='example-result'>
@@ -33,7 +47,7 @@ const Example = ({ example }) => {
             </Col>
             <Col className='no-right-padding example-code'>
                 <div className='highlighter'>
-                    <SyntaxHighlighter 
+                    {currentCode && <SyntaxHighlighter 
                         style={ dark }
                         showLineNumbers={true}
                         wrapLongLines={true}
@@ -44,8 +58,8 @@ const Example = ({ example }) => {
                             borderRadius: '0px'
                         }}
                     >
-                        {example.code}
-                    </SyntaxHighlighter>  
+                        {currentCode}
+                    </SyntaxHighlighter>  }
                 </div>      
             </Col>
         </Row>
