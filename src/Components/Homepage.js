@@ -1,11 +1,10 @@
 import React from 'react'
-import axios from 'axios'
-import ReadmePrinter from './ReadmePrinter';
+import { MarkdownPrinter } from 'react-readme-printer';
 
 const Homepage = () => {
     return (
         <div className='homepage'>
-            <ReadmePrinter username={'axelmy318'} repository={'axelmy318'} branch={'main'} />
+            <MarkdownPrinter username={'axelmy318'} repository={'axelmy318'} branch={'main'} />
         </div>
     );
 };

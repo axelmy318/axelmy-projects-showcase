@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {Route, useHistory } from "react-router-dom";
-import Header from './Header'
 import Sidebar from './Sidebar';
 import { Container, Row, Col } from 'react-bootstrap';
 import WeekdaysBasicExample from './examples_WeekdaysInput/BasicExample';
@@ -10,12 +9,12 @@ import CustomDaysExample from './examples_WeekdaysInput/CustomDaysExample';
 import NewWindowBasicExample from './examples_NewWindow/BasicExample';
 import TitleExample from './examples_NewWindow/TitleExample';
 import Example from './Example';
+import { MarkdownPrinter } from 'react-readme-printer';
 
 import { getCodeFor } from '../config/examplesCode';
 import ShowCharsExample from './examples_WeekdaysInput/ShowCharsExample';
 import ExampleSidebar from './ExampleSidebar';
 
-import ReadmePrinter from './ReadmePrinter';
 import OffsetsAndSizesExample from './examples_NewWindow/OffsetsAndSizesExample';
 import Footer from './Footer';
 
@@ -207,7 +206,7 @@ const App = () => {
                     return (
                       <Route key={index} path={project.path} exact>
                         {selectedTab.type === 'example' && <Example example={selectedTab.item} />}
-                        {selectedTab.type === 'readme' && <ReadmePrinter username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} />}
+                        {selectedTab.type === 'readme' && <MarkdownPrinter username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} />}
                       </Route>
                     )
                   })
