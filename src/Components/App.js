@@ -31,45 +31,24 @@ const App = () => {
   
   const [projects, setProject] = useState([
     {
-      path: '/react-window-open', 
-      systemName: 'reactwindowopen',
-      name: 'React Window Open',
+      path: '/react-readme-printer', 
+      systemName: 'reactreadmeprinter',
+      name: 'React Readme Printer', 
       github: {
         username: 'axelmy318',
-        repository: 'react-window-open',
+        repository: 'react-readme-printer',
         mainBranch: 'master'
       },
-      npmjs: 'https://www.npmjs.com/package/react-window-open',
-      installation: 'npm i react-window-open',
+      npmjs: 'https://www.npmjs.com/package/react-readme-printer',
+      installation: 'npm i react-readme-printer',
       examples: [
         {
-          systemName: 'basicexample',
+          systemName: 'componentexample',
           name: 'Basic example',
-          description: 'A basic example of react-new-window',
-          component: <NewWindowBasicExample />,
-          defaults: []
-        },
-        {
-          systemName: 'offestsandsizes',
-          name: 'Offsets and sizes',
-          description: 'This example covers offsets ans sizes',
-          component: <OffsetsAndSizesExample />,
+          description: 'This example covers how print a readme file from GitHub',
+          component: <ReadmeComponentExample />,
           defaults: [
-            {property: 'width', type: 'number', value: 1920},
-            {property: 'height', type: 'number', value: 1080},
-            {property: 'top', type: 'number', value: 0},
-            {property: 'left', type: 'number', value: 0},
-            {property: 'right', type: 'number', value: 0},
-            {property: 'bottom', type: 'number', value: 0},
-          ]
-        },
-        {
-          systemName: 'title',
-          name: 'Title',
-          description: 'This example covers how to set a custom title for the window',
-          component: <TitleExample />,
-          defaults: [
-            {property: 'title', type: "string", value: 'New window'},
+            {property: 'showChars', type: 'number', value: 'null'}
           ]
         },
       ]
@@ -139,24 +118,45 @@ const App = () => {
       ]
     },
     {
-      path: '/react-readme-printer', 
-      systemName: 'reactreadmeprinter',
-      name: 'React Readme Printer', 
+      path: '/react-window-open', 
+      systemName: 'reactwindowopen',
+      name: 'React Window Open',
       github: {
         username: 'axelmy318',
-        repository: 'react-readme-printer',
+        repository: 'react-window-open',
         mainBranch: 'master'
       },
-      npmjs: 'https://www.npmjs.com/package/react-readme-printer',
-      installation: 'npm i react-readme-printer',
+      npmjs: 'https://www.npmjs.com/package/react-window-open',
+      installation: 'npm i react-window-open',
       examples: [
         {
-          systemName: 'componentexample',
+          systemName: 'basicexample',
           name: 'Basic example',
-          description: 'This example covers how print a readme file from GitHub',
-          component: <ReadmeComponentExample />,
+          description: 'A basic example of react-new-window',
+          component: <NewWindowBasicExample />,
+          defaults: []
+        },
+        {
+          systemName: 'offestsandsizes',
+          name: 'Offsets and sizes',
+          description: 'This example covers offsets ans sizes',
+          component: <OffsetsAndSizesExample />,
           defaults: [
-            {property: 'showChars', type: 'number', value: 'null'}
+            {property: 'width', type: 'number', value: 1920},
+            {property: 'height', type: 'number', value: 1080},
+            {property: 'top', type: 'number', value: 0},
+            {property: 'left', type: 'number', value: 0},
+            {property: 'right', type: 'number', value: 0},
+            {property: 'bottom', type: 'number', value: 0},
+          ]
+        },
+        {
+          systemName: 'title',
+          name: 'Title',
+          description: 'This example covers how to set a custom title for the window',
+          component: <TitleExample />,
+          defaults: [
+            {property: 'title', type: "string", value: 'New window'},
           ]
         },
       ]
@@ -207,7 +207,7 @@ const App = () => {
               <Row className='header-row'>
                 <Col className='header-col' xs={12}>
                   <span style={{position: 'absolute', top: '10px'}} className='clickable' onClick={sendToHomepage}><IconContext.Provider value={{size: '30px'}}><LogoHome /></IconContext.Provider></span>
-                  <h1>👏 ReactJS packages demo 👏</h1>
+                  <h1>👏 Packages Demo and Code 👏</h1>
                 </Col>
               </Row>
               <Row>

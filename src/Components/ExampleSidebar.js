@@ -18,7 +18,7 @@ const ExampleSidebar = ({ project, selected, onSelect }) => {
                     <br />
                     <br />
                     <br />
-                    <p>Select a project to view a demo</p>
+                    <p>Select a project to show details</p>
                 </div>
             </div>
         )
