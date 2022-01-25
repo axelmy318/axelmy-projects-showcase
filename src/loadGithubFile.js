@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export const LoadGithubFile = async(username, repository, file) => {
-    const url = `https://cdn.jsdelivr.net/gh/${username}/${repository}/${file}`
+export const LoadGithubFile = async(username, repository, branch, file) => {
+    const url = `https://raw.githubusercontent.com/${username}/${repository}/${branch}/${file}`
     
     return await axios.get(url)
         .then((response) =>  {

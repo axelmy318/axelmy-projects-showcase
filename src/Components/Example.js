@@ -8,7 +8,7 @@ const Example = ({ example, file }) => {
     const [currentCode, setCurrentCode] = useState(null);
 
     useEffect(() => {
-        LoadGithubFile('axelmy318', 'axelmy-projects-showcase', example.file)
+        LoadGithubFile('axelmy318', 'axelmy-projects-showcase', 'master', example.file)
             .then(response => {
                 if(response.success){
                     setCurrentCode(response.data)
