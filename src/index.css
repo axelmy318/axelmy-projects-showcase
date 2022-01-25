@@ -47,6 +47,11 @@ h5 {
   padding: 0px !important;
 }
 
+.no-side-margin {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
 .no-right-padding {
   padding-right: 0px !important;
 }
@@ -130,6 +135,11 @@ h5 {
 
 .left-col .separator {
   margin: 0px 90px;
+}
+
+.github-scraper .separator {
+  margin: 0px 10px;
+  border-bottom: 1px solid rgb(216, 216, 216);
 }
 
 .sidebar-item {
@@ -254,4 +264,28 @@ h5 {
   text-align: center;
   color: rgb(226, 226, 226);
   font-size: 90%;
+}
+
+.github-scraper-component {
+  margin: 30px 0px;
+}
+
+.github-scraper-sidebar {
+  padding-left: 20px !important;
+  box-shadow: 2px 0px 30px 1px #dadada;
+}
+
+.github-scraper-component .github-scraper-component-label {
+  margin-bottom: 10px;
+}
+
+.github-scraper-component .github-scraper-component-content {
+  padding-left: 15px;
+  padding-right: 10px;
+}
+
+.github-scraper-component.component-stargazerscount .github-scraper-component-content {
+  color: rgb(255, 179, 0);
+  font-weight: 700;
+  font-size: 150% !important;
 }

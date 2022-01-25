@@ -23,6 +23,7 @@ import { IconContext } from 'react-icons/lib';
 import Homepage from './Homepage';
 import ShowRepositoryExample from './examples_ReadmePrinter/ShowRepositoryExample';
 import FunctionExample from './examples_ReadmePrinter/FunctionExample';
+import GithubScraper, { Languages, StargazersCount, Topics } from 'react-github-scraper';
 
 const App = () => {
   const [selectedFamily, setSelectedFamily] = useState(null)
@@ -34,6 +35,19 @@ const App = () => {
     packages: {
       label: '👏 Packages 👏',
       projects: [
+        {
+          type: 'package',
+          path: '/react-github-scraper', 
+          name: 'React Github Scraper', 
+          github: {
+            username: 'axelmy318',
+            repository: 'react-github-scraper',
+            mainBranch: 'master'
+          },
+          npmjs: 'https://www.npmjs.com/package/react-github-scraper',
+          installation: 'npm i react-github-scraper',
+          examples: []
+        },
         {
           type: 'package',
           path: '/react-readme-printer', 
@@ -326,7 +340,23 @@ const App = () => {
                     return (
                       <Route key={index} path={project.path} exact>
                         {selectedTab.type === 'example' && <Example example={selectedTab.item} />}
-                        {selectedTab.type === 'readme' && <div className='readme-page'><MarkdownPrinter username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} /></div>}
+                        {selectedTab.type === 'readme' && <div className='readme-page'>
+                          
+                        <Row className='no-side-margin' style={{height: '100vh'}}>
+                            <Col md={9} className='no-padding'>
+                              <MarkdownPrinter username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} />
+                            </Col>
+                            <Col md={3} className='no-padding github-scraper-sidebar'>
+                                <GithubScraper  username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} >
+                                    <Languages label={'Languages'} />
+                                    <div className='separator'></div>
+                                    <StargazersCount prefix="⭐&nbsp;" label={'Stargazers count'} />
+                                    <div className='separator'></div>
+                                    <Topics label={'Topics'} />
+                                </GithubScraper>
+                            </Col>
+                        </Row>
+                          </div>}
                       </Route>
                     )
                   })
