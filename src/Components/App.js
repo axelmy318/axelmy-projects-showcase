@@ -23,7 +23,13 @@ import { IconContext } from 'react-icons/lib';
 import Homepage from './Homepage';
 import ShowRepositoryExample from './examples_ReadmePrinter/ShowRepositoryExample';
 import FunctionExample from './examples_ReadmePrinter/FunctionExample';
-import GithubScraper, { Languages, StargazersCount, Topics } from 'react-github-scraper';
+import GithubScraper, { Contributors, Languages, PushedAt, Size, StargazersCount, Topics } from 'react-github-scraper';
+import LanguagesExample from './examples_GithubScraper/LanguagesExample';
+import TopicsExample from './examples_GithubScraper/TopicsExample';
+import ContributorsExample from './examples_GithubScraper/ContributorsExample';
+import StargazersCountExample from './examples_GithubScraper/StargazersCountExample';
+import WatchersCountExample from './examples_GithubScraper/WatchersCountExample';
+import PushedAtExample from './examples_GithubScraper/PushedAtExample';
 
 const App = () => {
   const [selectedFamily, setSelectedFamily] = useState(null)
@@ -46,7 +52,68 @@ const App = () => {
           },
           npmjs: 'https://www.npmjs.com/package/react-github-scraper',
           installation: 'npm i react-github-scraper',
-          examples: []
+          examples: [
+            {
+              name: 'Languages',
+              file: 'src/Components/examples_GithubScraper/LanguagesExample.js',
+              description: 'A simple example covering how to use the Languages component',
+              component: <LanguagesExample />,
+              defaults: [
+                {property: 'label', type: 'string', value: `null`},
+                {property: 'maxDisplayed', type: 'number', value: `7`},
+              ]
+            },
+            {
+              name: 'Topics',
+              file: 'src/Components/examples_GithubScraper/TopicsExample.js',
+              description: 'A simple example covering how to use the Topics component',
+              component: <TopicsExample />,
+              defaults: [
+                {property: 'label', type: 'string', value: `null`}
+              ]
+            },
+            {
+              name: 'Contributors',
+              file: 'src/Components/examples_GithubScraper/ContributorsExample.js',
+              description: 'A simple example covering how to use the Contributors component',
+              component: <ContributorsExample />,
+              defaults: [
+                {property: 'label', type: 'string', value: `null`},
+                {property: 'maxDisplayed', type: 'number', value: `7`},
+              ]
+            },
+            {
+              name: 'Stargazers count',
+              file: 'src/Components/examples_GithubScraper/StargazersCountExample.js',
+              description: 'A simple example covering how to use the StargazersCount component',
+              component: <StargazersCountExample />,
+              defaults: [
+                {property: 'label', type: 'string', value: `null`},
+                {property: 'prefix', type: 'string', value: `null`},
+              ]
+            },
+            {
+              name: 'Watchers count',
+              file: 'src/Components/examples_GithubScraper/WatchersCountExample.js',
+              description: 'A simple example covering how to use the WatchersCount component',
+              component: <WatchersCountExample />,
+              defaults: [
+                {property: 'label', type: 'string', value: `null`},
+                {property: 'prefix', type: 'string', value: `null`},
+              ]
+            },
+            
+            {
+              name: 'Pushed at',
+              file: 'src/Components/examples_GithubScraper/PushedAtExample.js',
+              description: 'A simple example covering how to use the PushedAt component',
+              component: <PushedAtExample />,
+              defaults: [
+                {property: 'label', type: 'string', value: `null`},
+                {property: 'showAsDate', type: 'bool', value: `false`},
+              ]
+            },
+          ]
         },
         {
           type: 'package',
@@ -343,16 +410,22 @@ const App = () => {
                         {selectedTab.type === 'readme' && <div className='readme-page'>
                           
                         <Row className='no-side-margin' style={{height: '100vh'}}>
-                            <Col md={9} className='no-padding'>
+                            <Col md={9} className='no-padding readme-col'>
                               <MarkdownPrinter username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} />
                             </Col>
                             <Col md={3} className='no-padding github-scraper-sidebar'>
-                                <GithubScraper  username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} >
-                                    <Languages label={'Languages'} />
-                                    <div className='separator'></div>
+                                <GithubScraper username={selectedTab.item.github.username} repository={selectedTab.item.github.repository} branch={selectedTab.item.github.mainBranch} >
                                     <StargazersCount prefix="⭐&nbsp;" label={'Stargazers count'} />
                                     <div className='separator'></div>
+                                    <div><Languages label={'Languages'} /></div>
+                                    <div className='separator'></div>
                                     <Topics label={'Topics'} />
+                                    <div className='separator'></div>
+                                    <Contributors label={'Contributors'} />
+                                    <div className='separator'></div>
+                                    <PushedAt label={'Last push'} />
+                                    <div className='separator'></div>
+                                    <Size label={'Size'} />
                                 </GithubScraper>
                             </Col>
                         </Row>
