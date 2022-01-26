@@ -275,10 +275,6 @@ h5 {
   margin: 0 auto;
 }
 
-.readme-col {
-  /*box-shadow: 2px 0px 30px 1px #dadada;*/
-}
-
 .github-scraper-sidebar {
   padding-left: 20px !important;
  box-shadow: 2px 0px 30px 1px #dadada;
@@ -297,4 +293,13 @@ h5 {
   color: rgb(255, 179, 0);
   font-weight: 700;
   font-size: 150% !important;
+}
+
+.contributor-miniature .contributor-miniature-image {
+  border: 1px solid #bbbbbb;
+  border-radius: 10%;
+}
+
+.contributor-miniature .contributor-miniature-image > img {
+  border-radius: 10%;
 }
