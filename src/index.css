@@ -303,3 +303,7 @@ h5 {
 .contributor-miniature .contributor-miniature-image > img {
   border-radius: 10%;
 }
+
+.github-scraper-component.component-owneravatar img {
+  border-radius: 5%;
+}
