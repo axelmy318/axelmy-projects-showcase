@@ -31,6 +31,8 @@ import StargazersCountExample from './examples_GithubScraper/StargazersCountExam
 import WatchersCountExample from './examples_GithubScraper/WatchersCountExample';
 import PushedAtExample from './examples_GithubScraper/PushedAtExample';
 
+import WeatherWidgetBasicExample from './examples_WeatherStation/BasicExample'
+
 const App = () => {
   const [selectedFamily, setSelectedFamily] = useState(null)
   const [selectedProject, setSelectedProject] = useState(null)
@@ -152,6 +154,32 @@ const App = () => {
                 {property: 'username', type: 'string', value: ''},
                 {property: 'repository', type: 'string', value: ''},
                 {property: 'branch', type: 'string', value: '"main"'},
+              ]
+            },
+          ]
+        },
+        {
+          type: 'package',
+          path: '/react-weather-station', 
+          name: 'React Weather Station', 
+          github: {
+            username: 'axelmy318',
+            repository: 'react-weather-station',
+            mainBranch: 'master'
+          },
+          npmjs: 'https://www.npmjs.com/package/react-weather-station',
+          installation: 'npm i react-weather-station',
+          examples: [
+            {
+              name: 'Basic example',
+              file: 'src/Components/examples_WeatherStation/BasicExample.js',
+              description: 'A simple example using the default configuration',
+              component: <WeatherWidgetBasicExample />,
+              defaults: [
+                {property: 'location', type: 'string', value: `""`},
+                {property: 'theme', type: 'string', value: `main`},
+                {property: 'color', type: 'string', value: `secondary`},
+                {property: 'moreDetails', type: 'boolean', value: `false`},
               ]
             },
           ]
