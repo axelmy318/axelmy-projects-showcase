@@ -32,6 +32,8 @@ import WatchersCountExample from './examples_GithubScraper/WatchersCountExample'
 import PushedAtExample from './examples_GithubScraper/PushedAtExample';
 
 import WeatherWidgetBasicExample from './examples_WeatherStation/BasicExample'
+import WeatherWidgetMoreDetails from './examples_WeatherStation/ShowMoreDetails'
+import DashboardExample from './examples_WeatherStation/DashboardExample';
 
 const App = () => {
   const [selectedFamily, setSelectedFamily] = useState(null)
@@ -180,6 +182,24 @@ const App = () => {
                 {property: 'theme', type: 'string', value: `main`},
                 {property: 'color', type: 'string', value: `secondary`},
                 {property: 'moreDetails', type: 'boolean', value: `false`},
+              ]
+            },
+            {
+              name: 'Show more details',
+              file: 'src/Components/examples_WeatherStation/BasicExample.js',
+              description: 'A simple example covering how to show more details',
+              component: <WeatherWidgetMoreDetails />,
+              defaults: [
+                {property: 'moreDetails', type: 'boolean', value: `true`},
+              ]
+            },
+            {
+              name: 'Using as a dashboard',
+              file: 'src/Components/examples_WeatherStation/DashboardExample.js',
+              description: 'This example covers how to use the library as a dashboard',
+              component: <DashboardExample />,
+              defaults: [
+                {property: 'moreDetails', type: 'boolean', value: `true`},
               ]
             },
           ]
