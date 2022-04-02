@@ -14,7 +14,13 @@ https://axelmy-projects-showcase.firebaseapp.com/
 
 ## Main stuff used in the project 🔨
 
-- ReactJS, react-readme-printer (my own package), Firebase (hosting), some Bootrstap, react-syntax-highlighter + prism.js
+- ReactJS with some bootstrap
+- Firebase for hosting
+- react-syntax-highlighter + prism.js to show the examples code
+- and a few of my own packages
+    - react-readme-printer to display the README files of the projects automatically
+    - react-github-scraper to display data about the project's github 
+    
 
 
 ## Screenshots 👀
