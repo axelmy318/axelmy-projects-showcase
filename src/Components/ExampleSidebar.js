@@ -44,6 +44,9 @@ const ExampleSidebar = ({ project, selected, onSelect }) => {
             {project.github && <div className={'sidebar-item small-spacing clickable'} onClick={() => openLink(`https://github.com/${project.github.username}/${project.github.repository}.git`)}>
                 <span>GitHub <LogoUrl /></span>
             </div>}
+            {project.releases && <div className={'sidebar-item small-spacing clickable'} onClick={() => openLink(project.releases)}>
+                <span>Releases <LogoUrl /></span>
+            </div>}
             {project.npmjs && <div className={'sidebar-item small-spacing clickable'} onClick={() => openLink(project.npmjs)}>
                 <span>npmjs <LogoUrl /></span>
             </div>}

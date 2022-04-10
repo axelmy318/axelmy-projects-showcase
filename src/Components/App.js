@@ -340,6 +340,22 @@ const App = () => {
         }
       ],
     },
+    applications: {
+      label: '😎 Applications 😎',
+      projects: [
+        {
+          type: 'application',
+          path: '/philips-hue-controller',
+          name: 'Philips HUE Controller',
+          releases: 'https://github.com/axelmy318/philips-hue-controller/releases',
+          github: {
+            username: 'axelmy318',
+            repository: 'philips-hue-controller',
+            mainBranch: 'main'
+          },
+        },
+      ],
+    },
     miscellanious: {
       label: '👻 Miscellaneous 👻',
       projects: [
