@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './Components/App';
-import { BrowserRouter as Router, Switch } from 'react-router-dom/';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { Suspense } from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './Components/AppV2'
+import { BrowserRouter as Router } from 'react-router-dom/'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Spinner from './Spinner'
+import { legacy_createStore as createStore, compose } from 'redux'
+import { Provider } from 'react-redux'
+
+import Reducers from './Components/redux/Reducers'
+
+let composer
+
+const store = createStore(Reducers)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-        <App />
-      </Switch>
-    </Router>
+    <Suspense fallback={<Spinner />}>
+      <Router>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </Router>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );
