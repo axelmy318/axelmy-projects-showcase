@@ -5,12 +5,10 @@ import App from './Components/AppV2'
 import { BrowserRouter as Router } from 'react-router-dom/'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Spinner from './Spinner'
-import { legacy_createStore as createStore, compose } from 'redux'
+import { legacy_createStore as createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import Reducers from './Components/redux/Reducers'
-
-let composer
 
 const store = createStore(Reducers)
 

@@ -10,7 +10,7 @@ const App = () => {
     const dispatch = useDispatch()
     const routing = useRoutes(Router)
     const theme = ThemeSettings()
-    const customizer = useSelector((state) => state.CustomizerReducer)
+    const customizer = useSelector((state) => state.Customizer)
 
     return (
         <ThemeProvider theme={theme}>

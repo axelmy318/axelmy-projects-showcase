@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { BuildTheme } from '../assets/global/Theme-variable';
 
 const ThemeSettings = () => {
-  const customizer = useSelector((state) => state.CustomizerReducer);
+  const customizer = useSelector((state) => state.Customizer);
   const theme = BuildTheme({
     direction: customizer.activeDir,
     theme: customizer.activeTheme,

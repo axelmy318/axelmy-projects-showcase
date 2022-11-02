@@ -16,7 +16,8 @@ import {
 } from '@mui/material';
 import FeatherIcon from 'feather-icons-react';
 import { SidebarWidth } from '../../../assets/global/Theme-variable';
-import Scrollbar from '../Scrollbar';
+import Scrollbar from '../Scrollbar'
+import { useSelector } from 'react-redux'
 
 const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
   const [open, setOpen] = React.useState(true);
@@ -33,15 +34,18 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
     }
   };
 
-  const Menuitems = [];
+  const projects = useSelector(state => state.Projects);
+
+  console.log(projects)
 
   const SidebarContent = (
     <Scrollbar style={{ height: 'calc(100vh - 5px)' }}>
       <Box sx={{ p: 2 }}>
         <Box>
           <List>
-            {Menuitems.map((item, index) => {
+            {projects.menuItems.map((item, index) => {
               // {/********SubHeader**********/}
+              {console.log("Item", item)}
               if (item.subheader) {
                 return (
                   <li key={item.subheader}>
@@ -79,7 +83,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                           }),
                         }}
                       >
-                        <FeatherIcon icon={item.icon} width="20" height="20" />
+                        { item.reactIcon ? item.reactIcon : <FeatherIcon icon={item.icon} width="20" height="20" /> }
                       </ListItemIcon>
                       <ListItemText>{item.title}</ListItemText>
                       {index === open || pathWithoutLastPart === item.href ? (
@@ -149,7 +153,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                           ...(pathDirect === item.href && { color: 'white' }),
                         }}
                       >
-                        <FeatherIcon icon={item.icon} width="20" height="20" />
+                      { item.reactIcon ? item.reactIcon : <FeatherIcon icon={item.icon} width="20" height="20" /> }
                       </ListItemIcon>
                       <ListItemText onClick={onSidebarClose}>{item.title}</ListItemText>
                     </ListItem>

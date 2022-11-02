@@ -19,7 +19,7 @@ import {
 // // // Global Variables
 // ##############################
 
-const SidebarWidth = 265;
+const SidebarWidth = 320;
 const TopbarHeight = 70;
 
 const baseTheme = {
@@ -225,7 +225,7 @@ const themesOptions = [
 
 export const BuildTheme = (config = {}) => {
   let themeOptions = themesOptions.find((theme) => theme.name === config.theme);
-  const customizer = useSelector((state) => state.CustomizerReducer);
+  const customizer = useSelector((state) => state.Customizer);
 
   const baseMode = {
     palette: {

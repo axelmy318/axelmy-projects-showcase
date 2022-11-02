@@ -12,14 +12,14 @@ import {
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import FeatherIcon from 'feather-icons-react';
-import { setTheme, setDarkMode } from '../redux/customizer/Action';
+import { setTheme, setDarkMode } from '../redux/Customizer/Action';
 import CustomRadio from "./CustomRadio";
 
 const SidebarWidth = '320px';
 
 const Customizer = () => {
   const [showDrawer, setShowDrawer] = useState(false);
-  const customizer = useSelector((state) => state.CustomizerReducer);
+  const customizer = useSelector((state) => state.Customizer);
   const dispatch = useDispatch();
   const thColors = [
     {

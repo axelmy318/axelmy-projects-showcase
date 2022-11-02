@@ -13,6 +13,7 @@ const Router = [
         element: <FullLayout />,
         children: [
             { path: '/', element: <Homepage /> },
+            { path: '/react-github-scraper', element: <Homepage /> },
             /* --- PROJECT --- */
         ],
     },

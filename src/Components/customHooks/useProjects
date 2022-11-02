@@ -1,0 +1,8 @@
+import { useSelector } from 'react-redux'
+
+const useProjects = () => {
+    const projects = useSelector(state => state.Projects)
+    return projects
+}
+
+export default useProjects
