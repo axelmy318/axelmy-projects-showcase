@@ -17,7 +17,7 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 	const project = useCurrentProject()
 	const { pathname } = useLocation()
 
-
+	
 	const SidebarContent = (
 		<Scrollbar style={{ height: 'calc(100vh - 5px)' }}>
 			<Box sx={{ p: 2 }}>

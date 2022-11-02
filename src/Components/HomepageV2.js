@@ -5,8 +5,7 @@ import { Row, Col } from 'react-bootstrap'
 const HomepageV2 = () => {
     return (
         <div className='main-content'>
-            <Row className='no-side-margin' style={{height: '100vh'}}>
-                
+            <Row>
                 <Col md={12} className='no-padding readme-col'>
                     <MarkdownPrinter username={'axelmy318'} repository={'axelmy318'} branch={'main'} />
                 </Col>
