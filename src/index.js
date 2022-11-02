@@ -5,12 +5,24 @@ import App from './Components/AppV2'
 import { BrowserRouter as Router } from 'react-router-dom/'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Spinner from './Spinner'
-import { legacy_createStore as createStore } from 'redux'
+import { legacy_createStore as createStore, compose } from 'redux'
 import { Provider } from 'react-redux'
 
 import Reducers from './Components/redux/Reducers'
 
-const store = createStore(Reducers)
+let useReduxDevTools = false
+let store
+
+if(window.__REDUX_DEVTOOLS_EXTENSION__ !== undefined)
+  useReduxDevTools = true
+
+if(useReduxDevTools){
+    let composer = compose(window.__REDUX_DEVTOOLS_EXTENSION__())
+     store = createStore(Reducers, composer)
+}
+else {
+  store = createStore(Reducers)
+}
 
 ReactDOM.render(
   <React.StrictMode>

@@ -19,8 +19,19 @@ body {
   sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y: hidden;
   /*background-color: #282c34;*/
+}
+
+.main-content {
+  margin: 0px, 50px
+}
+
+span.readme-file svg {
+  margin-top: 7px
+}
+
+span.readme-file span.file {
+  margin-top: 5px;
 }
 
 h1 {
@@ -72,6 +83,10 @@ h5 {
   margin-top: 20px;
   padding: 0px;
   margin-bottom: 30px;
+}
+
+.readme-file {
+  display: inline-flex;
 }
 
 .left-col {

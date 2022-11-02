@@ -429,13 +429,22 @@ const initialState = {
                 
             ],
         }
-    }
+    },
+    currentProject: null
 }
 
 initialState.menuItems = initialState.families
 
 const ProjectsReducer = (state = initialState, action) => {
     switch(action.type) {
+        case "SET_CURRENT_PROJECT":
+            console.log(action.payload)
+            console.log("Found project", state.projects.find(item => item.path === action.payload.data.href))
+            return {
+                ...state,
+                currentProject: state.projects.find(item => item.path === action.payload.data.href)
+            }
+            break;
         default:
             return {...state}
     }

@@ -17,17 +17,20 @@ import {
 import FeatherIcon from 'feather-icons-react';
 import { SidebarWidth } from '../../../assets/global/Theme-variable';
 import Scrollbar from '../Scrollbar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrentProject} from '../../redux/Projects/ProjectsAction'
 
 const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
-  const [open, setOpen] = React.useState(true);
-  const { pathname } = useLocation();
-  const pathDirect = pathname;
-  const pathWithoutLastPart = pathname.slice(0, pathname.lastIndexOf('/'));
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+  const [open, setOpen] = React.useState(true)
+  const { pathname } = useLocation()
+  const dispatch = useDispatch()
+  const pathDirect = pathname
+  const pathWithoutLastPart = pathname.slice(0, pathname.lastIndexOf('/'))
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'))
 
-  const handleClick = (index) => {
+  const handleClick = (index, href) => {
     if (open === index) {
+      console.log("Prevopen")
       setOpen((prevopen) => !prevopen);
     } else {
       setOpen(index);
@@ -36,8 +39,6 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 
   const projects = useSelector(state => state.Projects);
 
-  console.log(projects)
-
   const SidebarContent = (
     <Scrollbar style={{ height: 'calc(100vh - 5px)' }}>
       <Box sx={{ p: 2 }}>
@@ -45,7 +46,6 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
           <List>
             {projects.menuItems.map((item, index) => {
               // {/********SubHeader**********/}
-              {console.log("Item", item)}
               if (item.subheader) {
                 return (
                   <li key={item.subheader}>
@@ -66,7 +66,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                     <ListItem
                       button
                       component="li"
-                      onClick={() => handleClick(index)}
+                      onClick={() => handleClick(index, item.href)}
                       selected={pathWithoutLastPart === item.href}
                       sx={{
                         mb: 1,
@@ -106,8 +106,8 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                               sx={{
                                 mb: 1,
                                 ...(pathDirect === child.href && {
-                                  color: 'primary.main',
-                                  backgroundColor: 'transparent!important',
+                                  color: 'white',
+                                  backgroundColor: (theme) => `${theme.palette.primary.main}!important`,
                                 }),
                               }}
                             >
@@ -134,7 +134,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                 return (
                   <List component="li" disablePadding key={item.title}>
                     <ListItem
-                      onClick={() => handleClick(index)}
+                      onClick={() => handleClick(index, item.href)}
                       button
                       component={NavLink}
                       disabled={item.disabled}

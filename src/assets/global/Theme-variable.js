@@ -20,6 +20,7 @@ import {
 // ##############################
 
 const SidebarWidth = 320;
+const GithubSidebarWidth = 250;
 const TopbarHeight = 70;
 
 const baseTheme = {
@@ -254,4 +255,4 @@ export const BuildTheme = (config = {}) => {
   return theme;
 };
 
-export { TopbarHeight, SidebarWidth, baseTheme, themesOptions };
+export { TopbarHeight, SidebarWidth, baseTheme, themesOptions, GithubSidebarWidth };
