@@ -171,9 +171,9 @@ const initialState = {
             path: '/react-readme-printer', 
             name: 'React Readme Printer', 
             github: {
-            username: 'axelmy318',
-            repository: 'react-readme-printer',
-            mainBranch: 'master'
+                username: 'axelmy318',
+                repository: 'react-readme-printer',
+                mainBranch: 'master'
             },
             npmjs: 'https://www.npmjs.com/package/react-readme-printer',
             installation: 'npm i react-readme-printer',
@@ -316,6 +316,7 @@ const initialState = {
             ]
         },
         {
+            type: 'package',
             path: '/react-window-open', 
             name: 'React Window Open',
             github: {
@@ -396,10 +397,10 @@ const initialState = {
             path: '/discord-weather-bot',
             name: 'Discord Weather Bot',
             customLinks: [
-            {
-                label: 'Invite the bot',
-                url: "https://discord.com/oauth2/authorize?client_id=832684912356098058&scope=bot&permissions=52288",
-            },
+                {
+                    label: 'Invite the bot',
+                    url: "https://discord.com/oauth2/authorize?client_id=832684912356098058&scope=bot&permissions=52288",
+                },
             ],
             github: {
                 username: 'axelmy318',

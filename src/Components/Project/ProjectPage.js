@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import { MarkdownPrinter } from 'react-readme-printer';
 import { Row, Col } from 'react-bootstrap'
-import GithubScraper, { OwnerAvatar, OwnerFollowersCount, MemberSince, PublicReposCount } from 'react-github-scraper';
 import { useSelector, useDispatch } from 'react-redux'
 import { setCurrentProject } from '../redux/Projects/ProjectsAction';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { TbExternalLink as LogoUrl } from 'react-icons/tb'
 
 
 const ProjectPage = ({ path, undefinedProject }) => {
     const project = useCurrentProject()
     const { pathname } = useLocation()
     const dispatch = useDispatch()
-    const [activeTab, setActiveTab] = useState("readme")
+    const [activeTab, setActiveTab] = useState("README")
     const navigate = useNavigate();
 
     console.log(project)
@@ -24,15 +24,76 @@ const ProjectPage = ({ path, undefinedProject }) => {
         return (<></>)
     }
 
+    const getTabs = () => {
+        if(project.type === 'package') {
+            return [
+                { label: 'README', 'href' : '/' },
+                { label: 'Examples', 'href' : '/' }
+            ]
+        }
+        else if(project.type === 'website') {
+            return [
+                { label: 'README', 'href' : '/' },
+            ]
+        }
+        else if(project.type === 'application') {
+            return [
+                { label: 'README', 'href' : '/' },
+            ]
+        }
+        else if(project.type === 'miscellaneous') {
+            return [
+                { label: 'README', 'href' : '/' },
+            ]
+        }
+
+        return [];
+    }
+
 
     return (
         <div className='main-content'>
+           <div className='inline-flex mb-4 mt-4 ml-10'>
+                {getTabs().map((tab, index) => <>
+                    <div key={index} style={{marginRight: index === getTabs().length-1 ? '50px': '10px'}}>
+                        <Button variant={tab.label === activeTab ? 'contained' : 'outlined'} size={'large'}>
+                            {tab.label}
+                        </Button>
+                    </div>
+                </>)}
+
+                {project.npmjs && <div style={{marginRight: '10px'}}>
+                    <Button variant={'outlined'} size={'large'}>
+                        <LogoUrl />&nbsp;&nbsp;npmjs
+                    </Button>
+                </div>}
+                {project.github && <div style={{marginRight: '10px'}}>
+                    <Button variant={'outlined'} size={'large'}>
+                        <LogoUrl />&nbsp;&nbsp;GitHub
+                    </Button>
+                </div>}
+                {project.website && <div style={{marginRight: '10px'}}>
+                    <Button variant={'outlined'} size={'large'}>
+                        <LogoUrl />&nbsp;&nbsp;Website
+                    </Button>
+                </div>}
+                {project.releases && <div style={{marginRight: '10px'}}>
+                    <Button variant={'outlined'} size={'large'}>
+                        <LogoUrl />&nbsp;&nbsp;Releases
+                    </Button>
+                </div>}
+                {project.customLinks && project.customLinks.map((link, index) => <div key={index} style={{marginRight: '10px'}}>
+                    <Button variant={'outlined'}>
+                        <LogoUrl />&nbsp;&nbsp;{link.label}
+                    </Button>
+                </div>)}
+            </div>
             <Row>
                 {!undefinedProject 
                 ? 
                 <div>
                 <Col md={12} className='no-padding readme-col'>
-                    {activeTab === "readme" && <MarkdownPrinter username={project.github.username} repository={project.github.repository} branch={project.github.mainBranch} />}
+                    {activeTab === "README" && <MarkdownPrinter username={project.github.username} repository={project.github.repository} branch={project.github.mainBranch} />}
                 </Col>
                 </div>
                 :
@@ -46,14 +107,6 @@ const ProjectPage = ({ path, undefinedProject }) => {
                     </div>
                 </Col>
                 }
-                {/*<Col md={3} className='no-padding github-scraper-sidebar'>
-                    <GithubScraper username={'axelmy318'} repository={'axelmy318'} branch={'main'}>
-                        <OwnerAvatar label='Avatar' imageSize={'100%'} />
-                        <OwnerFollowersCount label='Followers' />
-                        <PublicReposCount prefix='📦&nbsp;' label='Public repos' />
-                        <MemberSince label='Member since' />
-                    </GithubScraper>
-                </Col>*/}
             </Row>
         </div>
     );

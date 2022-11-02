@@ -9,14 +9,6 @@ const HomepageV2 = () => {
                 <Col md={12} className='no-padding readme-col'>
                     <MarkdownPrinter username={'axelmy318'} repository={'axelmy318'} branch={'main'} />
                 </Col>
-                {/*<Col md={3} className='no-padding github-scraper-sidebar'>
-                    <GithubScraper username={'axelmy318'} repository={'axelmy318'} branch={'main'}>
-                        <OwnerAvatar label='Avatar' imageSize={'100%'} />
-                        <OwnerFollowersCount label='Followers' />
-                        <PublicReposCount prefix='📦&nbsp;' label='Public repos' />
-                        <MemberSince label='Member since' />
-                    </GithubScraper>
-                </Col>*/}
             </Row>
         </div>
     );

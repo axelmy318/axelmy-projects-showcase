@@ -52,7 +52,8 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                     <Typography
                       variant="subtitle2"
                       fontWeight="500"
-                      sx={{ my: 2, mt: 0, opacity: '0.4' }}
+                      fontSize="95%"
+                      sx={{ my: 1, mt: 3, opacity: '0.5' }}
                     >
                       {item.subheader}
                     </Typography>
