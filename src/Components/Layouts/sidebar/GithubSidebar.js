@@ -27,7 +27,7 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 						?
 						project != null && 
 						<div className='text-center'>
-						<h2 className='text-center'>GitHub Repo</h2>
+						<h3 className='text-center'>GitHub Repo</h3>
 						<GithubScraper 
 							username={project.github.username} 
 							repository={project.github.repository} 
@@ -48,7 +48,7 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 						</div>
 						:
 						<div className='text-center'>
-						<h2 className='text-center'>GitHub Profile</h2>
+						<h3 className='text-center'>GitHub Profile</h3>
 						<GithubScraper
 							username={"axelmy318"} 
 							repository={"axelmy318"} 

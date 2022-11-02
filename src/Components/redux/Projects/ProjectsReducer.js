@@ -27,9 +27,9 @@ import { IconContext } from 'react-icons'
 const initialState = {
     families: [
         {
-            title: 'Homepage',
+            title: 'About me',
             href: '/',
-            icon: 'home'
+            icon: 'user'
         },
         {
             subheader: "Packages",

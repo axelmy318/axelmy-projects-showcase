@@ -67,7 +67,7 @@ const FullLayout = () => {
                 sx={{
                     paddingTop: '20px',
                     paddingLeft: isSidebarOpen && lgUp ? `${SidebarWidth+50}px!important` : '',
-                    marginLeft: isSidebarOpen && lgUp ? '100px!important' : '',
+                    marginLeft: isSidebarOpen && lgUp ? '100px!important' : '125px!important',
                     marginRight: isGithubSidebarOpen && xlUp ? `${GithubSidebarWidth+50}px!important` : '',
                 }}
                 className='transition-all duration-250'
