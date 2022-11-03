@@ -16,6 +16,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.sidebarv2 li:hover a.Mui-selected {
+  color: white!important;
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
