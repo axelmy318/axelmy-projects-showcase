@@ -7,7 +7,8 @@ import getThemeDetails from '../../functions/getThemeDetails';
 
 export const Tabs = {
     README: '/',
-    EXAMPLES: '/examples'
+    EXAMPLES: '/examples',
+    COMMITS: '/commits'
 }
 
 const ProjectNavButtons = ({ project, active }) => {
@@ -26,6 +27,11 @@ const ProjectNavButtons = ({ project, active }) => {
             id: Tabs.EXAMPLES,
             text: 'Examples',
             path: '/examples',
+        },
+        commits: {
+            id: Tabs.COMMITS,
+            text: 'Commits',
+            path: '/commits',
         },
         npmjs: {
             text: <><LogoUrl style={{marginTop: '5px'}} />&nbsp;npmjs</>,
@@ -52,6 +58,8 @@ const ProjectNavButtons = ({ project, active }) => {
     mainButtons.push(buttons.readme)
     if(project.examples)
         mainButtons.push(buttons.examples)
+    if(project.github)
+        mainButtons.push(buttons.commits)
     if(project.npmjs)
         secondaryButtons.push(buttons.npmjs)
     if(project.github)
@@ -96,6 +104,7 @@ const ProjectNavButtons = ({ project, active }) => {
             >
                 {buttons.map((button, index, array) => (
                     <CardContent
+                        key={index}
                         sx={{
                         borderRight: {
                             xs: '0',

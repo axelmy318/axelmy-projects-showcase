@@ -8,6 +8,7 @@ import { Button } from '@mui/material';
 import ProjectNavButtons from './ProjectNavButtons';
 import { useMediaQuery } from '@mui/material'
 import ProjectExamples from './ProjectExamples';
+import ProjectCommits from './ProjectCommits';
 
 
 const ProjectPage = ({ path, undefinedProject }) => {
@@ -36,6 +37,8 @@ const ProjectPage = ({ path, undefinedProject }) => {
                 return <MarkdownPrinter username={project.github.username} repository={project.github.repository} branch={project.github.mainBranch} />
             case "/examples":
                 return <ProjectExamples project={project} />
+            case "/commits":
+                return <ProjectCommits project={project} />
         }
     }
 
