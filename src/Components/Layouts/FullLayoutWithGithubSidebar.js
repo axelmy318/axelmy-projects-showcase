@@ -36,9 +36,6 @@ const FullLayout = () => {
     const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
     const xlUp = useMediaQuery((theme) => theme.breakpoints.up('xl'));
 
-    console.log("Lg Up", lgUp)
-    console.log("Xl Up", xlUp)
-
     const customizer = useSelector(state => state.Customizer)
 
     return (
@@ -67,7 +64,7 @@ const FullLayout = () => {
                 sx={{
                     paddingTop: '20px',
                     paddingLeft: isSidebarOpen && lgUp ? `${SidebarWidth+50}px!important` : '',
-                    marginLeft: isSidebarOpen && lgUp ? '100px!important' : '125px!important',
+                    marginLeft: isSidebarOpen && lgUp ? '100px!important' : lgUp ? '125px!important' : '0px!important',
                     marginRight: isGithubSidebarOpen && xlUp ? `${GithubSidebarWidth+50}px!important` : '',
                 }}
                 className='transition-all duration-250'
