@@ -77,12 +77,12 @@ const FullLayout = () => {
                 </Container>
             </PageWrapper>
 
-            <GithubSidebar
+            {lgUp && <GithubSidebar
                 isSidebardir={'left'}
                 isSidebarOpen={isGithubSidebarOpen}
                 isMobileSidebarOpen={isMobileSidebarOpen}
                 onSidebarClose={() => setMobileSidebarOpen(false)} 
-            />
+            />}
             </MainWrapper>
         </>
     );

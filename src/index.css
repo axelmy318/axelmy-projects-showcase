@@ -297,6 +297,11 @@ h5 {
   width: 80%;
   margin: 0 auto;
 }
+.project-examples .component-languages .github-scraper-component-content {
+  width: 40%;
+  min-width: 300px;
+  margin: 0 auto;
+}
 
 .github-scraper-sidebar {
   padding-left: 20px !important;
@@ -329,4 +334,12 @@ h5 {
 
 .github-scraper-component.component-owneravatar img {
   border-radius: 5%;
+}
+
+.project-example {
+  margin-bottom: 100px;
+}
+
+.project-example-body {
+  margin: 0 30px;
 }

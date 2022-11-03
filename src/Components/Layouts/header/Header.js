@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
+import React from 'react';
 import FeatherIcon from 'feather-icons-react';
 import {
     AppBar,
-    Badge,
     Box,
     IconButton,
     Toolbar,
-    Menu,
-    Typography,
-    Chip,
-    Button,
     useMediaQuery,
 } from '@mui/material';
 import PropTypes from 'prop-types';

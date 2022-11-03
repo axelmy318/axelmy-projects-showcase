@@ -12,25 +12,23 @@ import {
   Collapse,
   ListItemIcon,
   ListItemText,
-  MenuItem,
 } from '@mui/material';
 import FeatherIcon from 'feather-icons-react';
 import { SidebarWidth } from '../../../assets/global/Theme-variable';
 import Scrollbar from '../Scrollbar'
-import { useDispatch, useSelector } from 'react-redux'
-import { setCurrentProject} from '../../redux/Projects/ProjectsAction'
+import { useSelector } from 'react-redux'
 
 const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
   const [open, setOpen] = React.useState(true)
   const { pathname } = useLocation()
-  const dispatch = useDispatch()
-  const pathDirect = pathname
+  let pathDirect = pathname
   const pathWithoutLastPart = pathname.slice(0, pathname.lastIndexOf('/'))
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'))
 
+  pathDirect = "/"+pathDirect.split("/")[1]
+
   const handleClick = (index, href) => {
     if (open === index) {
-      console.log("Prevopen")
       setOpen((prevopen) => !prevopen);
     } else {
       setOpen(index);
