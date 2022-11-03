@@ -20,6 +20,11 @@ html {
   color: white!important;
 }
 
+.project-example input[type="text"] {
+  border:rgb(0, 168, 246) 2px solid;
+  padding: 4px;
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

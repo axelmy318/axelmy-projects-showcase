@@ -134,7 +134,7 @@ const ProjectNavButtons = ({ project, active, displayFewerNav }) => {
                         width='100%'
                         >
                             <Typography display={'inline-flex'} justifyContent={'center'} width='100%' variant="h3" sx={{color: usePrimaryColor ? theme.palette.primary.main : customizer.activeMode === 'light' ? theme.palette.secondary.dark : theme.palette.secondary.light}}>
-                                {button.path && <span className={`${button.path === active ? "font-semibold" : ""} transition-all duration-400`}>{button.text}</span>}
+                                {button.path && <span>{button.text}</span>}
                                 {!button.path && <>{button.text}</>}
                             </Typography>
                         </Box>

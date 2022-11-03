@@ -33,13 +33,13 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 							repository={project.github.repository} 
 							branch={project.github.mainBranch}
 						>
-							<StargazersCount prefix="⭐&nbsp;" label={'Stargazers count'} />
+							<Contributors label={'Contributors'} />
 							<div className='separator'></div>
 							<div><Languages label={'Languages'} /></div>
 							<div className='separator'></div>
-							<Topics label={'Topics'} />
+							<StargazersCount prefix="⭐&nbsp;" label={'Stargazers count'} />
 							<div className='separator'></div>
-							<Contributors label={'Contributors'} />
+							<Topics label={'Topics'} />
 							<div className='separator'></div>
 							<PushedAt label={'Last push'} />
 							<div className='separator'></div>
