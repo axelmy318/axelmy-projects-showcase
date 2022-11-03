@@ -24,8 +24,8 @@ https://axelmy-projects-showcase.firebaseapp.com/
 
 
 ## Screenshots 👀
-![screenshot1](https://i.imgur.com/mYMVdRZ.png)
+![screenshot1](https://i.imgur.com/rco1dci.png)
 
-![screenshot2](https://i.imgur.com/5XZ3TST.png)
+![screenshot2](https://i.imgur.com/WKg5roB.png)
 
-![screenshot3](https://i.imgur.com/HvP6qQH.png)
+![screenshot3](https://i.imgur.com/WJ2nJt7.png)

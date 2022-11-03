@@ -262,8 +262,8 @@ h5 {
   overflow-y: scroll;
 }
 
-.highlighter, .highlighter pre {
-  height: 100%;
+.highlighter pre {
+  border-radius: 20px !important;
 }
 
 .component-examples .example-result {
