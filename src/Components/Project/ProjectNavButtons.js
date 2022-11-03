@@ -11,7 +11,8 @@ export const Tabs = {
     COMMITS: '/commits'
 }
 
-const ProjectNavButtons = ({ project, active }) => {
+const ProjectNavButtons = ({ project, active, displayFewerNav }) => {
+    const fewerNavAmount = 2
     const navigate = useNavigate()
     const navigateTo = link => navigate(link) 
     const customizer = useSelector((state) => state.Customizer);
@@ -56,17 +57,17 @@ const ProjectNavButtons = ({ project, active }) => {
 
     
     mainButtons.push(buttons.readme)
-    if(project.examples)
+    if(project.examples && (!displayFewerNav || (displayFewerNav && mainButtons.length < fewerNavAmount)))
         mainButtons.push(buttons.examples)
-    if(project.github)
+    if(project.github && (!displayFewerNav || (displayFewerNav && mainButtons.length < fewerNavAmount)))
         mainButtons.push(buttons.commits)
-    if(project.npmjs)
+    if(project.npmjs && (!displayFewerNav || (displayFewerNav && secondaryButtons.length < fewerNavAmount)))
         secondaryButtons.push(buttons.npmjs)
-    if(project.github)
+    if(project.github && (!displayFewerNav || (displayFewerNav && secondaryButtons.length < fewerNavAmount)))
         secondaryButtons.push(buttons.github)
-    if(project.releases)
+    if(project.releases && (!displayFewerNav || (displayFewerNav && secondaryButtons.length < fewerNavAmount)))
         secondaryButtons.push(buttons.releases)
-    if(project.website)
+    if(project.website && (!displayFewerNav || (displayFewerNav && secondaryButtons.length < fewerNavAmount)))
         secondaryButtons.push(buttons.website)
 
     if(project.customLinks) {
@@ -93,7 +94,7 @@ const ProjectNavButtons = ({ project, active }) => {
         }  
 
         return (
-            <div style={{marginRight: '100px', minWidth: '200px'}}>
+            <div style={{marginRight: '100px', minWidth: displayFewerNav ? '96%' : '200px'}}>
             <Card
                 sx={{
                 p: 0,

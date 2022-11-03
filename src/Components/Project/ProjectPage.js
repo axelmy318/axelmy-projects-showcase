@@ -45,7 +45,7 @@ const ProjectPage = ({ path, undefinedProject }) => {
     return (
         <div className='main-content'>
            <div className={`${biggerThanMd ? "inline-flex" : ""} mb-4 mt-2 ml-0`}>
-                {!undefinedProject && <ProjectNavButtons project={project} active={page} />}
+                {!undefinedProject && <ProjectNavButtons project={project} active={page} displayFewerNav={!biggerThanMd} />}
             </div>
             <Row>
                 {!undefinedProject 
