@@ -47,13 +47,14 @@ const Commit = ({ commit }) => {
 			</TimelineOppositeContent>
 			<TimelineSeparator>
 				<TimelineConnector />
-				{commit.author && <span style={{width:'52px', height: '52px', marginTop: '10px', marginBottom: '10px', borderRadius: '30%', boxShadow: '2px 3px 3px rgb(0 0 0 / 30%)'}}>{commit.author && commit.author.avatar_url && <img src={commit.author.avatar_url} width={'100%'} style={{borderRadius: '30%'}} />}</span>}
+				{commit.author && <span style={{width:'52px', height: '52px', marginTop: '10px', marginBottom: '10px', borderRadius: '30%', boxShadow: '2px 3px 3px rgb(0 0 0 / 30%)'}}>{commit.author && commit.author.avatar_url && <img alt='Avatar' src={commit.author.avatar_url} width={'100%'} style={{borderRadius: '30%'}} />}</span>}
 				{!commit.author && 
 					<TimelineDot 
 						color="secondary"
 						sx={{
 							p:'13px',
-							color: 'white'
+							color: 'white',
+							borderRadius: '30%'
 						}}
 					>
 						<FeatherIcon icon="user" width="22" height="22" />
@@ -63,7 +64,7 @@ const Commit = ({ commit }) => {
 			</TimelineSeparator>
 			<TimelineContent>
 				<Box sx={{ 
-					bgcolor: customizer.activeMode == 'light' ? theme.palette.primary.light : theme.palette.primary.dark, 
+					bgcolor: customizer.activeMode === 'light' ? theme.palette.primary.light : theme.palette.primary.dark, 
 					p: 3, 
 					borderRadius: 3 
 				}}>

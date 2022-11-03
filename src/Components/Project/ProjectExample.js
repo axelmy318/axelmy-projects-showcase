@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Row, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import { vscDarkPlus as dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { LoadGithubFile } from '../../loadGithubFile';
@@ -31,9 +31,7 @@ const ProjectExample = ({ example, file }) => {
                         wrapLongLines={true}
                         language={'jsx'}
                         customStyle={{
-                            borderRadius: '10px',
                             margin: '0px',
-                            borderRadius: '0px'
                         }}
                     >
                         {currentCode}

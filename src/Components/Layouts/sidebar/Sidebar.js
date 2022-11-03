@@ -39,7 +39,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 
   const SidebarContent = (
     <Scrollbar style={{ height: 'calc(100vh - 5px)' }}>
-      <Box sx={{ p: 2 }}>
+      <Box sx={{ p: 2 }} className='sidebarv2'>
         <Box>
           <List>
             {projects.menuItems.map((item, index) => {
@@ -73,6 +73,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                           color: 'white',
                           backgroundColor: (theme) => `${theme.palette.primary.main}!important`,
                         }),
+
                       }}
                     >
                       <ListItemIcon
@@ -133,6 +134,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                 return (
                   <List component="li" disablePadding key={item.title}>
                     <ListItem
+                      className='listItem'
                       onClick={() => handleClick(index, item.href)}
                       button
                       component={NavLink}
