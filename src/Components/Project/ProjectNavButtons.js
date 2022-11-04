@@ -87,8 +87,9 @@ const ProjectNavButtons = ({ project, active, isMobile }) => {
 
     if(project.customLinks) {
         project.customLinks.forEach(customLink => secondaryButtons.push({
+            ...customLink,
             text: <><LogoUrl style={{marginTop: '5px'}} />&nbsp;{customLink.label}</>,
-            url: customLink.url
+            url: customLink.url,
         }))
     }
 

@@ -412,6 +412,7 @@ const initialState = {
                 {
                     label: 'Invite him',
                     url: "https://discord.com/oauth2/authorize?client_id=832684912356098058&scope=bot&permissions=52288",
+                    reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoDiscord /></IconContext.Provider>
                 },
             ],
             github: {
