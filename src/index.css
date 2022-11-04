@@ -17,7 +17,7 @@ html {
 }
 
 .sidebarv2 li:hover a.Mui-selected {
-  color: white!important;
+  color: inherit!important;
 }
 
 .project-example input[type="text"] {
@@ -333,6 +333,12 @@ h5 {
   margin-bottom: 10px;
   font-size: 110%;
   font-weight: normal;
+}
+
+.github-sidebar .github-scraper-component .github-scraper-component-label {
+  margin-bottom: 10px;
+  font-size: 110%;
+  font-weight: bold;
 }
 
 .github-scraper-component .github-scraper-component-content {

@@ -50,8 +50,8 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                     <Typography
                       variant="subtitle2"
                       fontWeight="500"
-                      fontSize="95%"
-                      sx={{ my: 1, mt: 3, opacity: '0.5' }}
+                      fontSize="100%"
+                      sx={{ mb: 1, mt: 3, ml: 1, opacity: '0.6' }}
                     >
                       {item.subheader}
                     </Typography>
@@ -147,6 +147,11 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                           color: 'white',
                           backgroundColor: (theme) => `${theme.palette.primary.main}!important`,
                         }),
+                        '&:hover': {
+                          '& > .sidebar-item-text' : {
+                            color: (theme) => `${theme.palette.primary.main}`
+                          }
+                        }
                       }}
                     >
                       <ListItemIcon
@@ -156,7 +161,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                       >
                       { item.reactIcon ? item.reactIcon : <FeatherIcon icon={item.icon} width="20" height="20" /> }
                       </ListItemIcon>
-                      <ListItemText onClick={onSidebarClose}>{item.title}</ListItemText>
+                      <ListItemText className='sidebar-item-text' onClick={onSidebarClose}>{item.title}</ListItemText>
                     </ListItem>
                   </List>
                 );

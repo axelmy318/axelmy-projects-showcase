@@ -26,7 +26,7 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 						pathname !== "/" 
 						?
 						project != null && 
-						<div className='text-center'>
+						<div className='text-center github-sidebar'>
 						<h3 className='text-center'>GitHub Repo</h3>
 						<GithubScraper 
 							username={project.github.username} 
@@ -55,8 +55,11 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 							branch={"main"}
 						>
 							<OwnerAvatar label='Avatar' imageSize={'100%'} />
+							<div className='separator'></div>
 							<OwnerFollowersCount label='Followers' />
+							<div className='separator'></div>
 							<PublicReposCount prefix='📦&nbsp;' label='Public repos' />
+							<div className='separator'></div>
 							<MemberSince label='Joined' />
 						</GithubScraper>
 						</div> 
