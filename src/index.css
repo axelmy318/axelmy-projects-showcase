@@ -16,6 +16,17 @@ html {
   scroll-behavior: smooth;
 }
 
+.span-center-container {
+  display: inline-block;
+  height: 60px; /* image's height */
+}
+
+.span-center-container span {
+  height: 60px; /* image's height */
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .sidebarv2 li:hover a.Mui-selected {
   color: inherit!important;
 }

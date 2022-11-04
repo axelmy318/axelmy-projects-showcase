@@ -35,7 +35,6 @@ const FullLayout = () => {
     const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
     const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
     const xlUp = useMediaQuery((theme) => theme.breakpoints.up('xl'));
-    const mdUp = useMediaQuery((theme) => theme.breakpoints.up('xl'));
 
     const customizer = useSelector(state => state.Customizer)
 
@@ -68,7 +67,7 @@ const FullLayout = () => {
                     marginLeft: isSidebarOpen && lgUp ? '100px!important' : lgUp ? '125px!important' : '0px!important',
                     marginRight: isGithubSidebarOpen && xlUp ? `${GithubSidebarWidth+50}px!important` : '',
                 }}
-                className={`transition-all duration-250 ${!mdUp ? 'small-media' : ''}`}
+                className={`transition-all duration-250 ${!xlUp ? 'small-media' : ''}`}
                 >
                 <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>
                     <Outlet />

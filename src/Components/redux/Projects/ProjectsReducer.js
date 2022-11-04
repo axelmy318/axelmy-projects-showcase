@@ -23,6 +23,7 @@ import CommitsExample from "../../examples_GithubScraper/CommitsExample"
 import { HiOutlineComputerDesktop as LogoApplication } from 'react-icons/hi2'
 import { TfiWorld as LogoWebsite } from 'react-icons/tfi'
 import { TbBrandDiscord as LogoDiscord } from 'react-icons/tb'
+import { FaDiscord as LogoDiscordOutline } from 'react-icons/fa'
 import { IconContext } from 'react-icons'
 
 const initialState = {
@@ -412,7 +413,7 @@ const initialState = {
                 {
                     label: 'Invite him',
                     url: "https://discord.com/oauth2/authorize?client_id=832684912356098058&scope=bot&permissions=52288",
-                    reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoDiscord /></IconContext.Provider>
+                    reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoDiscordOutline /></IconContext.Provider>
                 },
             ],
             github: {

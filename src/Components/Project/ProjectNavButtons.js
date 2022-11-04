@@ -1,11 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, Typography, Box, useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { TbExternalLink as LogoUrl } from 'react-icons/tb'
 import getThemeDetails from '../../functions/getThemeDetails';
 
-import { CgReadme as LogoReadme } from 'react-icons/cg'
+import { BiBookOpen as LogoReadme } from 'react-icons/bi'
 import { FaCodeBranch as LogoCommits } from 'react-icons/fa'
 import { VscCode as LogoExamples } from 'react-icons/vsc'
 import { AiFillGithub as LogoGithub} from 'react-icons/ai'
@@ -25,6 +24,7 @@ const ProjectNavButtons = ({ project, active, isMobile }) => {
     const navigateTo = link => navigate(link) 
     const customizer = useSelector((state) => state.Customizer);
     const theme = getThemeDetails(customizer.activeTheme)
+    const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'))
 
     const buttons = {
         readme: {
@@ -46,22 +46,22 @@ const ProjectNavButtons = ({ project, active, isMobile }) => {
             reactIcon: <IconContext.Provider value={{size: '27px'}}><LogoCommits /></IconContext.Provider>
         },
         npmjs: {
-            text: <><LogoUrl style={{marginTop: '5px'}} />&nbsp;npmjs</>,
+            text: <>npmjs</>,
             url: project.npmjs,
             reactIcon: <IconContext.Provider value={{size: '50px'}}><LogoNpm /></IconContext.Provider>
         },
         github: {
-            text: <><LogoUrl style={{marginTop: '5px'}} />&nbsp;GitHub</>,
+            text: <>GitHub</>,
             url: `https://github.com/${project.github.username}/${project.github.repository}.git`,
             reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoGithub /></IconContext.Provider>
         },
         releases: {
-            text: <><LogoUrl style={{marginTop: '5px'}} />&nbsp;Releases</>,
+            text: <>Releases</>,
             url: project.releases,
             reactIcon: <IconContext.Provider value={{size: '30px'}}><LogoReleases /></IconContext.Provider>
         },
         website: {
-            text: <><LogoUrl style={{marginTop: '5px'}} />&nbsp;Website</>,
+            text: <>Website</>,
             url: project.website,
             reactIcon: <IconContext.Provider value={{size: '27px'}}><LogoWebsite /></IconContext.Provider>
         }
@@ -88,7 +88,7 @@ const ProjectNavButtons = ({ project, active, isMobile }) => {
     if(project.customLinks) {
         project.customLinks.forEach(customLink => secondaryButtons.push({
             ...customLink,
-            text: <><LogoUrl style={{marginTop: '5px'}} />&nbsp;{customLink.label}</>,
+            text: <>{customLink.label}</>,
             url: customLink.url,
         }))
     }
@@ -110,7 +110,7 @@ const ProjectNavButtons = ({ project, active, isMobile }) => {
         }  
 
         return (
-            <div style={{marginRight: '100px', minWidth: isMobile ? '92%' : '200px'}}>
+            <div style={{marginRight: '100px', minWidth: isMobile ? '92%' : '400px'}}>
             <Card
                 sx={
                 [
@@ -144,7 +144,7 @@ const ProjectNavButtons = ({ project, active, isMobile }) => {
                         },
                         backgroundColor: getBackgroundColor(button),
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
                         }}
                         className="hover:drop-shadow-xl cursor-pointer lg:hover:scale-[1.04] transition-all duration-100"
                         onClick={() => handleButtonClick(button)}
@@ -159,8 +159,11 @@ const ProjectNavButtons = ({ project, active, isMobile }) => {
                             <Typography display={'inline-flex'} justifyContent={'center'} width='100%' variant="h3" sx={{color: usePrimaryColor ? theme.palette.primary.main : customizer.activeMode === 'light' ? theme.palette.secondary.dark : theme.palette.secondary.light}}>
                                 {useIcons && button.reactIcon && <>{button.reactIcon}</>}
                                 {!useIcons && <>
-                                    {button.path && <span>{button.text}</span>}
-                                    {!button.path && <>{button.text}</>}
+                                    <span className='span-center-container'>
+                                        {button.reactIcon && <span style={{paddingRight: '10px'}}>{button.reactIcon}</span>}
+                                        {button.path && <span>{button.text}</span>}
+                                        {!button.path && <span>{button.text}</span>}
+                                    </span>
                                 </>}
                             </Typography>
                         </Box>
