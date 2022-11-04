@@ -10,6 +10,8 @@ import { Provider } from 'react-redux'
 
 import Reducers from './Components/redux/Reducers'
 
+import { saveToLocalStorage } from './storage/localStorage'
+
 let useReduxDevTools = false
 let store
 
@@ -23,6 +25,13 @@ if(useReduxDevTools){
 else {
   store = createStore(Reducers)
 }
+
+store.subscribe(() => {
+  console.log(store.getState().Customizer)
+  let customizer = store.getState().Customizer
+
+  saveToLocalStorage('customizer', customizer)
+})
 
 ReactDOM.render(
   <React.StrictMode>

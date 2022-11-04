@@ -7,6 +7,7 @@ const INIT_STATE = {
   activeMode: 'light', // This can be light or dark
   activeTheme: 'BLUE_THEME', // BLUE_THEME, GREEN_THEME, RED_THEME, BLACK_THEME, PURPLE_THEME, INDIGO_THEME
   SidebarWidth: 240,
+  isLoaded: false,
 };
 
 const CustomizerReducer = (state = INIT_STATE, action) => {
@@ -36,7 +37,18 @@ const CustomizerReducer = (state = INIT_STATE, action) => {
         ...state,
         activeDir: action.payload,
       };
-
+    case 'SET_CUSTOMIZER':
+      console.log(action)
+      if(action.payload === undefined) 
+        return {
+          ...state,
+          isLoaded: true
+        }
+      return {
+        ...state,
+        ...action.payload,
+        isLoaded: true
+      }
     default:
       return state;
   }

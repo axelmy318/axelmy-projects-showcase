@@ -22,3 +22,8 @@ export const setDir = (payload) => ({
   type: DIRECTION,
   payload,
 });
+
+export const setCustomizer = (payload) => ({
+  type: 'SET_CUSTOMIZER',
+  payload,
+});

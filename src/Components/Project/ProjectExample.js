@@ -3,9 +3,12 @@ import { Table } from 'react-bootstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import { vscDarkPlus as dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { LoadGithubFile } from '../../loadGithubFile';
+import { useSelector } from 'react-redux'
+
 
 const ProjectExample = ({ example, file }) => {
     const [currentCode, setCurrentCode] = useState(null);
+    const customizer = useSelector(state => state.Customizer)
 
     useEffect(() => {
         LoadGithubFile('axelmy318', 'axelmy-projects-showcase', 'master', example.file)
@@ -44,7 +47,7 @@ const ProjectExample = ({ example, file }) => {
                     <br />
                     <br />
                     <h3 className='underline'>Defaults</h3>
-                    <Table striped bordered>
+                    <Table striped bordered variant={customizer.activeMode}>
                         <thead>
                             <tr>
                                 <th>Property</th>

@@ -17,13 +17,12 @@ const ProjectPage = ({ path, undefinedProject }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const biggerThanMd = useMediaQuery((theme) => theme.breakpoints.up('md'));
+    const customizer = useSelector(state => state.Customizer)
 
     if(page === "") 
         page = '/'
-    else {
+    else
         page = "/" + page
-    }
-
     
     if(!undefinedProject && (project === null || project === undefined || project.path !== path)) {
         dispatch(setCurrentProject(path))
@@ -34,7 +33,7 @@ const ProjectPage = ({ path, undefinedProject }) => {
         switch(page) {
             default:
             case "/":
-                return <MarkdownPrinter username={project.github.username} repository={project.github.repository} branch={project.github.mainBranch} />
+                return <MarkdownPrinter username={project.github.username} repository={project.github.repository} branch={project.github.mainBranch} mode={customizer.activeMode} />
             case "/examples":
                 return <ProjectExamples project={project} />
             case "/commits":
