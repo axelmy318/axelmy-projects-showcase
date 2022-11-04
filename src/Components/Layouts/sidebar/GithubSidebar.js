@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Box,
+  colors,
   Drawer,
   useMediaQuery,
 } from '@mui/material';
@@ -10,6 +11,7 @@ import { GithubSidebarWidth } from '../../../assets/global/Theme-variable';
 import Scrollbar from '../Scrollbar'
 import GithubScraper, { Languages, StargazersCount, Topics, Contributors, Size, PushedAt, OwnerAvatar, OwnerFollowersCount, PublicReposCount, MemberSince } from 'react-github-scraper';
 import useCurrentProject from '../../customHooks/useCurrentProject';
+import useColors from '../../customHooks/useColors';
 
 const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 	const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'))
@@ -17,7 +19,6 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 	const project = useCurrentProject()
 	const { pathname } = useLocation()
 
-	
 	const SidebarContent = (
 		<Scrollbar style={{ height: 'calc(100vh - 5px)' }}>
 			<Box sx={{ p: 2 }}>
@@ -39,7 +40,15 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 							<div className='separator'></div>
 							<StargazersCount prefix="⭐&nbsp;" label={'Stargazers count'} />
 							<div className='separator'></div>
-							<Topics label={'Topics'} />
+							<div style={{
+								borderCollapse: "collapse",
+								boxSizing: "border-box",
+								display: "block",
+								lineHeight: "18px",
+								overflowWrap: "break-word",
+							}}>
+								<Topics label={'Topics'} topicCallback={(topic, index) => <Topic topic={topic} key={index} /> } />
+							</div>
 							<div className='separator'></div>
 							<PushedAt label={'Last push'} />
 							<div className='separator'></div>
@@ -107,6 +116,28 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 		</Drawer>
 	);
 };
+
+const Topic = ({ topic }) => {
+	const colors = useColors()
+
+	return(
+	<Box component={"span"} sx={{
+		backgroundColor: colors.activeMode === 'light' ? colors.palette.primary.light : colors.palette.secondary.main,
+		borderRadius: '20px',
+		fontSize: '70%',
+		margin: "3px",
+		display: "inline-block",
+		padding: "5px 10px",
+		"&:hover": {
+			backgroundColor: colors.activeMode === 'light' ? colors.palette.primary.main : colors.palette.secondary.dark,
+			color: 'white',
+			cursor: 'pointer'
+		}
+	}}>
+		{topic}
+	</Box>
+	)
+}
 
 GithubSidebar.propTypes = {
   isMobileSidebarOpen: PropTypes.bool,

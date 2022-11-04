@@ -16,7 +16,7 @@ const App = () => {
     const dispatch = useDispatch()
     
     if(!customizer.isLoaded) 
-        dispatch(setCustomizer(loadFromLocalStorage('customizer')))
+        dispatch(setCustomizer(loadFromLocalStorage('apsv2_customizer')))
 
     return (
         <ThemeProvider theme={theme}>

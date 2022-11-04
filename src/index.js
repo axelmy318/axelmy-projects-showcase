@@ -30,7 +30,7 @@ store.subscribe(() => {
   console.log(store.getState().Customizer)
   let customizer = store.getState().Customizer
 
-  saveToLocalStorage('customizer', customizer)
+  saveToLocalStorage('apsv2_customizer', customizer)
 })
 
 ReactDOM.render(
