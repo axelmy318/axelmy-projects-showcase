@@ -10,16 +10,18 @@ import useColors from '../customHooks/useColors';
 import { VscLink as LogoCopy } from 'react-icons/vsc'
 import { Box } from '@mui/system';
 import { useMediaQuery } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
-const ProjectExample = ({ example, open, setOpen }) => {
+const ProjectExample = ({ page, example, open, setOpen }) => {
+    const navigate = useNavigate()
     const [currentCode, setCurrentCode] = useState(null);
     const [copied, setCopied] = useState(false)
     const customizer = useSelector(state => state.Customizer)
     const colors = useColors()
     const timerRef = React.useRef(null);
     const biggerThanMd = useMediaQuery((theme) => theme.breakpoints.up('md'));
-
+    console.log("page", page)
     useEffect(() => {
         LoadGithubFile('axelmy318', 'axelmy-projects-showcase', 'master', example.file)
             .then(response => {
@@ -48,13 +50,20 @@ const ProjectExample = ({ example, open, setOpen }) => {
         }
     }, [])
 
+    const handleTitleClick = () => {
+        if(open)
+            navigate(page)
+        else   
+            navigate(`${page}#${encodeURI(example.name)}`)
+    }
+
     return (<>
         <div className={`project-example ${open ? 'opened' : ''}`}>
             <Box 
                 component={'h1'} 
                 className='underline' 
                 style={{display: 'inline-flex', textDecoration: 'none', paddingBottom: '10px', width: '100%'}} 
-                onClick={() => setOpen(open ? null : example.name)}
+                onClick={() => handleTitleClick()}
             >
                 <span className='example-open-status' style={{marginTop: '5px'}}>
                     <IconContext.Provider value={{color: colors.palette.primary.main}}><LogoChevron /></IconContext.Provider>
