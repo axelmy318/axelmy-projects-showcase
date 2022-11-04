@@ -89,7 +89,19 @@ h5 {
 }
 
 .markdown-content {
-  padding: 20px 50px;
+  padding: 20px 40px;
+}
+
+.small-media .markdown-content {
+  padding: 15px 8px;
+}
+
+.small-media .component-commits .github-scraper-component-content {
+  padding: 0px;
+}
+
+.small-media .project-commits .github-scraper ul {
+  padding: 0px;
 }
 
 .markdown {

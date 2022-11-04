@@ -49,7 +49,7 @@ const Commit = ({ commit, mode }) => {
 			{/*<br />
 			{moment(commit.commit.author.date).format("h:MM a")}*/}
 			</TimelineOppositeContent>}
-			{mode === 'mobile' && <TimelineOppositeContent sx={{ m: 'auto 0' }} variant="body2" color="text.secondary" minWidth={'0px'} width={'0px'} flex={"0!important"}></TimelineOppositeContent>}
+			{mode === 'mobile' && <TimelineOppositeContent sx={{ m: 'auto 0'}} variant="body2" color="text.secondary" minWidth={'0px'} width={'0px'} flex={"0!important"} padding={'0!important'}></TimelineOppositeContent>}
 			<TimelineSeparator>
 				<TimelineConnector />
 				{commit.author && <span style={{width:'52px', height: '52px', marginTop: '10px', marginBottom: '10px', borderRadius: '30%', boxShadow: '2px 3px 3px rgb(0 0 0 / 30%)'}}>{commit.author && commit.author.avatar_url && <img alt='Avatar' src={commit.author.avatar_url} width={'100%'} style={{borderRadius: '30%'}} />}</span>}
