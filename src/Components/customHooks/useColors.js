@@ -7,7 +7,9 @@ const useColors = () => {
     const theme = getThemeDetails(customizer.activeTheme)
     
     return {
-        backgroundColor: customizer.activeMode === 'light' ? theme.palette.primary.light : theme.palette.secondary.dark
+        backgroundColor: customizer.activeMode === 'light' ? theme.palette.primary.light : theme.palette.secondary.dark,
+        primaryBackgroundColor: customizer.activeMode === 'light' ? theme.palette.primary.light : theme.palette.primary.dark,
+        secondaryBackgroundColor: customizer.activeMode === 'light' ? theme.palette.secondary.light : theme.palette.secondary.dark,
     }
 }
 

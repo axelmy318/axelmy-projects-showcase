@@ -331,6 +331,8 @@ h5 {
 
 .github-scraper-component .github-scraper-component-label {
   margin-bottom: 10px;
+  font-size: 110%;
+  font-weight: normal;
 }
 
 .github-scraper-component .github-scraper-component-content {

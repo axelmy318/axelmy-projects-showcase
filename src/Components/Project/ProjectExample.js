@@ -41,12 +41,12 @@ const ProjectExample = ({ example, file }) => {
                     </SyntaxHighlighter>  }
                 </div>  
                 <br />
-                <h3 className='underline'>Result</h3>
+                <h3 className='underline' style={{textDecoration: 'none'}}>Result</h3>
                 {example.component}
                 {example.defaults && example.defaults.length > 0 && <>
                     <br />
                     <br />
-                    <h3 className='underline'>Defaults</h3>
+                    <h3 className='underline' style={{textDecoration: 'none'}}>Defaults</h3>
                     <Table striped bordered variant={customizer.activeMode}>
                         <thead>
                             <tr>
