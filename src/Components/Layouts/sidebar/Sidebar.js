@@ -39,7 +39,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 
   const SidebarContent = (
     <Scrollbar style={{ height: 'calc(100vh - 5px)' }}>
-      <Box sx={{ p: 2 }} className='sidebarv2'>
+      <Box sx={{ p: 2 }} className='sidebarv2 override-link-color'>
         <Box>
           <List>
             {projects.menuItems.map((item, index) => {
@@ -144,12 +144,15 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                       sx={{
                         mb: 1,
                         ...(pathDirect === item.href && {
-                          color: 'white',
+                          color: 'white!important',
                           backgroundColor: (theme) => `${theme.palette.primary.main}!important`,
                         }),
                         '&:hover': {
                           '& > .sidebar-item-text' : {
-                            color: (theme) => `${theme.palette.primary.main}`
+                            color: (theme) => `${theme.palette.primary.main}`,
+                            ...(pathDirect === item.href && {
+                              color: 'white'
+                            }),
                           }
                         }
                       }}

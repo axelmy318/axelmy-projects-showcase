@@ -8,6 +8,7 @@ import Customizer from './Customizer';
 import { TopbarHeight, SidebarWidth, GithubSidebarWidth } from '../../assets/global/Theme-variable'
 import { useSelector } from 'react-redux'
 import GithubSidebar from './sidebar/GithubSidebar'
+import useColors from '../customHooks/useColors'
 
 const MainWrapper = experimentalStyled('div')(() => ({
   display: 'flex',
@@ -37,10 +38,24 @@ const FullLayout = () => {
     const xlUp = useMediaQuery((theme) => theme.breakpoints.up('xl'));
 
     const customizer = useSelector(state => state.Customizer)
+    const colors = useColors()
 
     return (
         <>
-            <MainWrapper>
+            <MainWrapper sx={{
+                '& *::selection': {
+                    backgroundColor: colors.palette.primary.main
+                },
+                '& a' : {
+                    color: colors.palette.primary.main
+                },
+                '& .override-link-color a': {
+                    color: 'inherit'
+                },
+                '& li.Mui-selected a': {
+                    color: 'white'
+                }
+            }}>
             <Header
                 sx={{
                 paddingLeft: isSidebarOpen && lgUp ? '0' : '',

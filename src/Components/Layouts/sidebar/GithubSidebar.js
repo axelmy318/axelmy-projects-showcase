@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Box,
-  colors,
   Drawer,
   useMediaQuery,
 } from '@mui/material';

@@ -133,7 +133,8 @@ const initialState = {
                 description: 'A simple example covering how to use the Topics component',
                 component: <TopicsExample />,
                 defaults: [
-                    {property: 'label', type: 'string', value: `null`}
+                    {property: 'label', type: 'string', value: `null`},
+                    {property: 'topicCallback', type: 'func', value: `null`}
                 ]
             },
             {

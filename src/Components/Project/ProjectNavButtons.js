@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { Card, CardContent, Typography, Box, useMediaQuery } from '@mui/material';
+import { Card, CardContent, Typography, Box } from '@mui/material';
 import { useSelector } from 'react-redux';
 import getThemeDetails from '../../functions/getThemeDetails';
 
@@ -24,7 +24,6 @@ const ProjectNavButtons = ({ project, active, isMobile }) => {
     const navigateTo = link => navigate(link) 
     const customizer = useSelector((state) => state.Customizer);
     const theme = getThemeDetails(customizer.activeTheme)
-    const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'))
 
     const buttons = {
         readme: {

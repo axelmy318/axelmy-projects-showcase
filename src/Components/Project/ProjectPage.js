@@ -3,7 +3,7 @@ import { MarkdownPrinter } from 'react-readme-printer';
 import { Row, Col } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { setCurrentProject } from '../redux/Projects/ProjectsAction';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 import ProjectNavButtons from './ProjectNavButtons';
 import { useMediaQuery } from '@mui/material'

@@ -376,10 +376,39 @@ h5 {
   border-radius: 5%;
 }
 
-.project-example {
-  margin-bottom: 100px;
+.project-example.opened {
+  margin-bottom: 65px;
 }
 
 .project-example-body {
   margin: 0 30px;
+}
+
+.project-example h1 {
+  cursor: pointer;
+}
+
+.project-example .example-open-status {
+  transition: "all";
+  transition-duration: 100ms;
+  transform: rotateZ(0deg);
+}
+
+
+.project-example.opened h1 .example-open-status {
+  transition: "all";
+  margin-right: 10px;
+  transform: rotateZ(90deg) translate(-3px, 0);
+}
+
+.project-example .project-example-body {
+  /*transition: "max-height";
+  transition-duration: 1000ms;*/
+  max-height: 0px;
+}
+
+.project-example.opened .project-example-body {
+  /*transition: "max-height";
+  transition-duration: 1000ms;*/
+  max-height: 3000px;
 }
