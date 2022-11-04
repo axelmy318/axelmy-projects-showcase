@@ -1,7 +1,7 @@
 import React from 'react'
 import { MarkdownPrinter } from 'react-readme-printer';
 import { Row, Col } from 'react-bootstrap'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setCurrentProject } from '../redux/Projects/ProjectsAction';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@mui/material';
@@ -9,7 +9,8 @@ import ProjectNavButtons from './ProjectNavButtons';
 import { useMediaQuery } from '@mui/material'
 import ProjectExamples from './ProjectExamples';
 import ProjectCommits from './ProjectCommits';
-
+import useCurrentProject from '../customHooks/useCurrentProject';
+import useCustomizer from '../customHooks/useCustomizer';
 
 const ProjectPage = ({ path, undefinedProject }) => {
     const project = useCurrentProject()
@@ -17,7 +18,7 @@ const ProjectPage = ({ path, undefinedProject }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const biggerThanMd = useMediaQuery((theme) => theme.breakpoints.up('md'));
-    const customizer = useSelector(state => state.Customizer)
+    const customizer = useCustomizer()
 
     if(page === "") 
         page = '/'
@@ -44,7 +45,7 @@ const ProjectPage = ({ path, undefinedProject }) => {
     return (
         <div className='main-content'>
            <div className={`${biggerThanMd ? "inline-flex" : ""} mb-4 mt-2 ml-0`}>
-                {!undefinedProject && <ProjectNavButtons project={project} active={page} displayFewerNav={!biggerThanMd} />}
+                {!undefinedProject && <ProjectNavButtons project={project} active={page} isMobile={!biggerThanMd} />}
             </div>
             <Row>
                 {!undefinedProject 
@@ -72,12 +73,6 @@ const ProjectPage = ({ path, undefinedProject }) => {
 
 ProjectPage.defaultProps = {
     undefinedProject: false
-}
-
-const useCurrentProject = () => {
-    const projects = useSelector(state => state.Projects)
-
-    return projects.currentProject
 }
 
 export default ProjectPage;

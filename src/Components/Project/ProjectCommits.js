@@ -11,9 +11,9 @@ import {
 	TimelineOppositeContent,
 	TimelineDot,
   } from '@mui/lab';
-import { useSelector } from 'react-redux'
 import getThemeDetails from '../../functions/getThemeDetails'
 import moment from 'moment'
+import useCustomizer from '../customHooks/useCustomizer';
 
 const ProjectCommits = ({ project, mode }) => {
   return (
@@ -32,7 +32,7 @@ const ProjectCommits = ({ project, mode }) => {
 }
 
 const Commit = ({ commit, mode }) => {
-    const customizer = useSelector(state => state.Customizer)
+    const customizer = useCustomizer()
     const theme = getThemeDetails(customizer.activeTheme)
 
 	return (

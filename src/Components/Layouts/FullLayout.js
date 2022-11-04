@@ -6,7 +6,7 @@ import Header from './header/Header'
 import Footer from './footer/Footer'
 import Customizer from './Customizer';
 import { TopbarHeight } from '../../assets/global/Theme-variable'
-import { useSelector } from 'react-redux'
+import useCustomizer from '../customHooks/useCustomizer'
 
 const MainWrapper = experimentalStyled('div')(() => ({
   display: 'flex',
@@ -33,7 +33,7 @@ const FullLayout = () => {
     const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
     const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
-    const customizer = useSelector(state => state.Customizer)
+    const customizer = useCustomizer()
 
     return (
         <>

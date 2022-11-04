@@ -8,8 +8,8 @@ import {
 } from '@mui/material';
 import { GithubSidebarWidth } from '../../../assets/global/Theme-variable';
 import Scrollbar from '../Scrollbar'
-import { useSelector } from 'react-redux';
 import GithubScraper, { Languages, StargazersCount, Topics, Contributors, Size, PushedAt, OwnerAvatar, OwnerFollowersCount, PublicReposCount, MemberSince } from 'react-github-scraper';
+import useCurrentProject from '../../customHooks/useCurrentProject';
 
 const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 	const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'))
@@ -110,11 +110,5 @@ GithubSidebar.propTypes = {
   onSidebarClose: PropTypes.func,
   isSidebarOpen: PropTypes.bool,
 };
-
-const useCurrentProject = () => {
-    const projects = useSelector(state => state.Projects)
-
-    return projects.currentProject
-}
 
 export default GithubSidebar;

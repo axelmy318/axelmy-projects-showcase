@@ -16,7 +16,7 @@ import {
 import FeatherIcon from 'feather-icons-react';
 import { SidebarWidth } from '../../../assets/global/Theme-variable';
 import Scrollbar from '../Scrollbar'
-import { useSelector } from 'react-redux'
+import useProjects from '../../customHooks/useProjects';
 
 const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
   const [open, setOpen] = React.useState(true)
@@ -35,7 +35,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
     }
   };
 
-  const projects = useSelector(state => state.Projects);
+  const projects = useProjects();
 
   const SidebarContent = (
     <Scrollbar style={{ height: 'calc(100vh - 5px)' }}>

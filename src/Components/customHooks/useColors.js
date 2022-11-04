@@ -1,9 +1,8 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
 import getThemeDetails from '../../functions/getThemeDetails'
+import useCustomizer from './useCustomizer'
 
 const useColors = () => {
-    const customizer = useSelector(state => state.Customizer)
+    const customizer = useCustomizer()
     const theme = getThemeDetails(customizer.activeTheme)
     
     return {

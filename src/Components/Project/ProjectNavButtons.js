@@ -20,8 +20,7 @@ export const Tabs = {
     COMMITS: '/commits'
 }
 
-const ProjectNavButtons = ({ project, active, displayFewerNav }) => {
-    const fewerNavAmount = 2
+const ProjectNavButtons = ({ project, active, isMobile }) => {
     const navigate = useNavigate()
     const navigateTo = link => navigate(link) 
     const customizer = useSelector((state) => state.Customizer);
@@ -73,17 +72,17 @@ const ProjectNavButtons = ({ project, active, displayFewerNav }) => {
 
     
     mainButtons.push(buttons.readme)
-    if(project.examples/* && (!displayFewerNav || (displayFewerNav && mainButtons.length < fewerNavAmount))*/)
+    if(project.examples/* && (!isMobile || (isMobile && mainButtons.length < fewerNavAmount))*/)
         mainButtons.push(buttons.examples)
-    if(project.github/* && (!displayFewerNav || (displayFewerNav && mainButtons.length < fewerNavAmount))*/)
+    if(project.github/* && (!isMobile || (isMobile && mainButtons.length < fewerNavAmount))*/)
         mainButtons.push(buttons.commits)
-    if(project.github/* && (!displayFewerNav || (displayFewerNav && secondaryButtons.length < fewerNavAmount))*/)
+    if(project.github/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
         secondaryButtons.push(buttons.github)
-    if(project.npmjs/* && (!displayFewerNav || (displayFewerNav && secondaryButtons.length < fewerNavAmount))*/)
+    if(project.npmjs/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
         secondaryButtons.push(buttons.npmjs)
-    if(project.releases/* && (!displayFewerNav || (displayFewerNav && secondaryButtons.length < fewerNavAmount))*/)
+    if(project.releases/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
         secondaryButtons.push(buttons.releases)
-    if(project.website/* && (!displayFewerNav || (displayFewerNav && secondaryButtons.length < fewerNavAmount))*/)
+    if(project.website/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
         secondaryButtons.push(buttons.website)
 
     if(project.customLinks) {
@@ -110,7 +109,7 @@ const ProjectNavButtons = ({ project, active, displayFewerNav }) => {
         }  
 
         return (
-            <div style={{marginRight: '100px', minWidth: displayFewerNav ? '92%' : '200px'}}>
+            <div style={{marginRight: '100px', minWidth: isMobile ? '92%' : '200px'}}>
             <Card
                 sx={
                 [
@@ -120,7 +119,7 @@ const ProjectNavButtons = ({ project, active, displayFewerNav }) => {
                     display: 'inline-flex',
                     width:"100%",
                     },
-                    displayFewerNav && {
+                    isMobile && {
                         mt: 0
                     }
                 ]
@@ -176,8 +175,8 @@ const ProjectNavButtons = ({ project, active, displayFewerNav }) => {
 
     return (
         <>
-            {renderButtons(mainButtons, true, displayFewerNav)}
-            {renderButtons(secondaryButtons, false, displayFewerNav)}
+            {renderButtons(mainButtons, true, isMobile)}
+            {renderButtons(secondaryButtons, false, isMobile)}
         </>
     )
 }

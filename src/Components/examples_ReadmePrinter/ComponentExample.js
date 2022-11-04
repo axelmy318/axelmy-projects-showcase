@@ -1,10 +1,10 @@
 import React from 'react'
 import { MarkdownPrinter } from 'react-readme-printer'
-import { useSelector } from 'react-redux'
+import useCustomizer from '../customHooks/useCustomizer'
 
 const ComponentExample = () => {
     // Remove the line below
-    const customizer = useSelector(state => state.Customizer)
+    const customizer = useCustomizer()
 
     return (
         <MarkdownPrinter
