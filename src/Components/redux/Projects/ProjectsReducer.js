@@ -18,6 +18,7 @@ import NewWindowBasicExample from "../../examples_NewWindow/BasicExample"
 import ShowCharsExample from "../../examples_WeekdaysInput/ShowCharsExample"
 import OffsetsAndSizesExample from "../../examples_NewWindow/OffsetsAndSizesExample"
 import TitleExample from "../../examples_NewWindow/TitleExample"
+import CommitsExample from "../../examples_GithubScraper/CommitsExample"
 
 import { HiOutlineComputerDesktop as LogoApplication } from 'react-icons/hi2'
 import { TfiWorld as LogoWebsite } from 'react-icons/tfi'
@@ -105,7 +106,18 @@ const initialState = {
             installation: 'npm i react-github-scraper',
             examples: [
             {
-                name: 'Languages',
+                name: 'Commits component',
+                file: 'src/Components/examples_GithubScraper/CommitsExample.js',
+                description: 'The code below will loop through each commits of a repository, calling the callback for each one of theme',
+                component: <CommitsExample />,
+                defaults: [
+                    {property: 'label', type: 'string', value: `null`},
+                    {property: 'maxDisplayed', type: 'number', value: `7`},
+                    {property: 'commitCallback', type: 'function', value: `null`},
+                ]
+            },
+            {
+                name: 'Languages component',
                 file: 'src/Components/examples_GithubScraper/LanguagesExample.js',
                 description: 'A simple example covering how to use the Languages component',
                 component: <LanguagesExample />,
@@ -115,7 +127,7 @@ const initialState = {
                 ]
             },
             {
-                name: 'Topics',
+                name: 'Topics component',
                 file: 'src/Components/examples_GithubScraper/TopicsExample.js',
                 description: 'A simple example covering how to use the Topics component',
                 component: <TopicsExample />,
@@ -124,7 +136,7 @@ const initialState = {
                 ]
             },
             {
-                name: 'Contributors',
+                name: 'Contributors component',
                 file: 'src/Components/examples_GithubScraper/ContributorsExample.js',
                 description: 'A simple example covering how to use the Contributors component',
                 component: <ContributorsExample />,
@@ -134,7 +146,7 @@ const initialState = {
                 ]
             },
             {
-                name: 'Stargazers count',
+                name: 'Stargazers count component',
                 file: 'src/Components/examples_GithubScraper/StargazersCountExample.js',
                 description: 'A simple example covering how to use the StargazersCount component',
                 component: <StargazersCountExample />,
@@ -144,7 +156,7 @@ const initialState = {
                 ]
             },
             {
-                name: 'Watchers count',
+                name: 'Watchers count component',
                 file: 'src/Components/examples_GithubScraper/WatchersCountExample.js',
                 description: 'A simple example covering how to use the WatchersCount component',
                 component: <WatchersCountExample />,
@@ -155,7 +167,7 @@ const initialState = {
             },
             
             {
-                name: 'Pushed at',
+                name: 'Pushed date component',
                 file: 'src/Components/examples_GithubScraper/PushedAtExample.js',
                 description: 'A simple example covering how to use the PushedAt component',
                 component: <PushedAtExample />,
