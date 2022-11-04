@@ -15,19 +15,23 @@ import { useSelector } from 'react-redux'
 import getThemeDetails from '../../functions/getThemeDetails'
 import moment from 'moment'
 
-const ProjectCommits = ({ project }) => {
+const ProjectCommits = ({ project, mode }) => {
   return (
-    <div className='project-commits w-[85%]' >
+    <div className={`project-commits w-[${mode === 'desktop' ? "85" : "100"}%]`} >
         <GithubScraper username={project.github.username} repository={project.github.repository} branch={"project.github.mainBranch"}>
-			<Timeline position="right" sx={{ color: 'rgba(0, 0, 0, 0.87)' }}>
-				<Commits commitCallback={(c, i) => <Commit commit={c} key={i} />} />
+			<Timeline position="right" sx={[
+				{ 
+					color: 'rgba(0, 0, 0, 0.87)', 
+				}
+				]}>
+				<Commits maxDisplayed={0} commitCallback={(c, i) => <Commit commit={c} key={i} mode={mode} />} />
 			</Timeline>
 		</GithubScraper>
     </div>
   )
 }
 
-const Commit = ({ commit }) => {
+const Commit = ({ commit, mode }) => {
     const customizer = useSelector(state => state.Customizer)
     const theme = getThemeDetails(customizer.activeTheme)
 
@@ -40,11 +44,12 @@ const Commit = ({ commit }) => {
 			},
 			}}
 		>
-			<TimelineOppositeContent sx={{ m: 'auto 0' }} variant="body2" color="text.secondary" minWidth={'170px'} flex={"0!important"}>
+			{mode === 'desktop' && <TimelineOppositeContent sx={{ m: 'auto 0' }} variant="body2" color="text.secondary" minWidth={'170px'} flex={"0!important"}>
 			{moment(commit.commit.author.date).format("MMMM Do YYYY")}
 			{/*<br />
 			{moment(commit.commit.author.date).format("h:MM a")}*/}
-			</TimelineOppositeContent>
+			</TimelineOppositeContent>}
+			{mode === 'mobile' && <TimelineOppositeContent sx={{ m: 'auto 0' }} variant="body2" color="text.secondary" minWidth={'0px'} width={'0px'} flex={"0!important"}></TimelineOppositeContent>}
 			<TimelineSeparator>
 				<TimelineConnector />
 				{commit.author && <span style={{width:'52px', height: '52px', marginTop: '10px', marginBottom: '10px', borderRadius: '30%', boxShadow: '2px 3px 3px rgb(0 0 0 / 30%)'}}>{commit.author && commit.author.avatar_url && <img alt='Avatar' src={commit.author.avatar_url} width={'100%'} style={{borderRadius: '30%'}} />}</span>}
@@ -62,7 +67,13 @@ const Commit = ({ commit }) => {
 					}
 				<TimelineConnector />
 			</TimelineSeparator>
-			<TimelineContent>
+			<TimelineContent sx={[
+				mode === 'mobile' && {
+					m: "0px",
+					p: 0,
+					pl: 1
+				}
+			]}>
 				<Box sx={{ 
 					bgcolor: customizer.activeMode === 'light' ? theme.palette.primary.light : theme.palette.primary.dark, 
 					p: 3, 
@@ -76,6 +87,10 @@ const Commit = ({ commit }) => {
 			</TimelineContent>
 		</TimelineItem>
 	)
+}
+
+ProjectCommits.defaultProps = {
+	mode: 'desktop'
 }
 
 export default ProjectCommits

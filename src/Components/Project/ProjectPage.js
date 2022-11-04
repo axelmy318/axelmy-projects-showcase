@@ -37,7 +37,7 @@ const ProjectPage = ({ path, undefinedProject }) => {
             case "/examples":
                 return <ProjectExamples project={project} />
             case "/commits":
-                return <ProjectCommits project={project} />
+                return <ProjectCommits project={project} mode={biggerThanMd ? 'desktop' : 'mobile'} />
         }
     }
 

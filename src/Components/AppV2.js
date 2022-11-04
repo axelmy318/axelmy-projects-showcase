@@ -13,7 +13,7 @@ const App = () => {
     const theme = ThemeSettings()
     const customizer = useSelector(state => state.Customizer)
     const dispatch = useDispatch()
-    console.log(customizer)
+    
     if(!customizer.isLoaded) 
         dispatch(setCustomizer(loadFromLocalStorage('customizer')))
 
