@@ -55,7 +55,7 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 						</GithubScraper>
 						</div>
 						:
-						<div className='text-center'>
+						<div className='text-center github-sidebar'>
 						<h3 className='text-center'>GitHub Profile</h3>
 						<GithubScraper
 							username={"axelmy318"} 

@@ -11,6 +11,7 @@ import { VscLink as LogoCopy } from 'react-icons/vsc'
 import { Box } from '@mui/system';
 import { useMediaQuery } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
 
 
 const ProjectExample = ({ page, example, open, setOpen }) => {
@@ -60,20 +61,28 @@ const ProjectExample = ({ page, example, open, setOpen }) => {
     return (<>
         <div className={`project-example ${open ? 'opened' : ''}`}>
             <Box 
-                component={'h1'} 
-                className='underline' 
+                component={'h2'} 
+                className='underline font-bold' 
                 style={{display: 'inline-flex', textDecoration: 'none', paddingBottom: '10px', width: '100%'}} 
                 onClick={() => handleTitleClick()}
+                id={example.name}
             >
                 <span className='example-open-status' style={{marginTop: '5px'}}>
                     <IconContext.Provider value={{color: colors.palette.primary.main}}><LogoChevron /></IconContext.Provider>
                 </span>
-                <span>{example.name}</span>
+                <Box component={"span"} sx={[
+                    open && {
+                        textDecoration: 'underline',
+                        textDecorationColor: colors.palette.secondary.main
+                    }
+                ]}>
+                    {example.name}
+                </Box>
                 {open && biggerThanMd && <>
                     <Box component={"span"}
                         onClick={copyProjectLink} 
                         className='example-copy-button' 
-                        style={{marginTop: '14px', marginLeft: '15px', display: 'block'}}
+                        style={{marginTop: '9px', marginLeft: '15px', display: 'block'}}
                         sx={{
                             color: colors.activeMode === 'light' ? 'grey' : 'white',
                             transition: 'color',
@@ -91,10 +100,10 @@ const ProjectExample = ({ page, example, open, setOpen }) => {
                         <Box component={"span"} sx={{
                             fontSize: '40%',
                             fontWeight: 'normal',
-                            marginTop: '16px',
+                            marginTop: '12px',
                             marginLeft: '10px',
                         }}>
-                            copied!
+                            link copied!
                         </Box>
                     </>}
                 </>}

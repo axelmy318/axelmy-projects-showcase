@@ -384,7 +384,7 @@ h5 {
   margin: 0 30px;
 }
 
-.project-example h1 {
+.project-example h2 {
   cursor: pointer;
 }
 
@@ -395,7 +395,7 @@ h5 {
 }
 
 
-.project-example.opened h1 .example-open-status {
+.project-example.opened .example-open-status {
   transition: "all";
   margin-right: 10px;
   transform: rotateZ(90deg) translate(-3px, 0);
