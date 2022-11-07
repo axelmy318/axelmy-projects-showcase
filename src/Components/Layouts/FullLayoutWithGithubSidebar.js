@@ -80,7 +80,7 @@ const FullLayout = () => {
                     paddingTop: '20px',
                     paddingLeft: isSidebarOpen && lgUp ? `${SidebarWidth+50}px!important` : '',
                     marginLeft: isSidebarOpen && lgUp ? '100px!important' : lgUp ? '125px!important' : '0px!important',
-                    marginRight: isGithubSidebarOpen && xlUp ? `${GithubSidebarWidth+50}px!important` : '',
+                    marginRight: isGithubSidebarOpen && xlUp ? `${GithubSidebarWidth+50}px!important` : ''
                 }}
                 className={`transition-all duration-250 ${!xlUp ? 'small-media' : ''}`}
                 >

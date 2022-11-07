@@ -1,16 +1,15 @@
 import React from 'react'
-import { MarkdownPrinter } from 'react-readme-printer';
 import { Row, Col } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { setCurrentProject } from '../redux/Projects/ProjectsAction';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 import ProjectNavButtons from './ProjectNavButtons';
 import { useMediaQuery } from '@mui/material'
 import ProjectExamples from './ProjectExamples';
 import ProjectCommits from './ProjectCommits';
 import useCurrentProject from '../customHooks/useCurrentProject';
-import useCustomizer from '../customHooks/useCustomizer';
+import ProjectReadme from './ProjectReadme';
 
 const ProjectPage = ({ path, undefinedProject }) => {
     const project = useCurrentProject()
@@ -18,7 +17,6 @@ const ProjectPage = ({ path, undefinedProject }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const biggerThanMd = useMediaQuery((theme) => theme.breakpoints.up('md'));
-    const customizer = useCustomizer()
 
     if(page === "") 
         page = '/'
@@ -34,7 +32,7 @@ const ProjectPage = ({ path, undefinedProject }) => {
         switch(page) {
             default:
             case "/":
-                return <MarkdownPrinter username={project.github.username} repository={project.github.repository} branch={project.github.mainBranch} mode={customizer.activeMode} />
+                return <ProjectReadme project={project} />
             case "/examples":
                 return <ProjectExamples project={project} />
             case "/commits":

@@ -9,9 +9,11 @@ const ProjectExamples = ({ project }) => {
 
   return (
     <div className='project-examples'>
-      { project.examples && project.examples.map((example, index) => <React.Fragment key={index}>
-        <ProjectExample page={page} open={example.name === decodedHash.substring(1)} example={example} file={example.file} />
-      </React.Fragment>)}
+      	{ 
+			project.examples && project.examples.map((example, index) => <React.Fragment key={index}>
+				<ProjectExample page={page} open={example.name === decodedHash.substring(1)} example={example} file={example.file} />
+			</React.Fragment>
+		)}
     </div>
   )
 }

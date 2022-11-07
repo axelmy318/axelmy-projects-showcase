@@ -11,7 +11,6 @@ import { VscLink as LogoCopy } from 'react-icons/vsc'
 import { Box } from '@mui/system';
 import { useMediaQuery } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useLayoutEffect } from 'react';
 
 
 const ProjectExample = ({ page, example, open, setOpen }) => {
