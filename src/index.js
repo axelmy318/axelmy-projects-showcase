@@ -27,7 +27,6 @@ else {
 }
 
 store.subscribe(() => {
-  console.log(store.getState().Customizer)
   let customizer = store.getState().Customizer
 
   saveToLocalStorage('apsv2_customizer', customizer)

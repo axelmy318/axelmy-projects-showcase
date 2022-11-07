@@ -10,6 +10,8 @@ import ProjectExamples from './ProjectExamples';
 import ProjectCommits from './ProjectCommits';
 import useCurrentProject from '../customHooks/useCurrentProject';
 import ProjectReadme from './ProjectReadme';
+import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 const ProjectPage = ({ path, undefinedProject }) => {
     const project = useCurrentProject()
@@ -17,6 +19,10 @@ const ProjectPage = ({ path, undefinedProject }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const biggerThanMd = useMediaQuery((theme) => theme.breakpoints.up('md'));
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0)
+    })
 
     if(page === "") 
         page = '/'
