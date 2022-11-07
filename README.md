@@ -20,6 +20,7 @@ https://axelmy-projects-showcase.firebaseapp.com/
 - Firebase for hosting
 - react-syntax-highlighter + prism.js to show the examples code
 - The github API to display the code snippets
+- The [shields.io](https://shields.io) API to display the badges on the README pages
 - and a few of my own packages
     - react-readme-printer to display the README files of the projects automatically
     - react-github-scraper to display github sidebar on the right and create the commits page
