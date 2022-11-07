@@ -19,77 +19,99 @@ export const Tabs = {
     COMMITS: '/commits'
 }
 
-const ProjectNavButtons = ({ project, active, isMobile }) => {
+const ProjectNavButtons = ({ author, project, active, isMobile }) => {
     const navigate = useNavigate()
     const navigateTo = link => navigate(link) 
     const customizer = useSelector((state) => state.Customizer);
     const theme = getThemeDetails(customizer.activeTheme)
 
-    const buttons = {
-        readme: {
-            id: Tabs.README,
-            text: 'README',
-            path: '/',
-            reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoReadme /></IconContext.Provider>
-        },
-        examples: {
-            id: Tabs.EXAMPLES,
-            text: 'Examples',
-            path: '/examples',
-            reactIcon: <IconContext.Provider value={{size: '35px'}}><LogoExamples /></IconContext.Provider>
-        },
-        commits: {
-            id: Tabs.COMMITS,
-            text: 'Commits',
-            path: '/commits',
-            reactIcon: <IconContext.Provider value={{size: '27px'}}><LogoCommits /></IconContext.Provider>
-        },
-        npmjs: {
-            text: <>npmjs</>,
-            url: project.npmjs,
-            reactIcon: <IconContext.Provider value={{size: '50px'}}><LogoNpm /></IconContext.Provider>
-        },
-        github: {
-            text: <>GitHub</>,
-            url: `https://github.com/${project.github.username}/${project.github.repository}.git`,
-            reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoGithub /></IconContext.Provider>
-        },
-        releases: {
-            text: <>Releases</>,
-            url: project.releases,
-            reactIcon: <IconContext.Provider value={{size: '30px'}}><LogoReleases /></IconContext.Provider>
-        },
-        website: {
-            text: <>Website</>,
-            url: project.website,
-            reactIcon: <IconContext.Provider value={{size: '27px'}}><LogoWebsite /></IconContext.Provider>
+    let buttons = {}, authorButtons = {}
+    if(project) {
+        buttons = {
+            readme: {
+                id: Tabs.README,
+                text: 'README',
+                path: '/',
+                reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoReadme /></IconContext.Provider>
+            },
+            examples: {
+                id: Tabs.EXAMPLES,
+                text: 'Examples',
+                path: '/examples',
+                reactIcon: <IconContext.Provider value={{size: '35px'}}><LogoExamples /></IconContext.Provider>
+            },
+            commits: {
+                id: Tabs.COMMITS,
+                text: 'Commits',
+                path: '/commits',
+                reactIcon: <IconContext.Provider value={{size: '27px'}}><LogoCommits /></IconContext.Provider>
+            },
+            npmjs: {
+                text: <>npmjs</>,
+                url: project.npmjs,
+                reactIcon: <IconContext.Provider value={{size: '50px'}}><LogoNpm /></IconContext.Provider>
+            },
+            github: {
+                text: <>GitHub</>,
+                url: `https://github.com/${project.github.username}/${project.github.repository}.git`,
+                reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoGithub /></IconContext.Provider>
+            },
+            releases: {
+                text: <>Releases</>,
+                url: project.releases,
+                reactIcon: <IconContext.Provider value={{size: '30px'}}><LogoReleases /></IconContext.Provider>
+            },
+            website: {
+                text: <>Website</>,
+                url: project.website,
+                reactIcon: <IconContext.Provider value={{size: '27px'}}><LogoWebsite /></IconContext.Provider>
+            }
+        }
+    } else if (author) {
+        authorButtons = {
+            npmjs: {
+                text: <>npmjs</>,
+                url: `https://www.npmjs.com/~${author.npmjs}`,
+                reactIcon: <IconContext.Provider value={{size: '50px'}}><LogoNpm /></IconContext.Provider>
+            },
+            github: {
+                text: <>GitHub</>,
+                url: `https://github.com/${author.github}`,
+                reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoGithub /></IconContext.Provider>
+            }
         }
     }
 
     let mainButtons = [];
     let secondaryButtons = []
 
+    if(project) {
+        mainButtons.push(buttons.readme)
+        if(project.examples/* && (!isMobile || (isMobile && mainButtons.length < fewerNavAmount))*/)
+            mainButtons.push(buttons.examples)
+        if(project.github/* && (!isMobile || (isMobile && mainButtons.length < fewerNavAmount))*/)
+            mainButtons.push(buttons.commits)
+        if(project.github/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
+            secondaryButtons.push(buttons.github)
+        if(project.npmjs/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
+            secondaryButtons.push(buttons.npmjs)
+        if(project.releases/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
+            secondaryButtons.push(buttons.releases)
+        if(project.website/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
+            secondaryButtons.push(buttons.website)
     
-    mainButtons.push(buttons.readme)
-    if(project.examples/* && (!isMobile || (isMobile && mainButtons.length < fewerNavAmount))*/)
-        mainButtons.push(buttons.examples)
-    if(project.github/* && (!isMobile || (isMobile && mainButtons.length < fewerNavAmount))*/)
-        mainButtons.push(buttons.commits)
-    if(project.github/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
-        secondaryButtons.push(buttons.github)
-    if(project.npmjs/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
-        secondaryButtons.push(buttons.npmjs)
-    if(project.releases/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
-        secondaryButtons.push(buttons.releases)
-    if(project.website/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
-        secondaryButtons.push(buttons.website)
-
-    if(project.customLinks) {
-        project.customLinks.forEach(customLink => secondaryButtons.push({
-            ...customLink,
-            text: <>{customLink.label}</>,
-            url: customLink.url,
-        }))
+        if(project.customLinks) {
+            project.customLinks.forEach(customLink => secondaryButtons.push({
+                ...customLink,
+                text: <>{customLink.label}</>,
+                url: customLink.url,
+            }))
+        }
+    } else if (author) {
+        if(author.github/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
+            secondaryButtons.push(authorButtons.github)
+        if(author.npmjs/* && (!isMobile || (isMobile && secondaryButtons.length < fewerNavAmount))*/)
+            secondaryButtons.push(authorButtons.npmjs)
     }
 
 
@@ -178,8 +200,8 @@ const ProjectNavButtons = ({ project, active, isMobile }) => {
 
     return (
         <>
-            {renderButtons(mainButtons, true, isMobile)}
-            {renderButtons(secondaryButtons, false, isMobile)}
+            {mainButtons.length > 0 && renderButtons(mainButtons, true, isMobile)}
+            {secondaryButtons.length > 0 && renderButtons(secondaryButtons, false, isMobile)}
         </>
     )
 }

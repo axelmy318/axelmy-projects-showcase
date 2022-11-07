@@ -92,7 +92,10 @@ const initialState = {
             reactIcon: <IconContext.Provider value={{size: '23px'}}><LogoDiscord /></IconContext.Provider>
         },
     ],
-
+    author: {
+        npmjs: "axelmy",
+        github: "axelmy318"
+    },
     projects: [
         {
             type: 'package',

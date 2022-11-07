@@ -29,12 +29,12 @@ const ProjectReadme = ({ project }) => {
                     </Grid>}
                     {project.github && <Grid item xs={"auto"}>
                         <Item sx={{borderRadius: '9px'}}>
-                            <ShieldImage label={'Release'} endpoint={'github/package-json/v'} repository={project.github.repository} username={project.github.username} />
+                            <ShieldImage label={'Version'} endpoint={'github/package-json/v'} repository={project.github.repository} username={project.github.username} />
                         </Item>
                     </Grid>}
                     {project.releases && project.github && <Grid item xs={"auto"}>
                         <Item sx={{borderRadius: '9px'}}>
-                            <ShieldImage label={'Build'} endpoint={'github/v/release'} repository={project.github.repository} username={project.github.username} />
+                            <ShieldImage label={'Release'} endpoint={'github/v/release'} repository={project.github.repository} username={project.github.username} />
                         </Item>
                     </Grid>}
                     {project.type === 'package' && <Grid item xs={"auto"}>
