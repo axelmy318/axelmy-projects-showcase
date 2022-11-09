@@ -5,19 +5,36 @@ const ShieldImage = ({ endpoint, label, path, height, radius, style, url, userna
 	const colors = useColors()
 
 	const getLink = () => {
+
+		let link = "https://img.shields.io/"
+		const useCustomColor = true
+
 		switch(endpoint) {
 			case "npm/dt":
 			case "npm/l":
-				return `https://img.shields.io/${endpoint}/${path}?label=${label}&style=${style}&color=%23${(colors.palette.secondary.main.substring(1))}`;
+				link += `${endpoint}/${path}`;
+				break;
 			case "website":
-				return `https://img.shields.io/${endpoint}?url=${url}&label=${label}&style=${style}}`
+				link += `${endpoint}?url=${url}`
+				break;
 			case "github/v/release":
-				return `https://img.shields.io/${endpoint}/${username}/${repository}?label=${label}&style=${style}&color=%23${(colors.palette.secondary.main.substring(1))}`
+				link += `${endpoint}/${username}/${repository}`
+				break;
 			case "github/package-json/v":
-				return `https://img.shields.io/${endpoint}/${username}/${repository}?label=${label}&style=${style}&color=%23${(colors.palette.secondary.main.substring(1))}`
-				default:
+				link += `${endpoint}/${username}/${repository}`
+				break;
+			default:
 				return ""
 		}
+
+		link += `?label=${label}`
+		link += `&style=${style}`
+
+		if(useCustomColor) {
+			link += `&color=%23${(colors.palette.secondary.main.substring(1))}`
+			link += `&labelColor=${colors.activeMode === 'light' ? "white" : "%23363c45"}`
+		}
+		return link
 	}
 
 	return (
