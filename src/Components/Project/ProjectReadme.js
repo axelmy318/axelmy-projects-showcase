@@ -13,7 +13,7 @@ const ProjectReadme = ({ project }) => {
 
     const Item = styled(Paper)(({ theme }) => ({
         boxShadow: '0px 7px 30px 0px rgba(90, 114, 123, 0.25)',
-        minWidth: '100px',
+        minWidth: '90px',
     }));
       
     return (
