@@ -4,7 +4,6 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { MarkdownPrinter } from 'react-readme-printer';
 import useCustomizer from '../customHooks/useCustomizer';
-import useColors from '../customHooks/useColors';
 import ShieldImage from '../ShieldImage';
 
 const ProjectReadme = ({ project }) => {
