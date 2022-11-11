@@ -72,11 +72,11 @@ const Customizer = () => {
           aria-label="settings"
           sx={[
             { position: 'fixed', right: '15px', top: '13px', backgroundColor: colors.activeMode === 'light' ? 'white' : '#33373E' },
-            /* MOBILE ONLY  --> */ !biggerThanMd && {top: '10px' }
+            /* MOBILE ONLY  --> */ !biggerThanMd && {top: '12px', backgroundColor: 'transparent', boxShadow: 'none' }
           ]}
           onClick={() => setShowDrawer(true)}
         >
-          <FeatherIcon icon="settings" style={{marginRight: biggerThanMd ? '10px' : '0px', color: colors.activeMode === 'light' ? colors.palette.secondary.main : colors.palette.primary.main}} />
+          <FeatherIcon icon="settings" style={{marginRight: biggerThanMd ? '10px' : '0px', color: colors.activeMode === 'light' ? "#949DB2" : '#949DB2'}} />
           {biggerThanMd && <Typography sx={{color: colors.activeMode === 'light' ? 'black' : 'white'}}>Settings</Typography>}
         </Fab>
         }
