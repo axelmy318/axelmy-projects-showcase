@@ -51,11 +51,15 @@ body {
 }
 
 span.readme-file svg {
-  margin-top: 7px
+  margin-top: 8px
+}
+
+span.readme-file span.repo {
+  background-color: #e1e1e1;
 }
 
 span.readme-file span.file {
-  margin-top: 5px;
+  margin-top: 6px;
 }
 
 h1 {

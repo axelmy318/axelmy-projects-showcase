@@ -4,7 +4,6 @@ import { Outlet } from 'react-router-dom'
 import Sidebar from './sidebar/Sidebar'
 import Header from './header/Header'
 import Footer from './footer/Footer'
-import Customizer from './Customizer';
 import { TopbarHeight, SidebarWidth, GithubSidebarWidth } from '../../assets/global/Theme-variable'
 import { useSelector } from 'react-redux'
 import GithubSidebar from './sidebar/GithubSidebar'
@@ -87,7 +86,7 @@ const FullLayout = () => {
                 <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>
                     <Outlet />
                 </Box>
-                <Customizer />
+                {/*<Customizer />*/}
                 <Footer />
                 </Container>
             </PageWrapper>

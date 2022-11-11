@@ -8,6 +8,7 @@ import {
     useMediaQuery,
 } from '@mui/material';
 import PropTypes from 'prop-types';
+import Customizer from '../Customizer';
 
 const Header = ({ sx, customClass, toggleSidebar, toggleMobileSidebar }) => {
     const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
@@ -58,9 +59,7 @@ const Header = ({ sx, customClass, toggleSidebar, toggleMobileSidebar }) => {
                 mr: 1,
             }}
             />
-            {/* ------------------------------------------- */}
-            {/* Profile Dropdown */}
-            {/* ------------------------------------------- */}
+            <Customizer />
         </Toolbar>
         </AppBar>
     );

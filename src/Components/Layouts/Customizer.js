@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import FeatherIcon from 'feather-icons-react';
 import { setTheme, setDarkMode } from '../redux/Customizer/Action';
 import CustomRadio from "./CustomRadio";
+import useMediaQueryHook from "../customHooks/useMediaQueryHook"
 
 const SidebarWidth = '320px';
 
@@ -21,6 +22,8 @@ const Customizer = () => {
   const [showDrawer, setShowDrawer] = useState(false);
   const customizer = useSelector((state) => state.Customizer);
   const dispatch = useDispatch();
+  const biggerThanMd = useMediaQueryHook("md")
+
   const thColors = [
     {
       id: 1,
@@ -62,12 +65,18 @@ const Customizer = () => {
     <div>
       <Tooltip title="Settings">
         <Fab
+          size={biggerThanMd ? "large" : "small"}
+          variant={biggerThanMd ? 'extended' : 'normal'}
           color="primary"
           aria-label="settings"
-          sx={{ position: 'fixed', right: '15px', bottom: '15px' }}
+          sx={[
+            { position: 'fixed', right: '15px', top: '10px' },
+            !biggerThanMd && {top: '10px' }
+          ]}
           onClick={() => setShowDrawer(true)}
         >
-          <FeatherIcon icon="settings" />
+          <FeatherIcon icon="settings" style={{marginRight: biggerThanMd ? '10px' : '0px'}} />
+          {biggerThanMd && <Typography>Settings</Typography>}
         </Fab>
       </Tooltip>
       <Drawer

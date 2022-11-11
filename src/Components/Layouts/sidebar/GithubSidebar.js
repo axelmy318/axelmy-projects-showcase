@@ -89,7 +89,7 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 					right: lgUp ? '30px' : '',
 					borderRadius: lgUp ? '9px' : '0',
 					border: '0',
-					height: 'calc(100vh - 200px)',
+					height: 'calc(100vh - 130px)',
 					boxShadow:'0px 7px 30px 0px rgb(90 114 123 / 11%)'
 					},
 				}}

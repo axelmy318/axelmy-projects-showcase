@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { experimentalStyled, useMediaQuery, Container, Box } from '@mui/material'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useParams } from 'react-router-dom'
 import Sidebar from './sidebar/Sidebar'
 import Header from './header/Header'
 import Footer from './footer/Footer'
-import Customizer from './Customizer';
-import { TopbarHeight } from '../../assets/global/Theme-variable'
-import useCustomizer from '../customHooks/useCustomizer'
+import { TopbarHeight, SidebarWidth, GithubSidebarWidth } from '../../assets/global/Theme-variable'
+import { useSelector } from 'react-redux'
+import useColors from '../customHooks/useColors'
 
 const MainWrapper = experimentalStyled('div')(() => ({
   display: 'flex',
@@ -30,14 +30,33 @@ const PageWrapper = experimentalStyled('div')(({ theme }) => ({
 
 const FullLayout = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const [isGithubSidebarOpen, ] = useState(true);
     const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+    const { '*': page } = useParams()
+    console.log(page)
     const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+    const xlUp = useMediaQuery((theme) => theme.breakpoints.up('xl'));
 
-    const customizer = useCustomizer()
+    const customizer = useSelector(state => state.Customizer)
+    const colors = useColors()
+    
 
     return (
         <>
-            <MainWrapper>
+            <MainWrapper sx={{
+                '& *::selection': {
+                    backgroundColor: colors.palette.primary.main
+                },
+                '& a' : {
+                    color: colors.palette.primary.main
+                },
+                '& .override-link-color a': {
+                    color: 'inherit'
+                },
+                '& li.Mui-selected a': {
+                    color: 'white'
+                }
+            }}>
             <Header
                 sx={{
                 paddingLeft: isSidebarOpen && lgUp ? '0' : '',
@@ -60,14 +79,16 @@ const FullLayout = () => {
                 maxWidth={false}
                 sx={{
                     paddingTop: '20px',
-                    paddingLeft: isSidebarOpen && lgUp ? '310px!important' : '',
+                    paddingLeft: isSidebarOpen && lgUp ? `${SidebarWidth+50}px!important` : '',
+                    marginLeft: isSidebarOpen && lgUp ? '100px!important' : lgUp ? '125px!important' : '0px!important',
+                    marginRight: isGithubSidebarOpen && xlUp ? `${GithubSidebarWidth+50}px!important` : ''
                 }}
-                className='transition-all duration-250'
+                className={`transition-all duration-250 ${!xlUp ? 'small-media' : ''}`}
                 >
                 <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>
                     <Outlet />
                 </Box>
-                <Customizer />
+                {/*<Customizer />*/}
                 <Footer />
                 </Container>
             </PageWrapper>
