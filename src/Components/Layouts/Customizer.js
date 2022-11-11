@@ -15,6 +15,7 @@ import FeatherIcon from 'feather-icons-react';
 import { setTheme, setDarkMode } from '../redux/Customizer/Action';
 import CustomRadio from "./CustomRadio";
 import useMediaQueryHook from "../customHooks/useMediaQueryHook"
+import useColors from "../customHooks/useColors"
 
 const SidebarWidth = '320px';
 
@@ -23,6 +24,7 @@ const Customizer = () => {
   const customizer = useSelector((state) => state.Customizer);
   const dispatch = useDispatch();
   const biggerThanMd = useMediaQueryHook("md")
+  const colors = useColors()
 
   const thColors = [
     {
@@ -64,20 +66,20 @@ const Customizer = () => {
   return (
     <div>
       <Tooltip title="Settings">
-        <Fab
-          size={biggerThanMd ? "large" : "small"}
+        {<Fab
+          size={biggerThanMd ? "medium" : "small"}
           variant={biggerThanMd ? 'extended' : 'normal'}
-          color="primary"
           aria-label="settings"
           sx={[
-            { position: 'fixed', right: '15px', top: '10px' },
-            !biggerThanMd && {top: '10px' }
+            { position: 'fixed', right: '15px', top: '13px', backgroundColor: colors.activeMode === 'light' ? 'white' : '#33373E' },
+            /* MOBILE ONLY  --> */ !biggerThanMd && {top: '10px' }
           ]}
           onClick={() => setShowDrawer(true)}
         >
-          <FeatherIcon icon="settings" style={{marginRight: biggerThanMd ? '10px' : '0px'}} />
-          {biggerThanMd && <Typography>Settings</Typography>}
+          <FeatherIcon icon="settings" style={{marginRight: biggerThanMd ? '10px' : '0px', color: colors.activeMode === 'light' ? colors.palette.secondary.main : colors.palette.primary.main}} />
+          {biggerThanMd && <Typography sx={{color: colors.activeMode === 'light' ? 'black' : 'white'}}>Settings</Typography>}
         </Fab>
+        }
       </Tooltip>
       <Drawer
         anchor="right"
