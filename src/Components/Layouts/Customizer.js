@@ -76,7 +76,7 @@ const Customizer = () => {
           ]}
           onClick={() => setShowDrawer(true)}
         >
-          <FeatherIcon icon="settings" style={{marginRight: biggerThanMd ? '10px' : '0px', color: colors.activeMode === 'light' ? "#949DB2" : '#949DB2'}} />
+          <FeatherIcon icon="settings" style={{marginRight: biggerThanMd ? '10px' : '0px', color: colors.activeMode === 'light' ? biggerThanMd ? colors.palette.primary.main : "#949DB2" : biggerThanMd ? colors.palette.primary.main : "#949DB2"}} />
           {biggerThanMd && <Typography sx={{color: colors.activeMode === 'light' ? 'black' : 'white'}}>Settings</Typography>}
         </Fab>
         }
