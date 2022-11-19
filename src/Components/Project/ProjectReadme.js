@@ -23,27 +23,27 @@ const ProjectReadme = ({ project }) => {
             }}>
                 {project.type === 'package' && <Grid item xs={"auto"}>
                     <Item sx={{borderRadius: '9px'}}>
-                        <ShieldImage label={'Downloads'} endpoint={'npm/dt'} path={project.path.substring(1)} />
+                        <ShieldImage label={'DOWNLOADS'} endpoint={'npm/dt'} path={project.path.substring(1)} />
                     </Item>
                 </Grid>}
                 {project.github && <Grid item xs={"auto"}>
                     <Item sx={{borderRadius: '9px'}}>
-                        <ShieldImage label={'Version'} endpoint={'github/package-json/v'} repository={project.github.repository} username={project.github.username} />
+                        <ShieldImage label={'VERSION'} endpoint={'github/package-json/v'} repository={project.github.repository} username={project.github.username} />
                     </Item>
                 </Grid>}
                 {project.releases && project.github && <Grid item xs={"auto"}>
                     <Item sx={{borderRadius: '9px'}}>
-                        <ShieldImage label={'Release'} endpoint={'github/v/release'} repository={project.github.repository} username={project.github.username} />
+                        <ShieldImage label={'RELEASE'} endpoint={'github/v/release'} repository={project.github.repository} username={project.github.username} />
                     </Item>
                 </Grid>}
                 {project.type === 'package' && <Grid item xs={"auto"}>
                     <Item sx={{borderRadius: '9px'}}>
-                        <ShieldImage label={'License'} endpoint={'npm/l'} path={project.path.substring(1)} />
+                        <ShieldImage label={'LICENSE'} endpoint={'npm/l'} path={project.path.substring(1)} />
                     </Item>
                 </Grid>}
                 {project.type === 'website' && <Grid item xs={"auto"}>
                     <Item sx={{borderRadius: '9px'}}>
-                        <ShieldImage label={'Website'} endpoint={'website'} url={project.website} />
+                        <ShieldImage label={'WEBSITE'} endpoint={'website'} url={project.website} />
                     </Item>
                 </Grid>}
             </Grid>

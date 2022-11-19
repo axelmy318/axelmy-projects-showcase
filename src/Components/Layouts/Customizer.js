@@ -16,7 +16,7 @@ import { setTheme, setDarkMode } from '../redux/Customizer/Action';
 import CustomRadio from "./CustomRadio";
 import useMediaQueryHook from "../customHooks/useMediaQueryHook"
 import useColors from "../customHooks/useColors"
-import { useText } from '../customHooks/language/useLanguage';
+import { useTexts } from '../customHooks/language/useLanguage';
 
 const SidebarWidth = '320px';
 
@@ -26,7 +26,7 @@ const Customizer = () => {
   const dispatch = useDispatch();
   const biggerThanMd = useMediaQueryHook("md")
   const colors = useColors()
-  const texts = useText()
+  const texts = useTexts()
 
   const thColors = [
     {
@@ -79,7 +79,7 @@ const Customizer = () => {
           onClick={() => setShowDrawer(true)}
         >
           <FeatherIcon icon="settings" style={{marginRight: biggerThanMd ? '10px' : '0px', color: colors.activeMode === 'light' ? biggerThanMd ? colors.palette.primary.main : "#949DB2" : biggerThanMd ? colors.palette.primary.main : "#949DB2"}} />
-          {biggerThanMd && <Typography sx={{color: colors.activeMode === 'light' ? 'black' : 'white'}}>{texts.get("SETTINGS", true)}</Typography>}
+          {biggerThanMd && <Typography sx={{color: colors.activeMode === 'light' ? 'black' : 'white'}}>{texts.get("SETTINGS")}</Typography>}
         </Fab>
         }
       </Tooltip>
@@ -94,13 +94,13 @@ const Customizer = () => {
         }}
       >
         <Box p={2}>
-          <Typography variant="h3">Settings</Typography>
+          <Typography variant="h3">{texts.get("SETTINGS")}</Typography>
         </Box>
         <Divider />
         <Box p={2}>
           {/* ------------ Dark light theme setting ------------- */}
           <Typography variant="h4" gutterBottom>
-            Theme Option
+            {texts.get("THEME_OPTIONS")}
           </Typography>
           <FormControl component="fieldset">
             <RadioGroup
@@ -132,7 +132,7 @@ const Customizer = () => {
         <Box pt={3} /> */}
           {/* ------------ Navbar Color setting ------------- */}
           <Typography variant="h4" gutterBottom>
-            Theme Colors
+            {texts.get("THEME_COLORS")}
           </Typography>
           {thColors.map((thcolor) => (
             <Tooltip title={thcolor.disp} placement="top" key={thcolor.id}>

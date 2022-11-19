@@ -17,6 +17,7 @@ import FeatherIcon from 'feather-icons-react';
 import { SidebarWidth } from '../../../assets/global/Theme-variable';
 import Scrollbar from '../Scrollbar'
 import useProjects from '../../customHooks/useProjects';
+import { useTexts } from '../../customHooks/language/useLanguage';
 
 const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
   const [open, setOpen] = React.useState(true)
@@ -24,6 +25,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
   let pathDirect = pathname
   const pathWithoutLastPart = pathname.slice(0, pathname.lastIndexOf('/'))
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'))
+  const texts = useTexts()
 
   pathDirect = "/"+pathDirect.split("/")[1]
 
@@ -53,7 +55,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                       fontSize="100%"
                       sx={{ mb: 1, mt: 3, ml: 1, opacity: '0.6' }}
                     >
-                      {item.subheader}
+                      {texts.get(item.subheader)}
                     </Typography>
                   </li>
                 );
@@ -132,7 +134,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                 // {/********If Sub No Menu**********/}
               } else {
                 return (
-                  <List component="li" disablePadding key={item.title}>
+                  <List component="li" disablePadding key={item.title ? item.title: item.TEXT_KEY}>
                     <ListItem
                       className='listItem'
                       onClick={() => handleClick(index, item.href)}
@@ -164,7 +166,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                       >
                       { item.reactIcon ? item.reactIcon : <FeatherIcon icon={item.icon} width="20" height="20" /> }
                       </ListItemIcon>
-                      <ListItemText className='sidebar-item-text' onClick={onSidebarClose}>{item.title}</ListItemText>
+                      <ListItemText className='sidebar-item-text' onClick={onSidebarClose}>{item.TEXT_KEY ? texts.get(item.TEXT_KEY) : item.title}</ListItemText>
                     </ListItem>
                   </List>
                 );

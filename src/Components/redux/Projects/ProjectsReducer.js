@@ -29,12 +29,12 @@ import { IconContext } from 'react-icons'
 const initialState = {
     families: [
         {
-            title: 'About me',
+            TEXT_KEY: 'ABOUT_ME',
             href: '/',
             icon: 'user'
         },
         {
-            subheader: "Packages",
+            subheader: "PACKAGES",
         },
         {
             title: 'React Github Scraper',
@@ -63,7 +63,7 @@ const initialState = {
         },
         
         {
-            subheader: "Applications",
+            subheader: "APPLICATIONS",
         },
         {
             title: 'Philips HUE Controller',
@@ -71,7 +71,7 @@ const initialState = {
             reactIcon: <IconContext.Provider value={{size: '22px'}}><LogoApplication /></IconContext.Provider>
         },
         {
-            subheader: "Websites",
+            subheader: "WEBSITES",
         },
         {
             title: 'Axelmy\'s Projects Showcase',
@@ -84,7 +84,7 @@ const initialState = {
             reactIcon: <IconContext.Provider value={{size: '20px'}}><LogoWebsite /></IconContext.Provider>
         },
         {
-            subheader: "Miscellaneous",
+            subheader: "MISCELLANEOUS",
         },
         {
             title: 'Discord Weather Bot',

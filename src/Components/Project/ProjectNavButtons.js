@@ -12,6 +12,7 @@ import { DiNpm as LogoNpm } from 'react-icons/di'
 import { AiOutlineCodeSandbox as LogoReleases} from 'react-icons/ai'
 import { TfiWorld as LogoWebsite } from 'react-icons/tfi'
 import { IconContext } from 'react-icons'
+import { useTexts } from '../customHooks/language/useLanguage';
 
 export const Tabs = {
     README: '/',
@@ -24,6 +25,7 @@ const ProjectNavButtons = ({ author, project, active, isMobile }) => {
     const navigateTo = link => navigate(link) 
     const customizer = useSelector((state) => state.Customizer);
     const theme = getThemeDetails(customizer.activeTheme)
+    const texts = useTexts()
 
     let buttons = {}, authorButtons = {}
     if(project) {
@@ -36,13 +38,13 @@ const ProjectNavButtons = ({ author, project, active, isMobile }) => {
             },
             examples: {
                 id: Tabs.EXAMPLES,
-                text: 'Examples',
+                text: 'EXAMPLES',
                 path: '/examples',
                 reactIcon: <IconContext.Provider value={{size: '35px'}}><LogoExamples /></IconContext.Provider>
             },
             commits: {
                 id: Tabs.COMMITS,
-                text: 'Commits',
+                text: 'COMMITS',
                 path: '/commits',
                 reactIcon: <IconContext.Provider value={{size: '27px'}}><LogoCommits /></IconContext.Provider>
             },
@@ -57,12 +59,12 @@ const ProjectNavButtons = ({ author, project, active, isMobile }) => {
                 reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoGithub /></IconContext.Provider>
             },
             releases: {
-                text: <>Releases</>,
+                text: 'RELEASES',
                 url: project.releases,
                 reactIcon: <IconContext.Provider value={{size: '30px'}}><LogoReleases /></IconContext.Provider>
             },
             website: {
-                text: <>Website</>,
+                text: 'WEBSITE',
                 url: project.website,
                 reactIcon: <IconContext.Provider value={{size: '27px'}}><LogoWebsite /></IconContext.Provider>
             }
@@ -182,7 +184,7 @@ const ProjectNavButtons = ({ author, project, active, isMobile }) => {
                                 {!useIcons && <>
                                     <span className='span-center-container'>
                                         {button.reactIcon && <span style={{paddingRight: '10px'}}>{button.reactIcon}</span>}
-                                        {button.path && <span>{button.text}</span>}
+                                        {button.path && <span>{typeof button.text === 'string' ? texts.get(button.text) : button.text}</span>}
                                         {!button.path && <span>{button.text}</span>}
                                     </span>
                                 </>}

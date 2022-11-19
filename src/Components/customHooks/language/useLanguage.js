@@ -17,7 +17,7 @@ const useLanguage = () => {
 
 export const useAvailableLanguages = () => useSelector(state => state.Customizer.languages.available)
 
-export const useText = () => {
+export const useTexts = () => {
     const language = useLanguage()
 
     class Texts {
@@ -25,7 +25,7 @@ export const useText = () => {
             this.texts = texts
         }
 
-        get(key, capFirstLetter) {
+        get(key, capFirstLetter = true) {
             let text = this.texts[key]
 
             if(capFirstLetter) 

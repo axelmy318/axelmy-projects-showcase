@@ -1,8 +1,10 @@
 import React from 'react'
 import useColors from './customHooks/useColors'
+import { useTexts } from './customHooks/language/useLanguage'
 
 const ShieldImage = ({ endpoint, label, path, height, radius, style, url, username, repository }) => {
 	const colors = useColors()
+	const texts = useTexts()
 
 	const getLink = () => {
 
@@ -29,7 +31,7 @@ const ShieldImage = ({ endpoint, label, path, height, radius, style, url, userna
 				return ""
 		}
 
-		link += `?label=${label}`
+		link += `?label=${texts.get(label)}`
 		link += `&style=${style}`
 
 		if(useCustomColor) {

@@ -11,12 +11,14 @@ import Scrollbar from '../Scrollbar'
 import GithubScraper, { Languages, StargazersCount, Topics, Contributors, Size, PushedAt, OwnerAvatar, OwnerFollowersCount, PublicReposCount, MemberSince } from 'react-github-scraper';
 import useCurrentProject from '../../customHooks/useCurrentProject';
 import useColors from '../../customHooks/useColors';
+import { useTexts } from '../../customHooks/language/useLanguage';
 
 const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 	const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'))
 	const xlUp = useMediaQuery((theme) => theme.breakpoints.up('xl'))
 	const project = useCurrentProject()
 	const { pathname } = useLocation()
+	const texts = useTexts()
 
 	const SidebarContent = (
 		<Scrollbar style={{ height: 'calc(100vh - 5px)' }}>
@@ -27,17 +29,17 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 						?
 						project != null && 
 						<div className='text-center github-sidebar'>
-						<h3 className='text-center'>GitHub Repo</h3>
+						<h3 className='text-center'>{texts.get("GITHUB_REPO")}</h3>
 						<GithubScraper 
 							username={project.github.username} 
 							repository={project.github.repository} 
 							branch={project.github.mainBranch}
 						>
-							<Contributors label={'Contributors'} />
+							<Contributors label={texts.get("CONTRIBUTORS")} />
 							<div className='separator'></div>
-							<div><Languages label={'Languages'} /></div>
+							<div><Languages label={texts.get("LANGUAGES")} /></div>
 							<div className='separator'></div>
-							<StargazersCount prefix="⭐&nbsp;" label={'Stargazers count'} />
+							<StargazersCount prefix="⭐&nbsp;" label={texts.get("STARGAZERS_COUNT")} />
 							<div className='separator'></div>
 							<div style={{
 								borderCollapse: "collapse",
@@ -46,29 +48,29 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 								lineHeight: "18px",
 								overflowWrap: "break-word",
 							}}>
-								<Topics label={'Topics'} topicCallback={(topic, index) => <Topic topic={topic} key={index} /> } />
+								<Topics label={texts.get("TOPICS")} topicCallback={(topic, index) => <Topic topic={topic} key={index} /> } />
 							</div>
 							<div className='separator'></div>
-							<PushedAt label={'Last push'} />
+							<PushedAt label={texts.get("LAST_PUSH")} />
 							<div className='separator'></div>
-							<Size label={'Size'} />
+							<Size label={texts.get("SIZE")} />
 						</GithubScraper>
 						</div>
 						:
 						<div className='text-center github-sidebar'>
-						<h3 className='text-center'>GitHub Profile</h3>
+						<h3 className='text-center'>{texts.get("GITHUB_PROFILE")}</h3>
 						<GithubScraper
 							username={"axelmy318"} 
 							repository={"axelmy318"} 
 							branch={"main"}
 						>
-							<OwnerAvatar label='Avatar' imageSize={'100%'} />
+							<OwnerAvatar label={texts.get("AVATAR")} imageSize={'100%'} />
 							<div className='separator'></div>
-							<OwnerFollowersCount label='Followers' />
+							<OwnerFollowersCount label={texts.get("FOLLOWERS")} />
 							<div className='separator'></div>
-							<PublicReposCount prefix='📦&nbsp;' label='Public repos' />
+							<PublicReposCount prefix='📦&nbsp;' label={texts.get("PUBLIC_REPOS")} />
 							<div className='separator'></div>
-							<MemberSince label='Joined' />
+							<MemberSince label={texts.get("JOINED")} />
 						</GithubScraper>
 						</div> 
 						}
