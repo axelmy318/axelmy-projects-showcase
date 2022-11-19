@@ -17,7 +17,7 @@ export const texts = {
     LIGHT: 'clair',
     MISCELLANEOUS: 'divers',
     PACKAGES: 'paquets',
-    PAGE_UNAVAILABLE_IN_LANGUAGE: 'Cette page n\'est pas disponible dans le language sélectionné.',
+    PAGE_UNAVAILABLE_IN_LANGUAGE: 'Cette page n\'est pas disponible dans le language sélectionnée.',
     PUBLIC_REPOS: 'dépôts publics',
     RELEASE: 'publication',
     SETTINGS: 'paramètres',

@@ -60,7 +60,7 @@ const LanguageSelector = () => {
                         width: '200px',
                         right: 0,
                         top: '70px !important',
-                        padding: '10px'
+                        padding: '5px'
                     },
                 }}
             >
@@ -69,20 +69,27 @@ const LanguageSelector = () => {
                     ml: 2,
                     }}
                 >
-                    { languages && Object.keys(languages).map((key) => (<>
-                        <Box key={key}>
+                    { languages && Object.keys(languages).map((key) => (
+                        <Box 
+                            key={key}>
                             <Box
+                                className='transition-all duration-150 rounded'
                                 sx={{
                                     pt: 2,
                                     pb: 2,
+                                    mr: 2,
                                     borderRadius: '5px',
+                                    '&:hover': {
+                                        backgroundColor: colors.backgroundColor,
+                                        cursor: 'pointer'
+                                    }
                                 }}
                                 onClick={() => {handleLanguageClose(); dispatch(setLanguage(parseInt(key)))}}
                             >
                                 <Box display="flex" alignItems="center">
                                     <img
                                         src={`https://flagcdn.com/${languages[key].flag}.svg`} 
-                                        style={{border: '1px solid #afafaf', marginRight: '10px'}} 
+                                        style={{border: '1px solid #afafaf', marginRight: '10px', marginLeft: '15px'}} 
                                         width="25"
                                         alt="South Africa"
                                     />
@@ -91,7 +98,7 @@ const LanguageSelector = () => {
                                 </Box>
                             </Box>
                         </Box>
-                    </>)) }
+                    )) }
                 </Box>
             </Menu>
         </div>

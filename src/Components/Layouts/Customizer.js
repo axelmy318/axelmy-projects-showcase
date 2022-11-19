@@ -67,7 +67,7 @@ const Customizer = () => {
   ];
   return (
     <div>
-      <Tooltip title="Settings">
+      <Tooltip title={texts.get("SETTINGS")}>
         {<Fab
           size={biggerThanMd ? "medium" : "small"}
           variant={biggerThanMd ? 'extended' : 'normal'}
