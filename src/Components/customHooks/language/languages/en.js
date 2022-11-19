@@ -17,6 +17,7 @@ export const texts = {
     LIGHT: 'light',
     MISCELLANEOUS: 'miscellaneous',
     PACKAGES: 'packages',
+    PAGE_UNAVAILABLE_IN_LANGUAGE: 'This page is not available in the selected language',
     PUBLIC_REPOS: 'public repos',
     RELEASE: 'release',
     SETTINGS: 'settings',
@@ -27,6 +28,7 @@ export const texts = {
     TOPICS: 'topics',
     VERSION: 'version',
     README: 'readme',
+    README_FILE_NOT_AVAILABLE_IN_LANGUAGE: 'This README file is not available in the selected language.',
     WEBSITE: 'website',
     WEBSITES: 'websites',
 }

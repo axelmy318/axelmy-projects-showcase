@@ -47,7 +47,6 @@ export const useTexts = () => {
 
 export const useReadmeInCurrentLanguageForCurrentProject = () => {
     const currentLanguage = useLanguage()
-    const available = useAvailableLanguages()
     const currentProject = useCurrentProject()
 
     if(!currentProject) 
@@ -58,9 +57,9 @@ export const useReadmeInCurrentLanguageForCurrentProject = () => {
         currentProject.github.readmeLanguages 
         && currentProject.github.readmeLanguages.hasOwnProperty(currentLanguage.code)
     )
-        return currentProject.github.readmeLanguages[currentLanguage.code]
+        return {found: true, file: currentProject.github.readmeLanguages[currentLanguage.code]}
     else
-        return "README"
+        return {found: false, file: "README"}
 }
 
 export default useLanguage

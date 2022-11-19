@@ -17,7 +17,7 @@ const Header = ({ sx, customClass, toggleSidebar, toggleMobileSidebar }) => {
     return (
         <AppBar sx={sx} elevation={0} className={customClass}>
         <Toolbar>
-            {mdUp ? <><h1 className='mt-2'>APS</h1><div className='ml-36' /></> : ''}
+            {mdUp ? <><h2 className='mt-2'>axelmry</h2><div className='ml-32' /></> : ''}
             
             <IconButton
             edge="start"

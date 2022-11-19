@@ -5,16 +5,19 @@ import Paper from '@mui/material/Paper';
 import { MarkdownPrinter } from 'react-readme-printer';
 import useCustomizer from '../customHooks/useCustomizer';
 import ShieldImage from '../ShieldImage';
-import { useReadmeInCurrentLanguageForCurrentProject } from '../customHooks/language/useLanguage';
+import { useReadmeInCurrentLanguageForCurrentProject, useTexts } from '../customHooks/language/useLanguage';
 
 const ProjectReadme = ({ project }) => {
     const customizer = useCustomizer()
     const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+    const readmeLanguage = useReadmeInCurrentLanguageForCurrentProject();
+    const texts = useTexts()
 
     const Item = styled(Paper)(({ theme }) => ({
         boxShadow: '0px 7px 30px 0px rgba(90, 114, 123, 0.25)',
         minWidth: '90px',
     }));
+
       
     return (
         <div>
@@ -47,11 +50,12 @@ const ProjectReadme = ({ project }) => {
                     </Item>
                 </Grid>}
             </Grid>
+            { !readmeLanguage.found && <div className='unavailable_readme_language_text'>{texts.get("README_FILE_NOT_AVAILABLE_IN_LANGUAGE")}</div> }
             <MarkdownPrinter 
                 username={project.github.username}
                 repository={project.github.repository}
                 branch={project.github.mainBranch}
-                file={useReadmeInCurrentLanguageForCurrentProject()}
+                file={readmeLanguage.file}
                 mode={customizer.activeMode}
                 onLoaded={() => window.scrollTo(0, 0)}
             />

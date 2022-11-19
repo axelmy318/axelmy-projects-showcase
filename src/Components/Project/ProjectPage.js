@@ -46,7 +46,7 @@ const ProjectPage = ({ path, undefinedProject }) => {
 
     return (
         <div className='main-content'>
-           <div className={`${biggerThanMd ? "inline-flex" : ""} mb-4 mt-2 ml-0`}>
+           <div className={`${biggerThanMd ? "inline-flex" : ""} mb-${biggerThanMd ? "4" : "1"} mt-2 ml-0`}>
                 {!undefinedProject && <ProjectNavButtons project={project} active={page} isMobile={!biggerThanMd} />}
             </div>
             <Row>

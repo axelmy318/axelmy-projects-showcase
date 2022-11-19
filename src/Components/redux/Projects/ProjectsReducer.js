@@ -194,7 +194,11 @@ const initialState = {
             github: {
                 username: 'axelmy318',
                 repository: 'react-readme-printer',
-                mainBranch: 'master'
+                mainBranch: 'master',
+                readmeLanguages: {
+                    en: 'README',
+                    fr: 'README_fr',
+                }
             },
             npmjs: 'https://www.npmjs.com/package/react-readme-printer',
             installation: 'npm i react-readme-printer',
@@ -235,7 +239,10 @@ const initialState = {
             github: {
                 username: 'axelmy318',
                 repository: 'react-weather-station',
-                mainBranch: 'master'
+                mainBranch: 'master',
+                readmeLanguages: {
+                    en: 'README',
+                }
             },
             npmjs: 'https://www.npmjs.com/package/react-weather-station',
             installation: 'npm i react-weather-station',
@@ -279,7 +286,10 @@ const initialState = {
             github: {
                 username: 'axelmy318',
                 repository: 'react-weekdays-input',
-                mainBranch: 'master'
+                mainBranch: 'master',
+                readmeLanguages: {
+                    en: 'README',
+                }
             },
             npmjs: 'https://www.npmjs.com/package/react-weekdays-input',
             installation: 'npm i react-weekdays-input',
@@ -343,7 +353,10 @@ const initialState = {
             github: {
                 username: 'axelmy318',
                 repository: 'react-window-open',
-                mainBranch: 'master'
+                mainBranch: 'master',
+                readmeLanguages: {
+                    en: 'README',
+                }
             },
             npmjs: 'https://www.npmjs.com/package/react-window-open',
             installation: 'npm i react-window-open',
@@ -388,7 +401,10 @@ const initialState = {
             github: {
                 username: 'axelmy318',
                 repository: 'axelmy-projects-showcase',
-                mainBranch: 'master'
+                mainBranch: 'master',
+                readmeLanguages: {
+                    en: 'README',
+                }
             },
         },
         {
@@ -399,7 +415,10 @@ const initialState = {
             github: {
                 username: 'axelmy318',
                 repository: 'spotify-companion',
-                mainBranch: 'master'
+                mainBranch: 'master',
+                readmeLanguages: {
+                    en: 'README',
+                }
             },
         },
         {
@@ -410,7 +429,10 @@ const initialState = {
             github: {
                 username: 'axelmy318',
                 repository: 'philips-hue-controller',
-                mainBranch: 'main'
+                mainBranch: 'main',
+                readmeLanguages: {
+                    en: 'README',
+                }
             }
         },
         {
@@ -427,7 +449,10 @@ const initialState = {
             github: {
                 username: 'axelmy318',
                 repository: 'discord-weather-bot',
-                mainBranch: 'master'
+                mainBranch: 'master',
+                readmeLanguages: {
+                    en: 'README',
+                }
             },
         }
     ],

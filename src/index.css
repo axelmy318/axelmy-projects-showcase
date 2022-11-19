@@ -416,3 +416,13 @@ h5 {
   transition-duration: 1000ms;*/
   max-height: 3000px;
 }
+
+.unavailable_page_language_text {
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.unavailable_readme_language_text {
+  margin-top: 20px;
+  margin-left: 40px;
+}
