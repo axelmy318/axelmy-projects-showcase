@@ -33,7 +33,7 @@ const FullLayout = () => {
     const [isGithubSidebarOpen, ] = useState(true);
     const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
     const { '*': page } = useParams()
-    console.log(page)
+    
     const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
     const xlUp = useMediaQuery((theme) => theme.breakpoints.up('xl'));
 

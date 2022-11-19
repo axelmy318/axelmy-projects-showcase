@@ -1,18 +1,24 @@
 import { useSelector } from 'react-redux'
 import useCurrentProject from '../useCurrentProject'
 import { fr, en } from './languages'
+import moment from 'moment/dist/moment'
+import 'moment/dist/locale/fr'
 
 const useLanguage = () => {
     const languages = useSelector(state => state.Customizer.languages)
 
+    let language = {
+        code: 'en',
+        flag: 'gb',
+        text: 'english'
+    }
+
     if(languages.available)
-        return languages.available[languages.selected]
-    else 
-        return {
-            code: 'en',
-            flag: 'gb',
-            text: 'english'
-        }
+        language = languages.available[languages.selected]
+    
+    moment.locale(language.code)
+    
+    return language
 }
 
 export const useAvailableLanguages = () => useSelector(state => state.Customizer.languages.available)

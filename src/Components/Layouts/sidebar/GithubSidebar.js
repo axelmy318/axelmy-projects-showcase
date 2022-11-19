@@ -11,7 +11,10 @@ import Scrollbar from '../Scrollbar'
 import GithubScraper, { Languages, StargazersCount, Topics, Contributors, Size, PushedAt, OwnerAvatar, OwnerFollowersCount, PublicReposCount, MemberSince } from 'react-github-scraper';
 import useCurrentProject from '../../customHooks/useCurrentProject';
 import useColors from '../../customHooks/useColors';
-import { useTexts } from '../../customHooks/language/useLanguage';
+import useLanguage, { useTexts } from '../../customHooks/language/useLanguage';
+
+import moment from 'moment/dist/moment'
+import 'moment/dist/locale/fr'
 
 const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 	const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'))
@@ -19,6 +22,7 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 	const project = useCurrentProject()
 	const { pathname } = useLocation()
 	const texts = useTexts()
+	const language = useLanguage()
 
 	const SidebarContent = (
 		<Scrollbar style={{ height: 'calc(100vh - 5px)' }}>

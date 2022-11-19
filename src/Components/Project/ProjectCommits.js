@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import GithubScraper, { Commits } from 'react-github-scraper'
 import { Typography, Box } from '@mui/material';
 import FeatherIcon from 'feather-icons-react';
@@ -12,29 +12,30 @@ import {
 	TimelineDot,
   } from '@mui/lab';
 import getThemeDetails from '../../functions/getThemeDetails'
-import moment from 'moment'
-import useCustomizer from '../customHooks/useCustomizer';
+import moment from 'moment/dist/moment'
+import 'moment/dist/locale/fr'
+
+import useCustomizer from '../customHooks/useCustomizer'
 
 const ProjectCommits = ({ project, mode }) => {
-  return (
-    <div className={`project-commits w-[${mode === 'desktop' ? "85" : "100"}%]`} >
-        <GithubScraper username={project.github.username} repository={project.github.repository} branch={"project.github.mainBranch"}>
-			<Timeline position="right" sx={[
-				{ 
-					color: 'rgba(0, 0, 0, 0.87)', 
-				}
-				]}>
-				<Commits maxDisplayed={0} commitCallback={(c, i) => <Commit commit={c} key={i} mode={mode} />} />
-			</Timeline>
-		</GithubScraper>
-    </div>
-  )
+	return (
+		<div className={`project-commits w-[${mode === 'desktop' ? "85" : "100"}%]`} >
+			<GithubScraper username={project.github.username} repository={project.github.repository} branch={"project.github.mainBranch"}>
+				<Timeline position="right" sx={[
+					{ 
+						color: 'rgba(0, 0, 0, 0.87)', 
+					}
+					]}>
+					<Commits maxDisplayed={0} commitCallback={(c, i) => <Commit commit={c} key={i} mode={mode} />} />
+				</Timeline>
+			</GithubScraper>
+		</div>
+	)
 }
 
 const Commit = ({ commit, mode }) => {
     const customizer = useCustomizer()
     const theme = getThemeDetails(customizer.activeTheme)
-
 	return (
 		<TimelineItem
 			sx={{

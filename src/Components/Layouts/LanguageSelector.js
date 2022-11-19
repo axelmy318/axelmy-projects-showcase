@@ -93,7 +93,6 @@ const LanguageSelector = () => {
                                         width="25"
                                         alt="South Africa"
                                     />
-                                    {console.log("test", key, languages[key])}
                                     {languages[key].text}
                                 </Box>
                             </Box>

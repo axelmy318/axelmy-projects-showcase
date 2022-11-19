@@ -21,7 +21,7 @@ const ProjectExample = ({ page, example, open, setOpen }) => {
     const colors = useColors()
     const timerRef = React.useRef(null);
     const biggerThanMd = useMediaQuery((theme) => theme.breakpoints.up('md'));
-    console.log("page", page)
+    
     useEffect(() => {
         LoadGithubFile('axelmy318', 'axelmy-projects-showcase', 'master', example.file)
             .then(response => {

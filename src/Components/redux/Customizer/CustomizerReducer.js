@@ -53,7 +53,7 @@ const CustomizerReducer = (state = INIT_STATE, action) => {
         activeDir: action.payload,
       };
     case 'SET_CUSTOMIZER':
-      console.log(action)
+      
       if(action.payload === undefined) 
         return {
           ...state,
@@ -76,7 +76,6 @@ const CustomizerReducer = (state = INIT_STATE, action) => {
         isLoaded: true
       }
     case 'SET_LANGUAGE':
-      console.log(action)
       return {
         ...state,
         languages: {
