@@ -16,6 +16,7 @@ import { setTheme, setDarkMode } from '../redux/Customizer/Action';
 import CustomRadio from "./CustomRadio";
 import useMediaQueryHook from "../customHooks/useMediaQueryHook"
 import useColors from "../customHooks/useColors"
+import { useText } from '../customHooks/language/useLanguage';
 
 const SidebarWidth = '320px';
 
@@ -25,6 +26,7 @@ const Customizer = () => {
   const dispatch = useDispatch();
   const biggerThanMd = useMediaQueryHook("md")
   const colors = useColors()
+  const texts = useText()
 
   const thColors = [
     {
@@ -77,7 +79,7 @@ const Customizer = () => {
           onClick={() => setShowDrawer(true)}
         >
           <FeatherIcon icon="settings" style={{marginRight: biggerThanMd ? '10px' : '0px', color: colors.activeMode === 'light' ? biggerThanMd ? colors.palette.primary.main : "#949DB2" : biggerThanMd ? colors.palette.primary.main : "#949DB2"}} />
-          {biggerThanMd && <Typography sx={{color: colors.activeMode === 'light' ? 'black' : 'white'}}>Settings</Typography>}
+          {biggerThanMd && <Typography sx={{color: colors.activeMode === 'light' ? 'black' : 'white'}}>{texts.get("SETTINGS", true)}</Typography>}
         </Fab>
         }
       </Tooltip>
@@ -107,8 +109,8 @@ const Customizer = () => {
               value={customizer.activeMode}
               onChange={(event) => dispatch(setDarkMode(event.target.value))}
             >
-              <FormControlLabel value="light" control={<CustomRadio />} label="Light" />
-              <FormControlLabel value="dark" control={<CustomRadio />} label="Dark" />
+              <FormControlLabel value="light" control={<CustomRadio />} label={texts.get("LIGHT", true)} />
+              <FormControlLabel value="dark" control={<CustomRadio />} label={texts.get("DARK", true)} />
             </RadioGroup>
           </FormControl>
           <Box pt={3} />

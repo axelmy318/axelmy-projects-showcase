@@ -104,7 +104,11 @@ const initialState = {
             github: {
                 username: 'axelmy318',
                 repository: 'react-github-scraper',
-                mainBranch: 'master'
+                mainBranch: 'master',
+                readmeLanguages: {
+                    en: 'README',
+                    fr: 'README_fr',
+                }
             },
             npmjs: 'https://www.npmjs.com/package/react-github-scraper',
             installation: 'npm i react-github-scraper',

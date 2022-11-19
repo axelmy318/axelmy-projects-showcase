@@ -28,8 +28,10 @@ else {
 
 store.subscribe(() => {
   let customizer = store.getState().Customizer
+  let customizerCopy = {...customizer}
+  delete customizerCopy.isLoaded
 
-  saveToLocalStorage('apsv2_customizer', customizer)
+  saveToLocalStorage('apsv2_customizer', customizerCopy)
 })
 
 ReactDOM.render(

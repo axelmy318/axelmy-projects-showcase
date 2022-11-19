@@ -27,3 +27,10 @@ export const setCustomizer = (payload) => ({
   type: 'SET_CUSTOMIZER',
   payload,
 });
+
+export const setLanguage = (selected) => ({
+  type: 'SET_LANGUAGE',
+  payload: {
+    selected
+  },
+});

@@ -9,9 +9,10 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import Customizer from '../Customizer';
+import LanguageSelector from '../LanguageSelector';
 
 const Header = ({ sx, customClass, toggleSidebar, toggleMobileSidebar }) => {
-    const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+    const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'))
 
     return (
         <AppBar sx={sx} elevation={0} className={customClass}>
@@ -48,8 +49,7 @@ const Header = ({ sx, customClass, toggleSidebar, toggleMobileSidebar }) => {
             >
             <FeatherIcon icon="menu" width="20" height="20" />
             </IconButton>
-            {/* ------------ End Menu icon ------------- */}
-
+            
             <Box
             sx={{
                 width: '1px',
@@ -59,6 +59,9 @@ const Header = ({ sx, customClass, toggleSidebar, toggleMobileSidebar }) => {
                 mr: 1,
             }}
             />
+            {/* ------------ End Menu icon ------------- */}
+
+            <LanguageSelector />
             <Customizer />
         </Toolbar>
         </AppBar>

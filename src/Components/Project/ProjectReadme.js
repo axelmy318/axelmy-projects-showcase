@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import { MarkdownPrinter } from 'react-readme-printer';
 import useCustomizer from '../customHooks/useCustomizer';
 import ShieldImage from '../ShieldImage';
+import { useReadmeInCurrentLanguageForCurrentProject } from '../customHooks/language/useLanguage';
 
 const ProjectReadme = ({ project }) => {
     const customizer = useCustomizer()
@@ -47,10 +48,11 @@ const ProjectReadme = ({ project }) => {
                 </Grid>}
             </Grid>
             <MarkdownPrinter 
-                username={project.github.username} 
-                repository={project.github.repository} 
-                branch={project.github.mainBranch} 
-                mode={customizer.activeMode} 
+                username={project.github.username}
+                repository={project.github.repository}
+                branch={project.github.mainBranch}
+                file={useReadmeInCurrentLanguageForCurrentProject()}
+                mode={customizer.activeMode}
                 onLoaded={() => window.scrollTo(0, 0)}
             />
         </div>

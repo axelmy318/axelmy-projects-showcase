@@ -5,9 +5,24 @@ const INIT_STATE = {
   activeNavbarBg: '#0b70fb', // This can be any color,
   activeSidebarBg: '#ffffff', // This can be any color
   activeMode: 'light', // This can be light or dark
-  activeTheme: 'ORANGE_THEME', // BLUE_THEME, GREEN_THEME, RED_THEME, BLACK_THEME, PURPLE_THEME, INDIGO_THEME
+  activeTheme: 'BLUE_THEME', // BLUE_THEME, GREEN_THEME, RED_THEME, BLACK_THEME, PURPLE_THEME, INDIGO_THEME
   SidebarWidth: 240,
   isLoaded: false,
+  languages: {
+    selected: 0,
+    available: [
+      {
+        text: 'English',
+        code: 'en',
+        flag: 'gb'
+      },
+      {
+        text: 'Français',
+        code: 'fr',
+        flag: 'fr'
+      }
+    ]
+  }
 };
 
 const CustomizerReducer = (state = INIT_STATE, action) => {
@@ -42,12 +57,32 @@ const CustomizerReducer = (state = INIT_STATE, action) => {
       if(action.payload === undefined) 
         return {
           ...state,
+          languages: {
+            ...INIT_STATE.languages,
+            available: INIT_STATE.languages.available,
+          },
           isLoaded: true
         }
+
       return {
         ...state,
         ...action.payload,
+        languages: {
+          ...INIT_STATE.languages,
+          ...state.languages,
+          available: {...INIT_STATE.languages.available},
+          selected: action.payload.languages.selected,
+        },
         isLoaded: true
+      }
+    case 'SET_LANGUAGE':
+      console.log(action)
+      return {
+        ...state,
+        languages: {
+          ...state.languages,
+          selected: action.payload.selected
+        }
       }
     default:
       return state;
