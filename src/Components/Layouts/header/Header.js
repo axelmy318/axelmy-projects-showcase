@@ -10,14 +10,19 @@ import {
 import PropTypes from 'prop-types';
 import Customizer from '../Customizer';
 import LanguageSelector from '../LanguageSelector';
+import LogoWhite from '../../../assets/img/logowhite.png'
+import LogoBlack from '../../../assets/img/logoblack.png'
+import useColors from '../../customHooks/useColors';
 
 const Header = ({ sx, customClass, toggleSidebar, toggleMobileSidebar }) => {
     const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'))
+    const colors = useColors()
 
     return (
         <AppBar sx={sx} elevation={0} className={customClass}>
         <Toolbar>
-            {mdUp ? <><h2 className='mt-2'>axelmry</h2><div className='ml-32' /></> : ''}
+            {/*mdUp ? <><h2 className='mt-2'>axelmry</h2><div className='ml-32' /></> : ''*/}
+            { mdUp ? <div className='ml-2 mr-10'><img src={colors.activeMode === 'light' ? LogoWhite : LogoBlack} className="website-logo" style={{height: '50px'}} /></div> : '' }
             
             <IconButton
             edge="start"

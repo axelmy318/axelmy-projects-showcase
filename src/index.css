@@ -426,3 +426,9 @@ h5 {
   margin-top: 20px;
   margin-left: 40px;
 }
+
+.website-logo {
+  -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.212));
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.212));
+}
+

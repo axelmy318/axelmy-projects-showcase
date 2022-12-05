@@ -20,7 +20,7 @@ if(window.__REDUX_DEVTOOLS_EXTENSION__ !== undefined)
 
 if(useReduxDevTools){
     let composer = compose(window.__REDUX_DEVTOOLS_EXTENSION__())
-     store = createStore(Reducers, composer)
+    store = createStore(Reducers, composer)
 }
 else {
   store = createStore(Reducers)
