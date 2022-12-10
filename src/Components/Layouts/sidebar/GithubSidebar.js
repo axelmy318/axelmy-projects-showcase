@@ -23,6 +23,7 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 	const { pathname } = useLocation()
 	const texts = useTexts()
 	const language = useLanguage()
+	const colors = useColors()
 
 	const SidebarContent = (
 		<Scrollbar style={{ height: 'calc(100vh - 5px)' }}>
@@ -41,7 +42,13 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 						>
 							<Contributors label={texts.get("CONTRIBUTORS")} />
 							<div className='separator'></div>
-							<div><Languages label={texts.get("LANGUAGES")} /></div>
+							<div>
+								<Languages 
+									label={texts.get("LANGUAGES")}
+									translucid={true}
+									gradientColors={[colors.palette.primary.main, colors.palette.secondary.main]}
+								/>
+							</div>
 							<div className='separator'></div>
 							<StargazersCount prefix="⭐&nbsp;" label={texts.get("STARGAZERS_COUNT")} />
 							<div className='separator'></div>
