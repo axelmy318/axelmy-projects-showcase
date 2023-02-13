@@ -107,6 +107,11 @@ h5 {
   padding: 20px 40px;
 }
 
+.markdown-content img {
+  display: inline;
+  vertical-align: bottom;
+}
+
 .small-media .markdown-content {
   padding: 15px 8px;
 }

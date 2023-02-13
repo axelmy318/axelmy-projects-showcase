@@ -13,6 +13,7 @@ const ComponentExample = () => {
             branch='master'
             // Remove the line below
             mode={customizer.activeMode}
+            convertHtmlImgToMarkdown={true}
         />
     )
     

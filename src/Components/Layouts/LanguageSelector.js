@@ -4,7 +4,6 @@ import useLanguage, { useAvailableLanguages } from '../customHooks/language/useL
 import useMediaQueryHook from '../customHooks/useMediaQueryHook';
 import { useDispatch } from 'react-redux';
 import {
-    MenuItem,
     Menu,
     Tooltip,
     Fab,

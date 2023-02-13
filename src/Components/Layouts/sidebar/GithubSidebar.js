@@ -13,7 +13,6 @@ import useCurrentProject from '../../customHooks/useCurrentProject';
 import useColors from '../../customHooks/useColors';
 import useLanguage, { useTexts } from '../../customHooks/language/useLanguage';
 
-import moment from 'moment/dist/moment'
 import 'moment/dist/locale/fr'
 
 const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
@@ -22,7 +21,6 @@ const GithubSidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) =
 	const project = useCurrentProject()
 	const { pathname } = useLocation()
 	const texts = useTexts()
-	const language = useLanguage()
 	const colors = useColors()
 
 	const SidebarContent = (

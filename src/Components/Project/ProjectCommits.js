@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import GithubScraper, { Commits } from 'react-github-scraper'
 import { Typography, Box } from '@mui/material';
 import FeatherIcon from 'feather-icons-react';

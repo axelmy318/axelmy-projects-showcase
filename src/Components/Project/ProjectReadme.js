@@ -58,6 +58,7 @@ const ProjectReadme = ({ project }) => {
                 file={readmeLanguage.file}
                 mode={customizer.activeMode}
                 onLoaded={() => window.scrollTo(0, 0)}
+                convertHtmlImgToMarkdown={true}
             />
         </div>
     )

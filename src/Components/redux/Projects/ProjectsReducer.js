@@ -397,7 +397,7 @@ const initialState = {
             type: 'website',
             path: '/axelmy-projects-showcase',
             name: 'Axelmy\'s Projects Showcase',
-            website: 'https://axelmy-projects-showcase.firebaseapp.com/',
+            website: 'https://axelmry.com/',
             github: {
                 username: 'axelmy318',
                 repository: 'axelmy-projects-showcase',
