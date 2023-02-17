@@ -59,12 +59,12 @@ const ProjectNavButtons = ({ author, project, active, isMobile }) => {
                 reactIcon: <IconContext.Provider value={{size: '33px'}}><LogoGithub /></IconContext.Provider>
             },
             releases: {
-                text: 'RELEASES',
+                text: texts.get('RELEASES', true),
                 url: project.releases,
                 reactIcon: <IconContext.Provider value={{size: '30px'}}><LogoReleases /></IconContext.Provider>
             },
             website: {
-                text: 'WEBSITE',
+                text: texts.get('WEBSITE', true),
                 url: project.website,
                 reactIcon: <IconContext.Provider value={{size: '27px'}}><LogoWebsite /></IconContext.Provider>
             }

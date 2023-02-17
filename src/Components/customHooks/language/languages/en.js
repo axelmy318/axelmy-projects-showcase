@@ -22,6 +22,7 @@ export const texts = {
     PORTFOLIO_AND_CODE_DEMO: 'Portfolio and projects demo',
     PUBLIC_REPOS: 'public repos',
     RELEASE: 'release',
+    RELEASES: 'releases',
     SETTINGS: 'settings',
     SIZE: 'size',
     STARGAZERS_COUNT: 'stargazers count',

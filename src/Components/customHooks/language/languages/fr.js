@@ -22,6 +22,7 @@ export const texts = {
     PORTFOLIO_AND_CODE_DEMO: 'Portfolio et démo de projets',
     PUBLIC_REPOS: 'dépôts publics',
     RELEASE: 'publication',
+    RELEASES: 'releases',
     SETTINGS: 'paramètres',
     SIZE: 'taille',
     STARGAZERS_COUNT: 'nombre d\'étoiles',
