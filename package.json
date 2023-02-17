@@ -30,7 +30,7 @@
     "react-router-dom": "6.4.2",
     "react-scripts": "5.0.0",
     "react-syntax-highlighter": "^15.4.5",
-    "react-tooltip-wrapper": "1.2.0",
+    "react-tooltip-wrapper": "1.3.0",
     "react-weather-station": "^2.0.1",
     "react-weekdays-input": "1.2.25",
     "react-window-open": "^1.0.4",
