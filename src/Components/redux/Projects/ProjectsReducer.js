@@ -47,6 +47,11 @@ const initialState = {
             icon: 'package'
         },
         {
+            title: 'React Tooltip Wrapper',
+            href: '/react-tooltip-wrapper',
+            icon: 'package'
+        },
+        {
             title: 'React Weather Station',
             href: '/react-weather-station',
             icon: 'package'
@@ -231,6 +236,23 @@ const initialState = {
                 ]
             },
             ]
+        },
+        {
+            type: 'package',
+            path: '/react-tooltip-wrapper', 
+            name: 'React Tooltip Wrapper',
+            github: {
+                username: 'axelmy318',
+                repository: 'react-tooltip-wrapper',
+                mainBranch: 'master',
+                readmeLanguages: {
+                    en: 'README',
+                    fr: 'README_fr'
+                }
+            },
+            npmjs: 'https://www.npmjs.com/package/react-tooltip-wrapper',
+            installation: 'npm i react-tooltip-wrapper',
+            examples: []
         },
         {
             type: 'package',

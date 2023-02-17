@@ -1,4 +1,5 @@
 import React, { lazy } from 'react'
+import useProjects from '../customHooks/useProjects'
 import Loadable from '../Layouts/Loadable'
 
 /* ***Layouts**** */
@@ -16,6 +17,7 @@ const Router = [
             { path: '/', element: <Homepage /> },
             { path: '/react-github-scraper/*', element: <ProjectPage path={'/react-github-scraper'} /> },
             { path: '/react-readme-printer/*', element: <ProjectPage path={'/react-readme-printer'} /> },
+            { path: '/react-tooltip-wrapper/*', element: <ProjectPage path={'/react-tooltip-wrapper'} /> },
             { path: '/react-window-open/*', element: <ProjectPage path={'/react-window-open'} /> },
             { path: '/react-weather-station/*', element: <ProjectPage path={'/react-weather-station'} /> },
             { path: '/react-weekdays-input/*', element: <ProjectPage path={'/react-weekdays-input'} /> },
