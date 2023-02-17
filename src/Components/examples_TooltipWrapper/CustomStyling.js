@@ -3,9 +3,16 @@ import { TooltipWrapper } from 'react-tooltip-wrapper'
 
 const BasicExample = () => {
   return (
-    <TooltipWrapper tooltip={<>Hi, I'm a tooltip 🙂</>}>
+    <TooltipWrapper 
+    placement={'right'}
+    tooltip={<>Hi, I'm a tooltip 🙂</>}
+    tooltipStyle={{
+      borderRadius: "0px",
+      border: '1px solid grey'
+    }}
+    >
         <div className='text-lg inline'>
-            Get your mouse over me to see who I am
+            Tooltip with custom styling
         </div>
     </TooltipWrapper>
   )

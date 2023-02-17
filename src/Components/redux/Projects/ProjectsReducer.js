@@ -10,6 +10,8 @@ import ShowRepositoryExample from "../../examples_ReadmePrinter/ShowRepositoryEx
 import FunctionExample from "../../examples_ReadmePrinter/FunctionExample"
 
 import TooltipBasicExample from "../../examples_TooltipWrapper/BasicExample"
+import TooltipCustomStylingExample from "../../examples_TooltipWrapper/CustomStyling"
+import TooltipCallbackExample from "../../examples_TooltipWrapper/CallbackExample"
 
 
 import WeatherWidgetBasicExample from '../../examples_WeatherStation/BasicExample'
@@ -267,6 +269,29 @@ const initialState = {
                     component: <TooltipBasicExample />,
                     defaults: [
                         {property: 'tooltip', type: 'any', value: `null`},
+                    ]
+                },
+                {
+                    name: 'Custom styling',
+                    file: 'src/Components/examples_TooltipWrapper/CustomStyling.js',
+                    description: 'Here is how to give custom styling to the tooltip',
+                    component: <TooltipCustomStylingExample />,
+                    defaults: [
+                        {property: 'tooltip', type: 'any', value: `null`},
+                        {property: 'placement', type: 'string', value: `bottom`},
+                        {property: 'tooltipStyle', type: 'object', value: `{}`},
+                    ]
+                },
+                {
+                    name: 'Callback onShow onHide',
+                    file: 'src/Components/examples_TooltipWrapper/CallbackExample.js',
+                    description: 'Here is how to use the onShow/onHide callbacks',
+                    component: <TooltipCallbackExample />,
+                    defaults: [
+                        {property: 'tooltip', type: 'any', value: `null`},
+                        {property: 'placement', type: 'string', value: `bottom`},
+                        {property: 'onShow', type: 'func', value: `null`},
+                        {property: 'onHide', type: 'func', value: `null`},
                     ]
                 },
             ]
