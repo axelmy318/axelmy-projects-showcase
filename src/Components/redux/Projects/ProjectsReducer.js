@@ -4,19 +4,27 @@ import ContributorsExample from "../../examples_GithubScraper/ContributorsExampl
 import StargazersCountExample from "../../examples_GithubScraper/StargazersCountExample"
 import WatchersCountExample from "../../examples_GithubScraper/WatchersCountExample"
 import PushedAtExample from "../../examples_GithubScraper/PushedAtExample"
+
 import ReadmeComponentExample from '../../examples_ReadmePrinter/ComponentExample'
 import ShowRepositoryExample from "../../examples_ReadmePrinter/ShowRepositoryExample"
 import FunctionExample from "../../examples_ReadmePrinter/FunctionExample"
+
+import TooltipBasicExample from "../../examples_TooltipWrapper/BasicExample"
+
+
 import WeatherWidgetBasicExample from '../../examples_WeatherStation/BasicExample'
 import WeatherWidgetMoreDetails from '../../examples_WeatherStation/ShowMoreDetails'
 import DashboardExample from "../../examples_WeatherStation/DashboardExample"
+
 import WeekdaysBasicExample from '../../examples_WeekdaysInput/BasicExample'
 import CustomDaysExample from "../../examples_WeekdaysInput/CustomDaysExample"
 import CustomStyleExample from "../../examples_WeekdaysInput/CustomStyleExample"
 import ForcedStateExample from "../../examples_WeekdaysInput/ForcedStateExample"
+
 import NewWindowBasicExample from "../../examples_NewWindow/BasicExample"
 import ShowCharsExample from "../../examples_WeekdaysInput/ShowCharsExample"
 import OffsetsAndSizesExample from "../../examples_NewWindow/OffsetsAndSizesExample"
+
 import TitleExample from "../../examples_NewWindow/TitleExample"
 import CommitsExample from "../../examples_GithubScraper/CommitsExample"
 
@@ -179,7 +187,6 @@ const initialState = {
                     {property: 'prefix', type: 'string', value: `null`},
                 ]
             },
-            
             {
                 name: 'Pushed date component',
                 file: 'src/Components/examples_GithubScraper/PushedAtExample.js',
@@ -252,7 +259,17 @@ const initialState = {
             },
             npmjs: 'https://www.npmjs.com/package/react-tooltip-wrapper',
             installation: 'npm i react-tooltip-wrapper',
-            examples: []
+            examples: [
+                {
+                    name: 'Basic example',
+                    file: 'src/Components/examples_TooltipWrapper/BasicExample.js',
+                    description: 'A simple example covering how to use the TooltipWrapper component',
+                    component: <TooltipBasicExample />,
+                    defaults: [
+                        {property: 'tooltip', type: 'any', value: `null`},
+                    ]
+                },
+            ]
         },
         {
             type: 'package',
