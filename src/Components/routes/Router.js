@@ -9,6 +9,26 @@ const GithubFullLayout = Loadable(lazy(() => import('../Layouts/FullLayoutWithGi
 const Homepage = Loadable(lazy(() => import('../HomepageV2')))
 const ProjectPage = Loadable(lazy(() => import('../Project/ProjectPage')))
 
+const getRoutes = (projects) => {
+    return [
+        {
+            path: '/',
+            element: <GithubFullLayout />,
+            children: [
+                { path: '/', element: <Homepage /> },
+                ...projects.map((project) => ({ path: `${project.path}/*`, element: <ProjectPage path={project.path} /> }))
+            ],
+        },
+        {
+            path: '*', 
+            element: <FullLayout />,
+            children: [
+                { path: "*", element: <ProjectPage undefinedProject={true} />}
+            ]
+        }
+    ];
+}
+
 const Router = [
     {
         path: '/',
@@ -36,4 +56,4 @@ const Router = [
     }
 ];
 
-export default Router;
+export default getRoutes;
