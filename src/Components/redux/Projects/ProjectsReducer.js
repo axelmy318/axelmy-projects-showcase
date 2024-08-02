@@ -480,7 +480,6 @@ const initialState = {
                     name: 'Commits component',
                     file: 'src/Components/examples_GithubScraper/CommitsExample.js',
                     description: 'The code below will loop through each commits of a repository, calling the callback for each one of theme',
-                    component: <CommitsExample />,
                     defaults: [
                         { property: 'label', type: 'string', value: `null` },
                         { property: 'maxDisplayed', type: 'number', value: `7` },
