@@ -124,8 +124,11 @@ const ProjectExample = ({ page, example, open, setOpen }) => {
                     </SyntaxHighlighter>}
                 </div>
                 <br />
-                <h3 className='underline' style={{ textDecoration: 'none' }}>Result</h3>
-                {example.component ? example.component : <></>}
+                {example.component ? <>
+                    <h3 className='underline' style={{ textDecoration: 'none' }}>Result</h3>
+                    {example.component}
+                </>
+                    : <></>}
                 {example.defaults && example.defaults.length > 0 && <>
                     <br />
                     <br />

@@ -477,13 +477,33 @@ const initialState = {
             installation: 'npm i express-ts-validator',
             examples: [
                 {
-                    name: 'Commits component',
-                    file: 'src/Components/examples_GithubScraper/CommitsExample.js',
-                    description: 'The code below will loop through each commits of a repository, calling the callback for each one of theme',
+                    name: 'Simple validator',
+                    file: 'src/Components/examples_ExpressValidator/SimpleValidatorExample.txt',
+                    description: 'This example shows how you can validate your basic payloads and automatically get typescript interfaces & and types generated.',
+                    language: 'ts',
                     defaults: [
-                        { property: 'label', type: 'string', value: `null` },
-                        { property: 'maxDisplayed', type: 'number', value: `7` },
-                        { property: 'commitCallback', type: 'function', value: `null` },
+                        { property: 'required', type: 'bool', value: `true` },
+                        { property: 'list', type: 'bool', value: `false` },
+                    ]
+                },
+                {
+                    name: 'Lists validator',
+                    file: 'src/Components/examples_ExpressValidator/ListValidator.txt',
+                    description: 'This example shows how you can validate lists of values',
+                    language: 'ts',
+                    defaults: [
+                        { property: 'required', type: 'bool', value: `true` },
+                        { property: 'list', type: 'bool', value: `false` },
+                    ]
+                },
+                {
+                    name: 'Objects validator',
+                    file: 'src/Components/examples_ExpressValidator/ObjectValidator.txt',
+                    description: 'This example shows how you can validate complex nested objects.',
+                    language: 'ts',
+                    defaults: [
+                        { property: 'required', type: 'bool', value: `true` },
+                        { property: 'list', type: 'bool', value: `false` },
                     ]
                 }
             ]

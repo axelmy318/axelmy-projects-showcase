@@ -2,11 +2,11 @@ import bodyParser from 'body-parser';
 import Validator from 'express-ts-validator';
 
 const userEdit = new Validator({
-    name: { type: 'string', required: false, notEmpty: true }, // Not required, but cannot be empty if given
-    age: { type: 'number' },
-    birthdate: { type: 'date', format: 'YYYY-MM-DD' } // Format is not required but can be overriden
+    name: { type: 'string' },
+    hobbies: { type: 'string', list: true }, // hobbies: ['skiing', 'racing', 'etc']
 });
 
 router.post('user/:id/edit', bodyParser.json(), userEdit.validate, (req: Request & { body: typeof userEdit.schema; }, res: Response) => {
+    console.log(req.body.hobbies.map(h => `${h}`));
     res.status(200).send('The entire request body is automatically typed !');
 });
